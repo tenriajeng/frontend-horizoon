@@ -8,6 +8,7 @@ import {
     CardHeader,
     CardTitle,
 } from '@/components/ui/card';
+import Image from 'next/image';
 
 const courses = [
     {
@@ -144,7 +145,9 @@ export default function Home() {
                 <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     {courses.map((course) => (
                         <div key={course.id} className="course-item rounded-md">
-                            <img
+                            <Image
+                                width={400}
+                                height={400}
                                 src="https://sejawat.s3.ap-southeast-1.amazonaws.com/sejawat/event/f6e018f699e7fec8ffe8f44aca2f748f/%5BWEBP%5D-18-Oktober.webp"
                                 alt={course.title}
                                 className="aspect-square rounded-md object-cover"

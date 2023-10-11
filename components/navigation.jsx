@@ -8,7 +8,7 @@ function Navigation() {
     return (
         <nav className="sticky top-0 z-20 p-4 backdrop-blur-md bg-opacity-90 dark:bg-opacity-90 border-b border-opacity-20 border-gray-400 dark:bg-black">
             <div className="md:container mx-auto flex items-center justify-between">
-                <div className="flex items-center space-x-4 ">
+                <div className="flex items-center space-x-4">
                     <div className="text-xl font-semibold">Horizoon</div>
                 </div>
                 <div className="flex items-center space-x-4">
@@ -23,7 +23,6 @@ function Navigation() {
                     </button>
                     <MagnifyingGlassIcon className="h-4 w-4 md:hidden" />
                     <ModeToggle />
-
                     <div className="aspect-square">
                         <Avatar>
                             <AvatarImage

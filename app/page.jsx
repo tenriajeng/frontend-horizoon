@@ -42,7 +42,7 @@ export default async function Home() {
                                 alt={course.name}
                                 className="aspect-square rounded-md object-cover"
                             />
-                            <h2 className="xs:text-sm md:text-lg font-medium mt-2">
+                            <h2 className="xs:text-sm md:text-lg font-medium mt-2 truncate">
                                 {course.name}
                             </h2>
                             <p className="text-xs text-gray-600">

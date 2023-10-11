@@ -7,6 +7,7 @@ const nextConfig = {
             'via.placeholder.com',
             'placeimg.com',
             'jsonplaceholder.typicode.com',
+            'sejawat.co.id',
         ],
     },
 };

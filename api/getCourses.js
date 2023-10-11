@@ -1,5 +1,5 @@
-async function getData() {
-    const res = await fetch('http://127.0.0.1:8001/api/home', {
+async function getCourses() {
+    const res = await fetch('https://sejawat.co.id/api/event-test', {
         cache: 'no-store',
     });
     // The return value is *not* serialized
@@ -9,8 +9,8 @@ async function getData() {
         // This will activate the closest `error.js` Error Boundary
         throw new Error('Failed to fetch data');
     }
-
+    console.log(res);
     return res.json();
 }
 
-export default getData;
+export default getCourses;

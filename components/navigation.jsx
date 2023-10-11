@@ -6,10 +6,12 @@ import ModeToggle from './mode-toggle';
 
 function Navigation() {
     return (
-        <nav className="sticky top-0 z-20 p-4 backdrop-blur-md bg-opacity-90 dark:bg-opacity-90 border-b border-opacity-20 border-gray-400 dark:bg-black">
+        <nav className="sticky top-0 z-20 p-4 dark:backdrop-blur-md backdrop-blur-md bg-white bg-opacity-80 dark:bg-opacity-90 border-b border-opacity-20 border-gray-400 dark:bg-slate-950">
             <div className="md:container mx-auto flex items-center justify-between">
                 <div className="flex items-center space-x-4">
-                    <div className="text-xl font-semibold">Horizoon</div>
+                    <div className="text-xl dark:text-white text-slate-900 font-normal">
+                        Horizoon
+                    </div>
                 </div>
                 <div className="flex items-center space-x-4">
                     <button className="xs:hidden md:inline-flex inline-flex items-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-transparent shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 relative w-full justify-start text-sm text-muted-foreground sm:pr-12 md:w-40 lg:w-64">
@@ -21,7 +23,7 @@ function Navigation() {
                             <span className="text-xs">⌘</span>K
                         </kbd>
                     </button>
-                    <MagnifyingGlassIcon className="h-4 w-4 md:hidden" />
+                    <MagnifyingGlassIcon className="h-5 w-5 md:hidden" />
                     <ModeToggle />
                     <div className="aspect-square">
                         <Avatar>

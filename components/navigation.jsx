@@ -7,8 +7,8 @@ import ModeToggle from './mode-toggle';
 function Navigation() {
     return (
         <nav className="sticky top-0 z-20 p-4 backdrop-blur-md bg-opacity-90 dark:bg-opacity-90 border-b border-opacity-20 border-gray-400 dark:bg-black">
-            <div className="container mx-auto flex items-center justify-between">
-                <div className="flex items-center space-x-4">
+            <div className="md:container mx-auto flex items-center justify-between">
+                <div className="flex items-center space-x-4 ">
                     <div className="text-xl font-semibold">Horizoon</div>
                 </div>
                 <div className="flex items-center space-x-4">

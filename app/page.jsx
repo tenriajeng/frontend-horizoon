@@ -20,10 +20,6 @@ export default async function Home() {
                                 alt={course.name}
                                 className="aspect-square rounded-md object-cover"
                             />
-                            <Progress
-                                className="h-1 mt-2"
-                                value={Math.floor(Math.random() * 101)}
-                            />
                         </div>
                     ))}
                 </div>

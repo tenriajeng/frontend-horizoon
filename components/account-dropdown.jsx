@@ -21,6 +21,7 @@ export function AccountDropdown() {
             <DropdownMenuTrigger asChild aria-label="Open Menu">
                 <Avatar
                     className="hover:cursor-pointer"
+                    role="img"
                     aria-label="User Avatar"
                 >
                     <AvatarImage

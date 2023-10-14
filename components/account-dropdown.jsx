@@ -18,7 +18,7 @@ import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 export function AccountDropdown() {
     return (
         <DropdownMenu>
-            <DropdownMenuTrigger asChild>
+            <DropdownMenuTrigger asChild aria-label="Open Menu">
                 <Avatar className="hover:cursor-pointer ">
                     <AvatarImage
                         src="https://sejawat.s3.ap-southeast-1.amazonaws.com/sejawat/avatars/4a8820cc6507849820d03deae55af243/adventurer.png"

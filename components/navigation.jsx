@@ -1,20 +1,22 @@
 'use client';
 
 import { MagnifyingGlassIcon, MoonIcon, SunIcon } from '@radix-ui/react-icons';
-import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import ModeToggle from './mode-toggle';
+import { AccountDropdown } from './account-dropdown';
+import { DialogLogin } from './dialog-login';
+import { DialogSignUp } from './dialog-sign-up';
+import Link from 'next/link';
 
 function Navigation() {
     return (
-        <nav className="sticky top-0 z-20 p-4 dark:backdrop-blur-md backdrop-blur-md bg-white bg-opacity-80 dark:bg-opacity-90 border-b border-opacity-20 border-gray-400 dark:bg-slate-950">
-            <div className="md:container mx-auto flex items-center justify-between">
-                <div className="flex items-center space-x-4">
-                    <div className="text-xl dark:text-white text-slate-900 font-normal">
-                        Horizoon
-                    </div>
-                </div>
-                <div className="flex items-center space-x-4">
-                    <button className="xs:hidden md:inline-flex inline-flex items-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-transparent shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 relative w-full justify-start text-sm text-muted-foreground sm:pr-12 md:w-40 lg:w-64">
+        <nav className="sticky top-0 z-20 flex justify-center border-b border-gray-400 border-opacity-20 bg-white bg-opacity-80 py-4 backdrop-blur-md dark:bg-slate-950 dark:bg-opacity-90 dark:backdrop-blur-md">
+            <div className="flex items-center justify-between md:container xs:mx-2 ">
+                <h1 className="text-xl font-normal text-slate-900 dark:text-white md:mx-2">
+                    <Link href={'/'}>Horizoon</Link>
+                </h1>
+
+                <div className="flex items-center space-x-2">
+                    <button className="relative inline-flex h-9 w-full items-center justify-start rounded-md border border-input bg-transparent px-4 py-2 text-sm font-medium text-muted-foreground shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 xs:hidden sm:pr-12 md:inline-flex md:w-40 lg:w-64">
                         <span className="hidden lg:inline-flex">
                             Search courses...
                         </span>
@@ -25,14 +27,10 @@ function Navigation() {
                     </button>
                     <MagnifyingGlassIcon className="h-5 w-5 md:hidden" />
                     <ModeToggle />
+                    <DialogLogin />
+                    <DialogSignUp />
                     <div className="aspect-square">
-                        <Avatar>
-                            <AvatarImage
-                                src="https://sejawat.s3.ap-southeast-1.amazonaws.com/sejawat/avatars/4a8820cc6507849820d03deae55af243/adventurer.png"
-                                alt="@shadcn"
-                            />
-                            <AvatarFallback>IT</AvatarFallback>
-                        </Avatar>
+                        <AccountDropdown />
                     </div>
                 </div>
             </div>

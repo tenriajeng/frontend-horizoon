@@ -16,7 +16,7 @@ function ModeToggle() {
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
                 <Button
-                    variant="ghost"
+                    variant="outline"
                     size="icon"
                     className="h-9 w-9 focus:outline-none"
                 >

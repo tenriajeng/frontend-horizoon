@@ -1,7 +1,3 @@
-import React from 'react';
-
-function Courses() {
-    return <div>Courses</div>;
+export default function Page() {
+    return <p>Course</p>;
 }
-
-export default Courses;

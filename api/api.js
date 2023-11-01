@@ -1,5 +1,5 @@
 export async function fetchAPI(endpoint, options = {}) {
-    const apiUrl = process.env.BASE_URL;
+    const apiUrl = process.env.API_URL;
     const url = apiUrl + endpoint;
 
     try {

@@ -10,7 +10,7 @@ import { Button } from './ui/button';
 
 function Navigation() {
     return (
-        <nav className="sticky top-0 z-20 flex justify-center border-b border-gray-400 border-opacity-20 bg-gray-100 bg-opacity-70 py-4 backdrop-blur-md dark:bg-slate-900 dark:bg-opacity-70 dark:backdrop-blur-md">
+        <nav className="sticky top-0 z-20 flex justify-center border-b border-gray-400 border-opacity-20 bg-gray-100 bg-opacity-70 py-4 backdrop-blur-md dark:bg-slate-950 dark:bg-opacity-70 dark:backdrop-blur-md">
             <div className="xs:container-fluid flex items-center justify-between md:container xs:mx-2 xs:w-full md:mx-0">
                 <h1 className="text-2xl font-bold text-slate-900 dark:text-white md:mx-2">
                     <Link href={'/'}>HORIZOON</Link>

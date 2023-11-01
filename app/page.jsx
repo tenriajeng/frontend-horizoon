@@ -15,8 +15,8 @@ export default async function Home() {
     return (
         <div className="md:container">
             <CourseCategories />
-            <div className="xs:mx-2 xs:mt-2 md:mt-6">
-                <div className="grid grid-cols-1 xs:grid-cols-2 xs:gap-2 sm:grid-cols-2 md:grid-cols-3 md:gap-5 lg:grid-cols-4">
+            <div className="mt-4 xs:mx-0 xs:p-0 md:mx-2 ">
+                <div className="grid grid-cols-1  xs:mx-2 xs:mt-2 xs:grid-cols-2 xs:gap-2 sm:grid-cols-2 md:mx-0 md:grid-cols-3 md:gap-5 lg:grid-cols-3">
                     {courses.data.map((course) => (
                         <HoverCard key={course.id}>
                             <HoverCardTrigger asChild>
@@ -25,17 +25,16 @@ export default async function Home() {
                             <HoverCardContent className="w-96" side="left">
                                 <div className="flex justify-between space-x-4">
                                     <div className="space-y-1">
-                                        <h4 className="text-sm font-semibold">
-                                            <Image
-                                                width={400}
-                                                height={400}
-                                                src={course.image}
-                                                alt={course.name}
-                                                className="aspect-square rounded-md border object-cover "
-                                            />
-                                        </h4>
+                                        <Image
+                                            width={400}
+                                            height={400}
+                                            src={course.thumbnail}
+                                            alt={course.title}
+                                            className="aspect-video rounded-md border object-cover "
+                                        />
+
                                         <h2 className="text-base font-medium">
-                                            {course.name}
+                                            {course.title}
                                         </h2>
                                         <p className="text-justify text-sm dark:text-gray-400">
                                             {course.meta_description}

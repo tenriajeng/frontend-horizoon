@@ -1,6 +1,6 @@
 import { fetchAPI } from './api';
 
-async function getCourses() {
+async function getCourseDetail() {
     try {
         const data = await fetchAPI('api/home', {
             cache: 'no-store',
@@ -14,4 +14,4 @@ async function getCourses() {
     }
 }
 
-export default getCourses;
+export default getCourseDetail;

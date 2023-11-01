@@ -14,9 +14,7 @@ export function DialogSignUp() {
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <Button variant="outline" size="sm">
-                    Register
-                </Button>
+                <Button size="sm">Register</Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>

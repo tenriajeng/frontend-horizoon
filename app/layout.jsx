@@ -19,7 +19,7 @@ const RootLayout = ({ children }) => {
                 <meta name="description" content={metadata.description} />
             </head>
 
-            <body className={inter.className}>
+            <body className="bg-gradient-to-r from-slate-200 via-gray-100 to-white dark:bg-gradient-to-r dark:from-slate-900 dark:via-slate-900 dark:to-slate-950">
                 <Providers>
                     <ThemeProvider
                         attribute="class"
@@ -28,7 +28,7 @@ const RootLayout = ({ children }) => {
                         disableTransitionOnChange
                     >
                         <Navigation />
-                        {children}
+                        <div>{children}</div>
                     </ThemeProvider>
                 </Providers>
             </body>

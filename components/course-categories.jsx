@@ -17,7 +17,7 @@ const CourseCategories = () => {
             {courseCategories.map((category, index) => (
                 <Button
                     key={index}
-                    className="transform border bg-gray-100 text-xs text-black transition duration-300 ease-in-out hover:scale-105 hover:bg-gray-200 dark:bg-gray-900 dark:text-white dark:hover:bg-gray-800 xs:py-8 md:py-10 lg:w-full"
+                    className="transform border bg-gray-100 text-xs text-black transition duration-300 ease-in-out hover:scale-105 hover:bg-gray-200 dark:bg-slate-900 dark:text-white dark:hover:bg-slate-800 xs:py-8 md:py-10 lg:w-full"
                 >
                     {category}
                 </Button>

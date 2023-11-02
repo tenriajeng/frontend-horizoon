@@ -1,3 +1,5 @@
+'use client';
+
 import Register from '@/api/auth/register';
 import { Button } from '@/components/ui/button';
 import {

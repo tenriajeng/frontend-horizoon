@@ -78,9 +78,8 @@ export default async function Page({ params }) {
                         <div className="flex items-center xs:px-2 xs:py-3 md:p-8">
                             <div>
                                 <h1 className="py-4 font-semibold leading-8 xs:text-xl lg:text-3xl">
-                                    Watercolour Pastels For Beginners: An
-                                    Introduction To Neocolor II Aquarelle
-                                    Pastels.
+                                    Design Your Virtual Persona: Create a VR
+                                    Avatar With Unreal Engine
                                 </h1>
                                 <p className="dark:text-gray-300 xs:text-sm xs:leading-8 md:text-base md:leading-8">
                                     Unlock the enchanting world of watercolor

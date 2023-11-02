@@ -1,4 +1,4 @@
-import register from '@/api/register';
+import Register from '@/api/auth/register';
 import { Button } from '@/components/ui/button';
 import {
     Dialog,
@@ -10,7 +10,9 @@ import {
     DialogTrigger,
 } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
+import { login } from '@/redux/features/authSclice';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 export function DialogSignUp() {
     const [formData, setFormData] = useState({
@@ -19,6 +21,8 @@ export function DialogSignUp() {
         password: '',
         c_password: '',
     });
+
+    const dispatch = useDispatch();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -30,14 +34,26 @@ export function DialogSignUp() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await register(formData);
-        console.log(response);
+        const response = await Register(formData);
+
+        if (response.success) {
+            const user = {
+                token: response.data.token,
+                name: response.data.name,
+            };
+            localStorage.setItem('authToken', response.data.token);
+            dispatch(login(user));
+        } else {
+            console.log(response);
+        }
     };
 
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <Button size="sm">Register</Button>
+                <Button size="sm" variant="outline">
+                    Register
+                </Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>

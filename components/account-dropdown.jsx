@@ -1,4 +1,3 @@
-import { Button } from '@/components/ui/button';
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -14,8 +13,31 @@ import {
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '@/redux/features/authSclice';
+import { generateInitials } from '@/lib/initialsUtils';
+import { useEffect, useState } from 'react';
+import { fetchUser } from '@/api/auth/user';
+import { fetchUserData } from '@/redux/action/authAction';
 
 export function AccountDropdown() {
+    const dispatch = useDispatch();
+    const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+    const user = useSelector((state) => state.auth.user);
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            dispatch(fetchUserData());
+        }
+    }, [dispatch, isAuthenticated]);
+
+    const handleLogout = () => {
+        localStorage.removeItem('authToken');
+        dispatch(logout());
+    };
+
+    const initials = user != null ? generateInitials(user.name) : 'AN';
+
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild aria-label="Open Menu">
@@ -24,14 +46,11 @@ export function AccountDropdown() {
                     role="img"
                     aria-label="User Avatar"
                 >
-                    <AvatarImage
-                        src="https://sejawat.s3.ap-southeast-1.amazonaws.com/sejawat/avatars/4a8820cc6507849820d03deae55af243/adventurer.png"
-                        alt="@shadcn"
-                    />
-                    <AvatarFallback>IT</AvatarFallback>
+                    <AvatarImage src="" alt="@shadcn" />
+                    <AvatarFallback>{initials}</AvatarFallback>
                 </Avatar>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56">
+            <DropdownMenuContent className="w-56 xs:mr-2 md:mr-10 lg:mr-14">
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
@@ -78,7 +97,7 @@ export function AccountDropdown() {
                 <DropdownMenuItem>Support</DropdownMenuItem>
                 <DropdownMenuItem disabled>API</DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>
+                <DropdownMenuItem onClick={handleLogout}>
                     Log out
                     <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
                 </DropdownMenuItem>

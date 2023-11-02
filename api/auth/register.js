@@ -1,6 +1,6 @@
-import { fetchAPI } from './api';
+import { fetchAPI } from '..';
 
-async function register(formData) {
+async function Register(formData) {
     try {
         const data = await fetchAPI('api/register', {
             cache: 'no-store',
@@ -17,4 +17,4 @@ async function register(formData) {
     }
 }
 
-export default register;
+export default Register;

@@ -2,6 +2,7 @@ import './globals.css';
 import { Inter } from 'next/font/google';
 import { Providers } from '@/redux/providers';
 import Navigation from '@/components/navigation';
+import { Toaster } from '@/components/ui/toaster';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -24,6 +25,7 @@ const RootLayout = ({ children }) => {
                 <Providers>
                     <Navigation />
                     {children}
+                    <Toaster />
                 </Providers>
             </body>
         </html>

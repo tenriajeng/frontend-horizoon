@@ -19,7 +19,7 @@ function CoursesCard({ course }) {
                         {course.title}
                     </h2>
                 </Link>
-                <span className="mt-1 line-clamp-2 text-sm dark:text-gray-400">
+                <span className="mt-1 line-clamp-2 text-xs dark:text-gray-400 md:text-sm">
                     {course.meta_description}
                 </span>
                 <div className="mt-1 flex items-center justify-between text-sm">

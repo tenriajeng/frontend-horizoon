@@ -1,6 +1,6 @@
 import * as z from 'zod';
 
-const loginValidation = z.object({
+const LoginValidation = z.object({
     email: z
         .string()
         .min(2, {
@@ -9,15 +9,14 @@ const loginValidation = z.object({
         .email({
             message: 'Please provide a valid email address.',
         }),
-    password: z
-        .string()
-        .min(12, {
-            message: 'Password must be at least 12 characters.',
-        })
-        .regex(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/, {
-            message:
-                'Password must include at least one digit, one lowercase and one uppercase letter.',
-        }),
+    password: z.string().optional(),
+    // .min(12, {
+    //     message: 'Password must be at least 12 characters.',
+    // })
+    // .regex(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/, {
+    //     message:
+    //         'Password must include at least one digit, one lowercase and one uppercase letter.',
+    // }),
 });
 
-export default loginValidation;
+export default LoginValidation;

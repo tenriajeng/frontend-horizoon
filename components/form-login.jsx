@@ -15,9 +15,12 @@ import Login from '@/api/auth/login';
 import { login } from '@/redux/features/authSclice';
 import { setAuthToken } from '@/lib/authUtils';
 import loginValidation from '@/validation/login';
+import { useToast } from '@/components/ui/use-toast';
+import { Toaster } from '@/components/ui/toaster';
 
 function FormLogin() {
     const dispatch = useDispatch();
+    const { toast } = useToast();
     const form = useForm({
         resolver: zodResolver(loginValidation),
         defaultValues: {
@@ -26,8 +29,9 @@ function FormLogin() {
         },
     });
 
-    async function onSubmit(values) {
-        const response = await Login(values);
+    async function onSubmit(formData) {
+        console.log(formData);
+        const response = await Login(formData);
 
         if (response.success) {
             const user = {
@@ -39,6 +43,12 @@ function FormLogin() {
             dispatch(login(user));
         } else {
             console.log(response);
+            toast({
+                variant: 'destructive',
+                title: 'Login Failed',
+                description:
+                    'Oops! 🙁 It seems like we couldnt find your account. Please double-check your credentials and try again. If you need assistance, reach out to our support team. ',
+            });
         }
     }
 
@@ -82,6 +92,7 @@ function FormLogin() {
                         </FormItem>
                     )}
                 />
+
                 <Button type="submit">Submit</Button>
             </form>
         </Form>

@@ -14,15 +14,14 @@ import { Button } from './ui/button';
 import Login from '@/api/auth/login';
 import { login } from '@/redux/features/authSclice';
 import { setAuthToken } from '@/lib/authUtils';
-import loginValidation from '@/validation/login';
+import LoginValidation from '@/validation/login';
 import { useToast } from '@/components/ui/use-toast';
-import { Toaster } from '@/components/ui/toaster';
 
 function FormLogin() {
     const dispatch = useDispatch();
     const { toast } = useToast();
     const form = useForm({
-        resolver: zodResolver(loginValidation),
+        resolver: zodResolver(LoginValidation),
         defaultValues: {
             email: 'ilhamtenriajeng03@gmail.com',
             password: 'ilhamilham123',
@@ -30,7 +29,6 @@ function FormLogin() {
     });
 
     async function onSubmit(formData) {
-        console.log(formData);
         const response = await Login(formData);
 
         if (response.success) {
@@ -42,7 +40,6 @@ function FormLogin() {
             setAuthToken(response.data.token);
             dispatch(login(user));
         } else {
-            console.log(response);
             toast({
                 variant: 'destructive',
                 title: 'Login Failed',
@@ -93,7 +90,7 @@ function FormLogin() {
                     )}
                 />
 
-                <Button type="submit">Submit</Button>
+                <Button type="submit">Login</Button>
             </form>
         </Form>
     );

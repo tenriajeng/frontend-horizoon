@@ -17,6 +17,7 @@ function Navigation() {
 
     useEffect(() => {
         if (isAuthenticated) {
+            console.log('isAuthenticated', isAuthenticated);
             const token = getAuthToken();
             dispatch(fetchUserData(token));
         }

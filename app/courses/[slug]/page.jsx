@@ -122,7 +122,7 @@ export default async function Page({ params }) {
                             </div>
                         </div>
 
-                        <div className="mx-2 flex items-center xs:mt-4">
+                        <div className="flex items-center xs:mt-4 md:mx-2">
                             {/* <video
                             controls={true}
                             playsInline={true}

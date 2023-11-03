@@ -1,10 +1,10 @@
 import { setAuthToken } from '@/lib/authUtils';
 import { fetchAPI } from '..';
 
-async function registerUser(formData) {
+async function Register(formData) {
     try {
         const data = await sendRegisterRequest(formData);
-        setAuthToken(data.data.token);
+
         return data;
     } catch (error) {
         handleRegistrationError(error);
@@ -27,4 +27,4 @@ function handleRegistrationError(error) {
     throw new Error('An error occurred while registering the user');
 }
 
-export default registerUser;
+export default Register;

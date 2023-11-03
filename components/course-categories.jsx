@@ -13,7 +13,7 @@ const CourseCategories = () => {
     ];
 
     return (
-        <div className="grid grid-cols-1 xs:mx-2 xs:mt-2 xs:grid-cols-4 xs:gap-2 sm:grid-cols-4 md:mt-6 md:grid-cols-4 md:gap-5 lg:grid-cols-8">
+        <div className="grid grid-cols-1 xs:mx-2 xs:mt-2 xs:grid-cols-4 xs:gap-2 sm:grid-cols-4 md:mt-4 md:grid-cols-4 md:gap-5 lg:grid-cols-8">
             {courseCategories.map((category, index) => (
                 <div
                     key={index}

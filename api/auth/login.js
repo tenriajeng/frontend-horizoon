@@ -11,7 +11,6 @@ async function Login(formData) {
             },
             body: JSON.stringify(formData),
         });
-        setAuthToken(data.data.token);
 
         return data;
     } catch (error) {

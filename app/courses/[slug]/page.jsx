@@ -75,7 +75,7 @@ export default async function Page({ params }) {
             <div className="md:container">
                 <div className="xs:mx-0 xs:mt-2 xs:p-0 md:mt-10">
                     <div className="grid grid-cols-1 xs:grid-cols-1 xs:gap-0 sm:grid-cols-1 md:grid-cols-1 md:gap-5 lg:grid-cols-2">
-                        <div className="flex items-center xs:px-2 xs:py-3 md:p-8">
+                        <div className="flex items-center xs:px-2 xs:py-3">
                             <div>
                                 <h1 className="py-4 font-semibold leading-8 xs:text-xl lg:text-3xl">
                                     Design Your Virtual Persona: Create a VR
@@ -122,7 +122,7 @@ export default async function Page({ params }) {
                             </div>
                         </div>
 
-                        <div className="flex items-center xs:mt-4 lg:p-8">
+                        <div className="mx-2 flex items-center xs:mt-4">
                             {/* <video
                             controls={true}
                             playsInline={true}
@@ -153,13 +153,13 @@ export default async function Page({ params }) {
             <div className="mt-4 md:container">
                 <div className="grid xs:grid-cols-1 md:grid-cols-1 lg:grid-cols-3">
                     <div className="md:col-span-3 lg:col-span-2">
-                        <div className="flex justify-between xs:px-2 md:mx-8 md:px-0">
+                        <div className="mx-2 flex justify-between xs:px-2 md:px-0">
                             <h4 className="text-xl font-medium">
                                 Lessons in This Class
                             </h4>
                             <span className="font-medium">8 Lessons (44m)</span>
                         </div>
-                        <div className="xs:px-2 md:mx-8 md:px-0">
+                        <div className="mx-2 xs:px-2 md:px-0">
                             {lessons.map((lesson) => (
                                 <div
                                     key={lesson.id}
@@ -173,12 +173,12 @@ export default async function Page({ params }) {
                                 </div>
                             ))}
                         </div>
-                        <div className="mt-4 xs:px-2  md:mx-8 md:px-0">
+                        <div className="mx-2 mt-4 xs:px-2 md:px-0">
                             <CourseDescription />
                         </div>
                     </div>
-                    <div className="sticky top-20 h-72 xs:px-2">
-                        <div className="flex h-full flex-col items-center justify-center rounded-lg bg-gray-900 p-4 text-white dark:bg-gray-900 dark:text-white md:mx-8 md:px-0">
+                    <div className="sticky top-20 h-72">
+                        <div className="mx-2 flex h-full flex-col items-center justify-center rounded-lg bg-gray-900 p-4 text-white dark:bg-gray-900 dark:text-white md:px-0">
                             <h1 className="mb-3 text-center text-2xl font-bold">
                                 You re Almost In
                             </h1>

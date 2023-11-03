@@ -12,3 +12,11 @@ export async function fetchAPI(endpoint, options = {}) {
         throw new Error('An error occurred while making the request');
     }
 }
+
+function handleFetchError(error) {
+    console.error('An error occurred:', error);
+
+    // You can add additional error handling logic here, such as displaying an error message to the user or retrying the request.
+}
+
+export { handleFetchError };

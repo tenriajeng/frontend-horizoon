@@ -1,6 +1,6 @@
 import { fetchAPI, handleFetchError } from '.';
 
-export async function getCourses() {
+export default async function getCourses() {
     try {
         const data = await fetchAPI('api/home', {
             cache: 'no-store',

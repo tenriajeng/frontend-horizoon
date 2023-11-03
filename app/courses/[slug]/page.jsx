@@ -73,11 +73,11 @@ export default async function Page({ params }) {
     return (
         <div>
             <div className="md:container">
-                <div className="xs:mx-0 xs:mt-2 xs:p-0 md:mt-10">
+                <div className="xs:mx-0 xs:mt-2 xs:p-0 md:mt-4">
                     <div className="grid grid-cols-1 xs:grid-cols-1 xs:gap-0 sm:grid-cols-1 md:grid-cols-1 md:gap-5 lg:grid-cols-2">
-                        <div className="flex items-center xs:px-2 xs:py-3">
+                        <div className="flex items-center xs:px-2  ">
                             <div>
-                                <h1 className="py-4 font-semibold leading-8 xs:text-xl lg:text-3xl">
+                                <h1 className="pb-4 font-semibold leading-8 xs:text-xl lg:text-3xl">
                                     Design Your Virtual Persona: Create a VR
                                     Avatar With Unreal Engine
                                 </h1>
@@ -93,7 +93,7 @@ export default async function Page({ params }) {
                                     gateway to the vibrant and versatile realm
                                     of Neocolor II Aquarelle Pastels.
                                 </p>
-                                <div className="xs:mt-4 md:mt-6">
+                                <div className="mt-4">
                                     <Badge
                                         variant="secondary"
                                         className="mb-2 me-2 px-2 py-1 text-xs font-normal"
@@ -113,7 +113,7 @@ export default async function Page({ params }) {
                                         Projects and Creative Expression
                                     </Badge>
                                 </div>
-                                <div className="xs:mt-4 md:mt-6">
+                                <div className="xs:mt-4 md:mt-4">
                                     <Button className="me-2 rounded-full">
                                         Learn Now
                                         <ChevronRightIcon className="ml-2 h-4 w-4" />
@@ -122,7 +122,7 @@ export default async function Page({ params }) {
                             </div>
                         </div>
 
-                        <div className="flex items-center xs:mt-4 md:mx-2">
+                        <div className="flex items-center md:mx-2">
                             {/* <video
                             controls={true}
                             playsInline={true}
@@ -150,7 +150,7 @@ export default async function Page({ params }) {
                     </div>
                 </div>
             </div>
-            <div className="mt-4 md:container">
+            <div className="mt-6 md:container">
                 <div className="grid xs:grid-cols-1 md:grid-cols-1 lg:grid-cols-3">
                     <div className="md:col-span-3 lg:col-span-2">
                         <div className="mx-2 flex justify-between xs:px-2 md:px-0">

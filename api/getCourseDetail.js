@@ -1,6 +1,6 @@
-import { fetchAPI } from '.';
+import { fetchAPI, handleFetchError } from '.';
 
-async function getCourseDetail() {
+export async function getCourseDetail() {
     try {
         const data = await fetchAPI('api/home', {
             cache: 'no-store',
@@ -8,10 +8,6 @@ async function getCourseDetail() {
 
         return data;
     } catch (error) {
-        throw new Error(
-            'An error occurred while fetching data: ' + error.message,
-        );
+        handleFetchError(error);
     }
 }
-
-export default getCourseDetail;

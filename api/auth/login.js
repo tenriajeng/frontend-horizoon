@@ -1,3 +1,4 @@
+import { setAuthToken } from '@/lib/authUtils';
 import { fetchAPI } from '..';
 
 async function Login(formData) {
@@ -10,7 +11,7 @@ async function Login(formData) {
             },
             body: JSON.stringify(formData),
         });
-        localStorage.setItem('authToken', data.data.token);
+        setAuthToken(data.data.token);
 
         return data;
     } catch (error) {

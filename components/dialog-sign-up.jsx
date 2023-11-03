@@ -12,6 +12,7 @@ import {
     DialogTrigger,
 } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
+import { setAuthToken } from '@/lib/authUtils';
 import { login } from '@/redux/features/authSclice';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -43,8 +44,8 @@ export function DialogSignUp() {
                 token: response.data.token,
                 name: response.data.name,
             };
-            localStorage.setItem('authToken', response.data.token);
-            console.log(user);
+
+            setAuthToken(response.data.token);
             dispatch(login(user));
         } else {
             console.log(response);

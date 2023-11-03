@@ -1,22 +1,30 @@
+import { setAuthToken } from '@/lib/authUtils';
 import { fetchAPI } from '..';
 
-async function Register(formData) {
+async function registerUser(formData) {
     try {
-        const data = await fetchAPI('api/register', {
-            cache: 'no-store',
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-        });
-        console.log('data data ', data.data.token);
-        localStorage.setItem('authToken', data.data.token);
-
+        const data = await sendRegisterRequest(formData);
+        setAuthToken(data.data.token);
         return data;
     } catch (error) {
-        console.log(error);
+        handleRegistrationError(error);
     }
 }
 
-export default Register;
+async function sendRegisterRequest(formData) {
+    return fetchAPI('api/register', {
+        cache: 'no-store',
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+    });
+}
+
+function handleRegistrationError(error) {
+    console.error(error);
+    throw new Error('An error occurred while registering the user');
+}
+
+export default registerUser;

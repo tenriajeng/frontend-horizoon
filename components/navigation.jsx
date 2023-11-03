@@ -9,6 +9,7 @@ import { Button } from './ui/button';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchUserData } from '@/redux/action/authAction';
+import { getAuthToken } from '@/lib/authUtils';
 
 function Navigation() {
     const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
@@ -16,7 +17,7 @@ function Navigation() {
 
     useEffect(() => {
         if (isAuthenticated) {
-            const token = localStorage.getItem('authToken');
+            const token = getAuthToken();
             dispatch(fetchUserData(token));
         }
     }, [dispatch, isAuthenticated]);

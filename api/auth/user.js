@@ -1,4 +1,4 @@
-import { fetchAPI } from '..';
+import { fetchAPI, handleFetchError } from '..';
 
 export const fetchUser = async () => {
     try {
@@ -10,13 +10,11 @@ export const fetchUser = async () => {
         });
 
         if (response.ok) {
-            const data = response;
-            console.log(data);
-            return data;
+            return response;
         } else {
-            console.error('Failed to fetch user data');
+            handleFetchError('Failed to fetch user data');
         }
     } catch (error) {
-        console.error('An error occurred while fetching user data', error);
+        handleFetchError('An error occurred while fetching user data', error);
     }
 };

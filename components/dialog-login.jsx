@@ -1,6 +1,5 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
 import {
     Dialog,
     DialogContent,
@@ -10,31 +9,13 @@ import {
     DialogTitle,
     DialogTrigger,
 } from '@/components/ui/dialog';
-import { Input } from '@/components/ui/input';
-import { login } from '@/redux/features/authSclice';
-import { useState } from 'react';
-import Login from '@/api/auth/login';
-import { useDispatch } from 'react-redux';
-
-import {
-    Form,
-    FormControl,
-    FormDescription,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
-} from '@/components/ui/form';
 import FormLogin from './form-login';
+import { Button } from './ui/button';
 
-export function DialogLogin() {
+export function DialogLogin({ children }) {
     return (
         <Dialog>
-            <DialogTrigger asChild>
-                <Button variant="outline" size="sm">
-                    Log in
-                </Button>
-            </DialogTrigger>
+            <DialogTrigger asChild>{children}</DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
                     <DialogTitle>Welcome Back!</DialogTitle>

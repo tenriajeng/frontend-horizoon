@@ -1,15 +1,15 @@
 function CourseDescription() {
     return (
         <div className="mb-10">
-            <h1 className="mb-4 text-xl font-bold">About This Class</h1>
-            <p className="mb-4 dark:text-gray-300">
+            <h1 className="mb-4 text-xl font-extrabold">About This Class</h1>
+            <p className="mb-4 font-light dark:text-gray-300">
                 Take your viewer on an{' '}
                 <span className="font-light">engaging and captivating</span>{' '}
                 journey through your video content with the power of a quality
                 edit.
             </p>
 
-            <p className="mb-4 dark:text-gray-300">
+            <p className="mb-4 font-light dark:text-gray-300">
                 Marcel Patillo started his career as a filmmaker in the same way
                 a lot of new filmmakers begin theirs. He bought a camera and
                 scoured the internet for all of the information he could find.
@@ -20,7 +20,7 @@ function CourseDescription() {
                 modern filmmaking.
             </p>
 
-            <p className="mb-4 dark:text-gray-300">
+            <p className="mb-4 font-light dark:text-gray-300">
                 Now an expert in post-production, Marcel is ready to share
                 everything he knows about his favorite post-production software:{' '}
                 <span className="font-light">DaVinci Resolve</span>. With years
@@ -31,7 +31,7 @@ function CourseDescription() {
                 your video content.
             </p>
 
-            <p className="mb-4 dark:text-gray-300">
+            <p className="mb-4 font-light dark:text-gray-300">
                 You’ll discover the most common tools you’ll use within the
                 editing process along with Marcel’s tips and tricks to take your
                 viewer on an{' '}
@@ -42,7 +42,7 @@ function CourseDescription() {
             <p className="mb-2 font-semibold">
                 With Marcel by your side, you’ll:
             </p>
-            <ul className="mb-4 ml-6 list-disc dark:text-gray-300">
+            <ul className="mb-4 ml-6 list-disc font-light dark:text-gray-300">
                 <li>
                     Import and organize your content for a{' '}
                     <span className="font-light">streamlined workflow</span>
@@ -67,7 +67,7 @@ function CourseDescription() {
                 </li>
             </ul>
 
-            <p className="mb-4 dark:text-gray-300">
+            <p className="mb-4 font-light dark:text-gray-300">
                 Plus, you can download Marcel’s video and audio assets so that
                 you can follow along within his edit or use his tips and
                 techniques to make edits to your own content. Whether you are
@@ -80,7 +80,7 @@ function CourseDescription() {
                 determining your style as a video creator.
             </p>
 
-            <p className="dark:text-gray-300">
+            <p className="font-light dark:text-gray-300">
                 A general understanding of{' '}
                 <span className="font-light">DaVinci Resolve</span> will be
                 helpful while taking this class. You’ll need a computer and{' '}

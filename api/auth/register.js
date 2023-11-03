@@ -10,6 +10,8 @@ async function Register(formData) {
             },
             body: JSON.stringify(formData),
         });
+        console.log('data data ', data.data.token);
+        localStorage.setItem('authToken', data.data.token);
 
         return data;
     } catch (error) {

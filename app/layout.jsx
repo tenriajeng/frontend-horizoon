@@ -2,7 +2,6 @@ import './globals.css';
 import { Inter } from 'next/font/google';
 import { Providers } from '@/redux/providers';
 import Navigation from '@/components/navigation';
-import { ThemeProvider } from '@/components/theme-provider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,18 +19,11 @@ const RootLayout = ({ children }) => {
             </head>
 
             <body
-                className={`${inter.className} bg-gradient-to-r from-slate-200 via-gray-100 to-white dark:bg-gradient-to-r dark:from-slate-950 dark:via-slate-950 dark:to-black`}
+                className={`${inter.className} bg-gradient-to-r from-white via-white to-white dark:bg-gradient-to-r dark:from-slate-950 dark:via-slate-950 dark:to-black`}
             >
                 <Providers>
-                    <ThemeProvider
-                        attribute="class"
-                        defaultTheme="system"
-                        enableSystem
-                        disableTransitionOnChange
-                    >
-                        <Navigation />
-                        <div>{children}</div>
-                    </ThemeProvider>
+                    <Navigation />
+                    {children}
                 </Providers>
             </body>
         </html>

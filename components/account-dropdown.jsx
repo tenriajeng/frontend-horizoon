@@ -18,26 +18,17 @@ import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '@/redux/features/authSclice';
 import { generateInitials } from '@/lib/initialsUtils';
-import { useEffect } from 'react';
-import { fetchUserData } from '@/redux/action/authAction';
+import { useEffect, useState } from 'react';
+import { Button } from './ui/button';
 
 export function AccountDropdown() {
     const dispatch = useDispatch();
-    const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
     const user = useSelector((state) => state.auth.user);
-
-    useEffect(() => {
-        if (isAuthenticated) {
-            dispatch(fetchUserData());
-        }
-    }, [dispatch, isAuthenticated]);
 
     const handleLogout = () => {
         localStorage.removeItem('authToken');
         dispatch(logout());
     };
-
-    const initials = user != null ? generateInitials(user.name) : 'AN';
 
     return (
         <DropdownMenu>
@@ -48,7 +39,9 @@ export function AccountDropdown() {
                     aria-label="User Avatar"
                 >
                     <AvatarImage src="" alt="@shadcn" />
-                    <AvatarFallback>{initials}</AvatarFallback>
+                    <AvatarFallback>
+                        {generateInitials(user?.name)}
+                    </AvatarFallback>
                 </Avatar>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56 xs:mr-2 md:mr-10 lg:mr-14">

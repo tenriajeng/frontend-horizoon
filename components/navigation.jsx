@@ -1,21 +1,28 @@
 'use client';
 
-import { MagnifyingGlassIcon, MoonIcon, SunIcon } from '@radix-ui/react-icons';
-import ModeToggle from './mode-toggle';
+import { MagnifyingGlassIcon } from '@radix-ui/react-icons';
 import { AccountDropdown } from './account-dropdown';
 import { DialogLogin } from './dialog-login';
 import { DialogSignUp } from './dialog-sign-up';
 import Link from 'next/link';
 import { Button } from './ui/button';
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchUserData } from '@/redux/action/authAction';
 
 function Navigation() {
     const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            dispatch(fetchUserData());
+        }
+    }, [dispatch, isAuthenticated]);
 
     return (
-        <nav className="sticky top-0 z-20 flex justify-center border-b border-gray-400 border-opacity-20 bg-opacity-70 bg-gradient-to-r from-gray-200/90 via-gray-100/90 to-white/90 py-4 backdrop-blur-sm dark:bg-opacity-70 dark:bg-gradient-to-r dark:from-slate-950/80 dark:via-slate-950/80 dark:to-black/80 dark:backdrop-blur-md">
-            <div className="xs:container-fluid flex items-center justify-between md:container xs:mx-2 xs:w-full md:mx-0">
+        <header className="sticky top-0 z-20 flex justify-center border-b border-gray-400 border-opacity-20 bg-opacity-70 bg-gradient-to-r from-white/90 via-white/90 to-white/90 py-4 backdrop-blur-sm dark:bg-opacity-70 dark:bg-gradient-to-r dark:from-slate-950/80 dark:via-slate-950/80 dark:to-black/80 dark:backdrop-blur-md">
+            <nav className="xs:container-fluid flex items-center justify-between md:container xs:mx-2 xs:w-full md:mx-0">
                 <h1 className="text-2xl font-bold text-slate-900 dark:text-white md:mx-2">
                     <Link href={'/'}>HORIZOON</Link>
                 </h1>
@@ -33,8 +40,6 @@ function Navigation() {
                     <Button size="sm" variant="outline" className="md:hidden">
                         <MagnifyingGlassIcon className="h-5 w-5 " />
                     </Button>
-                    <ModeToggle />
-
                     {isAuthenticated ? (
                         <div className="aspect-square">
                             <AccountDropdown />
@@ -46,8 +51,8 @@ function Navigation() {
                         </>
                     )}
                 </div>
-            </div>
-        </nav>
+            </nav>
+        </header>
     );
 }
 

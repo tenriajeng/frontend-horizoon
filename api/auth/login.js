@@ -10,6 +10,7 @@ async function Login(formData) {
             },
             body: JSON.stringify(formData),
         });
+        localStorage.setItem('authToken', data.data.token);
 
         return data;
     } catch (error) {

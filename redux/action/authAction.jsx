@@ -3,6 +3,7 @@ import { logout, storedToken, updateUser } from '../features/authSclice';
 
 export const fetchUserData = () => async (dispatch) => {
     try {
+        console.log('storedToken ', storedToken);
         const response = await fetchAPI('api/revalidate-token', {
             method: 'POST',
             headers: {

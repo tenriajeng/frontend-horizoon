@@ -44,6 +44,7 @@ export function DialogSignUp() {
                 name: response.data.name,
             };
             localStorage.setItem('authToken', response.data.token);
+            console.log(user);
             dispatch(login(user));
         } else {
             console.log(response);

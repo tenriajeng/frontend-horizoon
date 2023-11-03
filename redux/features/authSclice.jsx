@@ -1,8 +1,4 @@
-'use client';
-
 import { createSlice } from '@reduxjs/toolkit';
-
-// const storedToken = localStorage.getItem('authToken');
 
 const storedToken =
     typeof window !== 'undefined' ? localStorage.getItem('authToken') : null;
@@ -10,7 +6,6 @@ const storedToken =
 const initialState = {
     isAuthenticated: !!storedToken,
     user: null,
-    token: storedToken || null,
 };
 
 export const authSlice = createSlice({

@@ -1,7 +1,7 @@
 import { fetchAPI } from '@/api';
-import { logout, storedToken, updateUser } from '../features/authSclice';
+import { logout, updateUser } from '../features/authSclice';
 
-export const fetchUserData = () => async (dispatch) => {
+export const fetchUserData = (storedToken) => async (dispatch) => {
     try {
         console.log('storedToken ', storedToken);
         const response = await fetchAPI('api/revalidate-token', {

@@ -16,7 +16,8 @@ function Navigation() {
 
     useEffect(() => {
         if (isAuthenticated) {
-            dispatch(fetchUserData());
+            const token = localStorage.getItem('authToken');
+            dispatch(fetchUserData(token));
         }
     }, [dispatch, isAuthenticated]);
 

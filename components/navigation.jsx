@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchUserData } from '@/redux/action/authAction';
 import { getAuthToken } from '@/lib/authUtils';
+import { IoCartOutline } from 'react-icons/io5';
 
 function Navigation() {
     const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
@@ -40,7 +41,10 @@ function Navigation() {
                             <span className="text-xs">⌘</span>K
                         </kbd>
                     </button>
-                    <div className="flex h-9 w-9 items-center justify-center rounded-md hover:bg-slate-800 md:hidden">
+                    <div className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-md border bg-slate-950 hover:bg-slate-800">
+                        <IoCartOutline className="h-6 w-6 " />
+                    </div>
+                    <div className="flex h-9 w-9 items-center justify-center rounded-md border hover:bg-slate-800 md:hidden">
                         <MagnifyingGlassIcon className="h-6 w-6 " />
                     </div>
                     {isAuthenticated ? (

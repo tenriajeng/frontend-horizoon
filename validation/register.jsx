@@ -13,15 +13,13 @@ const RegisterValidation = z
             .email({
                 message: 'Please provide a valid email address.',
             }),
-        password: z
-            .string()
-            .min(12, {
-                message: 'Password must be at least 12 characters.',
-            })
-            .regex(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/, {
-                message:
-                    'Password must include at least one digit, one lowercase and one uppercase letter.',
-            }),
+        password: z.string().min(2, {
+            message: 'Password must be at least 12 characters.',
+        }),
+        // .regex(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/, {
+        //     message:
+        //         'Password must include at least one digit, one lowercase and one uppercase letter.',
+        // }),
         c_password: z.string(),
     })
     .refine((data) => data.password === data.c_password, {

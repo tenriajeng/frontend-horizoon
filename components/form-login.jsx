@@ -1,3 +1,5 @@
+'use client';
+
 import {
     Form,
     FormControl,
@@ -16,8 +18,10 @@ import { login } from '@/redux/features/authSclice';
 import { setAuthToken } from '@/lib/authUtils';
 import LoginValidation from '@/validation/login';
 import { useToast } from '@/components/ui/use-toast';
+import { useState } from 'react';
 
 function FormLogin() {
+    const [isLoading, setIsLoading] = useState(false);
     const dispatch = useDispatch();
     const { toast } = useToast();
     const form = useForm({
@@ -29,6 +33,7 @@ function FormLogin() {
     });
 
     async function onSubmit(formData) {
+        setIsLoading(true);
         const response = await Login(formData);
 
         if (response.success) {
@@ -47,6 +52,7 @@ function FormLogin() {
                     'Oops! 🙁 It seems like we couldnt find your account. Please double-check your credentials and try again. If you need assistance, reach out to our support team. ',
             });
         }
+        setIsLoading(false);
     }
 
     return (
@@ -90,7 +96,13 @@ function FormLogin() {
                     )}
                 />
 
-                <Button type="submit">Login</Button>
+                <Button type="submit">
+                    {isLoading ? (
+                        <div className="mx-2 h-5 w-5 animate-spin rounded-full border-b-2 border-t-2 border-gray-500"></div>
+                    ) : (
+                        'Log in'
+                    )}
+                </Button>
             </form>
         </Form>
     );

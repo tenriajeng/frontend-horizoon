@@ -41,8 +41,13 @@ function Navigation() {
                             <span className="text-xs">⌘</span>K
                         </kbd>
                     </button>
-                    <div className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-md border bg-slate-950 hover:bg-slate-800">
-                        <IoCartOutline className="h-6 w-6 " />
+                    <div className="relative">
+                        <div className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-md border bg-slate-950 hover:bg-slate-800">
+                            <IoCartOutline className="h-6 w-6" />
+                        </div>
+                        <span className="absolute right-0 top-0 -mr-1 -mt-2 flex h-4 items-center justify-center rounded-full border bg-white px-[2px] text-xs font-bold text-slate-900">
+                            99
+                        </span>
                     </div>
                     <div className="flex h-9 w-9 items-center justify-center rounded-md border hover:bg-slate-800 md:hidden">
                         <MagnifyingGlassIcon className="h-6 w-6 " />

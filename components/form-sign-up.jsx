@@ -1,4 +1,5 @@
-import React from 'react';
+'use client';
+
 import {
     Form,
     FormControl,
@@ -17,8 +18,10 @@ import { Input } from './ui/input';
 import Register from '@/api/auth/register';
 import { setAuthToken } from '@/lib/authUtils';
 import { login } from '@/redux/features/authSclice';
+import { useState } from 'react';
 
 function FormSignUp() {
+    const [isLoading, setIsLoading] = useState(false);
     const dispatch = useDispatch();
     const { toast } = useToast();
     const form = useForm({
@@ -32,6 +35,7 @@ function FormSignUp() {
     });
 
     async function onSubmit(formData) {
+        setIsLoading(true);
         const response = await Register(formData);
 
         if (response.success) {
@@ -56,6 +60,7 @@ function FormSignUp() {
                     'Oh no! 😔 It seems like there was an issue with your registration. Please verify the information you provided and try again. If you require assistance, dont hesitate to contact our support team. Were here to help!',
             });
         }
+        setIsLoading(false);
     }
 
     return (
@@ -131,7 +136,13 @@ function FormSignUp() {
                         </FormItem>
                     )}
                 />
-                <Button type="submit">Sign up</Button>
+                <Button type="submit">
+                    {isLoading ? (
+                        <div className="mx-4 h-5 w-5 animate-spin rounded-full border-b-2 border-t-2 border-gray-500"></div>
+                    ) : (
+                        ' Sign up'
+                    )}
+                </Button>
             </form>
         </Form>
     );

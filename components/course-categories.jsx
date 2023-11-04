@@ -1,5 +1,3 @@
-import { Button } from './ui/button';
-
 const CourseCategories = () => {
     const courseCategories = [
         'Web Development',

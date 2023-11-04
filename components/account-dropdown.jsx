@@ -1,5 +1,3 @@
-'use client';
-
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -18,8 +16,6 @@ import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '@/redux/features/authSclice';
 import { generateInitials } from '@/lib/initialsUtils';
-import { useEffect, useState } from 'react';
-import { Button } from './ui/button';
 
 export function AccountDropdown() {
     const dispatch = useDispatch();

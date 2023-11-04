@@ -1,15 +1,8 @@
-'use client';
-
-import React from 'react';
 import Image from 'next/image';
-import { Button } from './ui/button';
 import Link from 'next/link';
-import { DialogLogin } from './dialog-login';
-import { useSelector } from 'react-redux';
+import AddToCartButton from './add-to-cart-button';
 
 function CoursesCard({ course }) {
-    const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-
     return (
         <div key={course.id}>
             <Image
@@ -33,25 +26,7 @@ function CoursesCard({ course }) {
                     {` ${Number(course.price).toLocaleString('id-ID', {
                         maximumFractionDigits: 3,
                     })}`}
-                    {isAuthenticated ? (
-                        <Button
-                            variant="outline"
-                            size="sm"
-                            className="xs:hidden md:block"
-                        >
-                            Add to cart
-                        </Button>
-                    ) : (
-                        <DialogLogin>
-                            <Button
-                                variant="outline"
-                                size="sm"
-                                className="xs:hidden md:block"
-                            >
-                                Add to cart
-                            </Button>
-                        </DialogLogin>
-                    )}
+                    <AddToCartButton />
                 </div>
             </div>
         </div>

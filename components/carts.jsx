@@ -3,7 +3,7 @@
 import { IoCartOutline } from 'react-icons/io5';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { getAuthToken } from '@/lib/authUtils';
 import getCarts from '@/api/cart/getCarts';
 import { setCartCount } from '@/redux/features/cartCountSlice';
@@ -12,21 +12,13 @@ export default function Carts() {
     const count = useSelector((state) => state.cartCount.count);
     const dispatch = useDispatch();
 
-    const [isLoading, setIsLoading] = useState(true);
-
     useEffect(() => {
         const fetchCartData = async () => {
             const authToken = getAuthToken();
 
             if (authToken) {
-                try {
-                    const cartData = await getCarts(authToken);
-                    dispatch(setCartCount(cartData.data.length));
-                } catch (error) {
-                    console.error('Error while fetching carts:', error);
-                } finally {
-                    setIsLoading(false);
-                }
+                const cartData = await getCarts(authToken);
+                dispatch(setCartCount(cartData.data.length));
             }
         };
         fetchCartData();

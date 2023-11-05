@@ -1,6 +1,6 @@
 import { MagnifyingGlassIcon } from '@radix-ui/react-icons';
 import Link from 'next/link';
-import { Account } from './Account';
+import { Account } from './account';
 import Carts from './carts';
 
 function Navigation() {

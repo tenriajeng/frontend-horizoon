@@ -26,7 +26,7 @@ function CoursesCard({ course }) {
                     {` ${Number(course.price).toLocaleString('id-ID', {
                         maximumFractionDigits: 3,
                     })}`}
-                    <AddToCartButton />
+                    <AddToCartButton slug={course.slug} />
                 </div>
             </div>
         </div>

@@ -9,6 +9,7 @@ import getCarts from '@/api/cart/getCarts';
 import { setCartCount } from '@/redux/features/cartCountSlice';
 
 export default function Carts() {
+    const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
     const count = useSelector((state) => state.cartCount.count);
     const dispatch = useDispatch();
 
@@ -19,10 +20,12 @@ export default function Carts() {
             if (authToken) {
                 const cartData = await getCarts(authToken);
                 dispatch(setCartCount(cartData.data.length));
+            } else {
+                dispatch(setCartCount(0));
             }
         };
         fetchCartData();
-    }, [dispatch]);
+    }, [dispatch, isAuthenticated]);
 
     return (
         <div className="relative">
@@ -33,9 +36,11 @@ export default function Carts() {
                 <span className="sr-only">View Shopping Cart</span>
                 <IoCartOutline className="h-6 w-6" />
             </Link>
-            <span className="absolute right-0 top-0 -mr-1 -mt-2 flex h-4 items-center justify-center rounded-full border bg-white px-1 text-xs font-bold text-slate-900">
-                {count}
-            </span>
+            {count > 0 && (
+                <span className="absolute right-0 top-0 -mr-1 -mt-2 flex h-4 items-center justify-center rounded-full border bg-white px-1 text-xs font-bold text-slate-900">
+                    {count}
+                </span>
+            )}
         </div>
     );
 }

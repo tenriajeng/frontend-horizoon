@@ -13,7 +13,7 @@ export const metadata = {
 
 const RootLayout = ({ children }) => {
     return (
-        <html lang="en" className="dark" suppressHydrationWarning>
+        <html lang="en" className="dark">
             <head>
                 <title>{metadata.title}</title>
                 <meta name="description" content={metadata.description} />

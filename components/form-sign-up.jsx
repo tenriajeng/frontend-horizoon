@@ -136,7 +136,7 @@ function FormSignUp() {
                         </FormItem>
                     )}
                 />
-                <Button type="submit">
+                <Button type="submit" className="xs:w-full sm:max-w-fit">
                     {isLoading ? (
                         <div className="mx-4 h-5 w-5 animate-spin rounded-full border-b-2 border-t-2 border-gray-500"></div>
                     ) : (

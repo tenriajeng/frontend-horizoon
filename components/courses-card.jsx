@@ -10,10 +10,10 @@ function CoursesCard({ course }) {
                 height={800}
                 src={course.thumbnail}
                 alt={course.title}
-                className="aspect-video rounded-md border object-cover "
+                className="aspect-video rounded-lg border object-cover "
             />
             <div className="mt-2">
-                <Link href={`courses/${course.slug}`}>
+                <Link href={`/courses/${course.slug}`}>
                     <h2 className="line-clamp-1 text-base font-medium hover:underline xs:text-sm">
                         {course.title}
                     </h2>

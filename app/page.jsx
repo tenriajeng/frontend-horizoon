@@ -1,6 +1,7 @@
 import getCourses from '@/api/getCourses';
 import CourseCategories from '@/components/course-categories';
 import CoursesCard from '@/components/courses-card';
+
 import {
     HoverCard,
     HoverCardContent,
@@ -30,7 +31,7 @@ export default async function Home() {
                                             height={400}
                                             src={course.thumbnail}
                                             alt={course.title}
-                                            className="aspect-video rounded-md border object-cover "
+                                            className="aspect-video rounded-lg border object-cover "
                                         />
 
                                         <h2 className="text-base font-medium">

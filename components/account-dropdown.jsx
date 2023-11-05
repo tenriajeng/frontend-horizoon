@@ -1,3 +1,5 @@
+'use client';
+
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -13,13 +15,12 @@ import {
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { logout } from '@/redux/features/authSclice';
 import { generateInitials } from '@/lib/initialsUtils';
 
-export function AccountDropdown() {
+export function AccountDropdown({ user }) {
     const dispatch = useDispatch();
-    const user = useSelector((state) => state.auth.user);
 
     const handleLogout = () => {
         localStorage.removeItem('authToken');
@@ -34,7 +35,11 @@ export function AccountDropdown() {
                     role="img"
                     aria-label="User Avatar"
                 >
-                    <AvatarImage src="" alt="@shadcn" />
+                    <AvatarImage
+                        src=""
+                        // src="https://sejawat.s3.ap-southeast-1.amazonaws.com/sejawat/avatars/4a8820cc6507849820d03deae55af243/adventurer.png"
+                        alt="@shadcn"
+                    />
                     <AvatarFallback>
                         {generateInitials(user?.name)}
                     </AvatarFallback>

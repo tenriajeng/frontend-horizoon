@@ -19,6 +19,7 @@ function CoursesCard({ course }) {
                 src={course.thumbnail}
                 alt={course.title}
                 priority
+                loading="eager"
                 className="aspect-video rounded-lg border object-cover "
             />
             <div className="mt-2">

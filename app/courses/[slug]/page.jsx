@@ -113,7 +113,7 @@ export default async function Page({ params }) {
                                         Projects and Creative Expression
                                     </Badge>
                                 </div>
-                                <div className="xs:mt-4 md:mt-4">
+                                <div className="mb-0 xs:mb-6 xs:mt-4 md:mt-4">
                                     <Button className="me-2 rounded-full">
                                         Learn Now
                                         <ChevronRightIcon className="ml-2 h-4 w-4" />

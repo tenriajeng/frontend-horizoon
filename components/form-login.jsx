@@ -27,8 +27,8 @@ function FormLogin() {
     const form = useForm({
         resolver: zodResolver(LoginValidation),
         defaultValues: {
-            email: 'ilhamtenriajeng03@gmail.com',
-            password: 'ilhamilham123',
+            email: 'ilhamtenriajeng30@gmail.com',
+            password: 'ilham123',
         },
     });
 
@@ -48,8 +48,7 @@ function FormLogin() {
             toast({
                 variant: 'destructive',
                 title: 'Login Failed',
-                description:
-                    'Oops! 🙁 It seems like we couldnt find your account. Please double-check your credentials and try again. If you need assistance, reach out to our support team. ',
+                description: `Oops! 😞 It seems we couldn't find your account. Please double-check your credentials or contact our support team for assistance.`,
             });
         }
         setIsLoading(false);

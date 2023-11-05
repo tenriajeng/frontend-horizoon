@@ -8,7 +8,7 @@ export default async function getCarts(token) {
                 Authorization: `Bearer ${token}`,
             },
         });
-        console.log(data);
+
         return data;
     } catch (error) {
         handleFetchError(error);

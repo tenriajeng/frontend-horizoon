@@ -154,9 +154,9 @@ export default async function Page({ params }) {
                 <div className="grid xs:grid-cols-1 md:grid-cols-1 lg:grid-cols-3">
                     <div className="md:col-span-3 lg:col-span-2">
                         <div className="mx-2 flex justify-between xs:px-2 md:px-0">
-                            <h4 className="text-xl font-medium">
+                            <h2 className="text-xl font-medium">
                                 Lessons in This Class
-                            </h4>
+                            </h2>
                             <span className="font-medium">8 Lessons (44m)</span>
                         </div>
                         <div className="mx-2 xs:px-2 md:px-0">

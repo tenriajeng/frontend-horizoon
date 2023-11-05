@@ -19,6 +19,7 @@ import Register from '@/api/auth/register';
 import { setAuthToken } from '@/lib/authUtils';
 import { login } from '@/redux/features/authSclice';
 import { useState } from 'react';
+import { ButtonLoading } from './button-loading';
 
 function FormSignUp() {
     const [isLoading, setIsLoading] = useState(false);
@@ -56,8 +57,7 @@ function FormSignUp() {
             toast({
                 variant: 'destructive',
                 title: 'Registration Failed',
-                description:
-                    'Oh no! 😔 It seems like there was an issue with your registration. Please verify the information you provided and try again. If you require assistance, dont hesitate to contact our support team. Were here to help!',
+                description: `Uh-oh! 😔 Registration issue! Verify info, retry. Need help? Contact our support team. We're here!`,
             });
         }
         setIsLoading(false);
@@ -136,13 +136,14 @@ function FormSignUp() {
                         </FormItem>
                     )}
                 />
-                <Button type="submit" className="xs:w-full sm:max-w-fit">
-                    {isLoading ? (
-                        <div className="mx-4 h-5 w-5 animate-spin rounded-full border-b-2 border-t-2 border-gray-500"></div>
-                    ) : (
-                        ' Sign up'
-                    )}
-                </Button>
+
+                {isLoading ? (
+                    <ButtonLoading />
+                ) : (
+                    <Button type="submit" className="xs:w-full ">
+                        Sign up
+                    </Button>
+                )}
             </form>
         </Form>
     );

@@ -3,14 +3,25 @@
 import { Button } from './ui/button';
 import { DialogLogin } from './dialog-login';
 import { FaPlus } from 'react-icons/fa';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import addToCart from '@/api/cart/addToCart';
+import { useToast } from './ui/use-toast';
+import { setCartCount } from '@/redux/features/cartCountSlice';
 
 const AddToCartButton = ({ slug }) => {
+    const { toast } = useToast();
     const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+    const dispatch = useDispatch();
 
-    function handleAddToCart(event) {
-        event.stopPropagation();
-        console.log('slug ', slug);
+    async function handleAddToCart() {
+        const response = await addToCart({ slug: slug });
+
+        if (response.success) {
+            dispatch(setCartCount(response.data.length));
+            toast({
+                description: response.message,
+            });
+        }
     }
 
     return isAuthenticated ? (

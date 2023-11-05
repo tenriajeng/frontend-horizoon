@@ -19,6 +19,8 @@ import { setAuthToken } from '@/lib/authUtils';
 import LoginValidation from '@/validation/login';
 import { useToast } from '@/components/ui/use-toast';
 import { useState } from 'react';
+import { ReloadIcon } from '@radix-ui/react-icons';
+import { ButtonLoading } from './button-loading';
 
 function FormLogin() {
     const [isLoading, setIsLoading] = useState(false);
@@ -95,13 +97,13 @@ function FormLogin() {
                     )}
                 />
 
-                <Button type="submit" className="xs:w-full sm:max-w-fit">
-                    {isLoading ? (
-                        <div className="mx-2 h-5 w-5 animate-spin rounded-full border-b-2 border-t-2 border-gray-500"></div>
-                    ) : (
-                        'Log in'
-                    )}
-                </Button>
+                {isLoading ? (
+                    <ButtonLoading />
+                ) : (
+                    <Button type="submit" className="xs:w-full ">
+                        Log in
+                    </Button>
+                )}
             </form>
         </Form>
     );

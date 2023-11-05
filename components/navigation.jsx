@@ -1,9 +1,18 @@
+'use client';
+
 import { MagnifyingGlassIcon } from '@radix-ui/react-icons';
 import Link from 'next/link';
 import { Account } from './account';
 import Carts from './carts';
+import { useEffect, useState } from 'react';
 
 function Navigation() {
+    const [isClient, setIsClient] = useState(false);
+
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
+
     return (
         <header className="sticky top-0 z-20 flex justify-center border-b border-gray-400 border-opacity-20 bg-opacity-70 bg-gradient-to-r from-white/90 via-white/90 to-white/90 py-4 backdrop-blur-sm dark:bg-opacity-70 dark:bg-gradient-to-r dark:from-slate-950/80 dark:via-slate-950/80 dark:to-black/80 dark:backdrop-blur-md">
             <nav className="xs:container-fluid flex items-center justify-between md:container xs:mx-2 xs:w-full md:mx-0">
@@ -28,7 +37,7 @@ function Navigation() {
                     <div className="flex h-9 w-9 items-center justify-center rounded-lg border hover:bg-slate-800 md:hidden">
                         <MagnifyingGlassIcon className="h-6 w-6 " />
                     </div>
-                    <Account />
+                    {isClient && <Account />}
                 </div>
             </nav>
         </header>

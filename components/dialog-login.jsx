@@ -10,7 +10,6 @@ import {
     DialogTrigger,
 } from '@/components/ui/dialog';
 import FormLogin from './form-login';
-import { Button } from './ui/button';
 
 export function DialogLogin({ children }) {
     return (

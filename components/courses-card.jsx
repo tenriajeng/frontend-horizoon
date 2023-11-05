@@ -1,8 +1,16 @@
+'use client';
 import Image from 'next/image';
 import Link from 'next/link';
 import AddToCartButton from './add-to-cart-button';
+import { useEffect, useState } from 'react';
 
 function CoursesCard({ course }) {
+    const [isClient, setIsClient] = useState(false);
+
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
+
     return (
         <div key={course.id}>
             <Image
@@ -26,7 +34,7 @@ function CoursesCard({ course }) {
                     {` ${Number(course.price).toLocaleString('id-ID', {
                         maximumFractionDigits: 3,
                     })}`}
-                    <AddToCartButton slug={course.slug} />
+                    {isClient && <AddToCartButton slug={course.slug} />}
                 </div>
             </div>
         </div>

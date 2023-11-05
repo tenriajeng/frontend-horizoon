@@ -15,7 +15,7 @@ function CoursesCard({ course }) {
         <div key={course.id}>
             <Image
                 width={800}
-                height={800}
+                height={450}
                 src={course.thumbnail}
                 alt={course.title}
                 priority

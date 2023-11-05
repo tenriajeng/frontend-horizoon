@@ -1,7 +1,7 @@
 function CourseDescription() {
     return (
         <div className="mb-10">
-            <h1 className="mb-4 text-xl font-extrabold">About This Class</h1>
+            <h2 className="mb-4 text-xl font-extrabold">About This Class</h2>
             <p className="mb-4 font-light dark:text-gray-300">
                 Take your viewer on an{' '}
                 <span className="font-light">engaging and captivating</span>{' '}

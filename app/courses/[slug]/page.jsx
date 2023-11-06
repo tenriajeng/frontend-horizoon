@@ -131,8 +131,8 @@ export default async function Page({ params }) {
                             video.
                         </video> */}
                             <Image
-                                // priority
-                                // loading="eager"
+                                priority
+                                loading="eager"
                                 width={1200}
                                 height={1200}
                                 src={course.thumbnail}

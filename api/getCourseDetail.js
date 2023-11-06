@@ -1,8 +1,11 @@
+import { getAuthToken } from '@/lib/authUtils';
 import { fetchAPI, handleFetchError } from '.';
 
-export default async function getCourseDetail(slug, token) {
+export default async function getCourseDetail(slug) {
     try {
-        const data = await fetchAPI(`api/course/${slug}`, {
+        const token = await getAuthToken();
+
+        const response = await fetchAPI(`api/course/${slug}`, {
             cache: 'no-store',
             headers: {
                 'Content-Type': 'application/json',
@@ -10,7 +13,7 @@ export default async function getCourseDetail(slug, token) {
             },
         });
 
-        return data;
+        return response.data;
     } catch (error) {
         handleFetchError(error);
     }

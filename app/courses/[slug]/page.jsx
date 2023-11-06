@@ -2,12 +2,12 @@ import getCourseDetail from '@/api/getCourseDetail';
 import CourseDescription from '@/components/course-description';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { getAuthToken } from '@/lib/authUtils';
 import { ChevronRightIcon, LockClosedIcon } from '@radix-ui/react-icons';
 import Image from 'next/image';
 
-export default async function Page({ slug }) {
-    const course = await getCourseDetail(slug, getAuthToken());
+export default async function Page({ params }) {
+    const { slug } = params;
+    const course = await getCourseDetail(slug);
     const lessons = [
         {
             id: 1,
@@ -79,20 +79,10 @@ export default async function Page({ slug }) {
                         <div className="flex items-center xs:px-2  ">
                             <div>
                                 <h1 className="pb-4 font-semibold leading-8 xs:text-xl lg:text-3xl">
-                                    Design Your Virtual Persona: Create a VR
-                                    Avatar With Unreal Engine
+                                    {course.title}
                                 </h1>
-                                <p className="dark:text-gray-300 xs:text-sm xs:leading-8 md:text-base md:leading-8">
-                                    Unlock the enchanting world of watercolor
-                                    pastels with our comprehensive course,
-                                    Watercolour Pastels For Beginners: An
-                                    Introduction To Neocolor II Aquarelle
-                                    Pastels. Whether you re an art enthusiast
-                                    seeking a new medium to explore or a
-                                    complete novice eager to embark on a
-                                    creative journey, this course is your
-                                    gateway to the vibrant and versatile realm
-                                    of Neocolor II Aquarelle Pastels.
+                                <p className="dark:text-gray-200 xs:text-sm xs:leading-8 md:text-base md:leading-7">
+                                    {course.meta_description}
                                 </p>
                                 <div className="mt-4">
                                     <Badge
@@ -141,9 +131,11 @@ export default async function Page({ slug }) {
                             video.
                         </video> */}
                             <Image
+                                // priority
+                                // loading="eager"
                                 width={1200}
                                 height={1200}
-                                src="https://horizoon.s3.ap-southeast-1.amazonaws.com/background/4.jpg"
+                                src={course.thumbnail}
                                 alt=" Membangun Toko Online Dipelajaran kali ini, kita akan"
                                 className="aspect-video border object-cover md:rounded-2xl "
                             />
@@ -175,7 +167,7 @@ export default async function Page({ slug }) {
                             ))}
                         </div>
                         <div className="mx-2 mt-4 xs:px-2 md:px-0">
-                            <CourseDescription />
+                            <CourseDescription body={course.body} />
                         </div>
                     </div>
                     <div className="sticky top-20 h-72">

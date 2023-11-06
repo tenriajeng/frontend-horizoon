@@ -6,7 +6,6 @@ import { Button } from './ui/button';
 import { DialogSignUp } from './dialog-sign-up';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getAuthToken } from '@/lib/authUtils';
 import { fetchUserData } from '@/redux/action/authAction';
 
 export function Account() {
@@ -15,11 +14,9 @@ export function Account() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (isAuthenticated) {
-            const token = getAuthToken();
-            dispatch(fetchUserData(token));
-        }
-    }, [dispatch, isAuthenticated]);
+        // console.log('isAuthenticated ', isAuthenticated);
+        dispatch(fetchUserData());
+    }, [dispatch]);
 
     return isAuthenticated ? (
         <AccountDropdown user={user} />

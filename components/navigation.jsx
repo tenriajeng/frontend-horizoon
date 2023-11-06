@@ -34,7 +34,7 @@ function Navigation() {
                         </kbd>
                     </button>
                     <Carts />
-                    <div className="flex h-9 w-9 items-center justify-center rounded-lg border hover:bg-slate-800 md:hidden">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-lg border hover:bg-slate-800 dark:bg-slate-950 md:hidden">
                         <MagnifyingGlassIcon className="h-6 w-6 " />
                     </div>
                     {isClient && <Account />}

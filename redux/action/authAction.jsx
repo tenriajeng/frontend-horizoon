@@ -1,16 +1,18 @@
 import { fetchAPI } from '@/api';
-import { logout, updateUser } from '../features/authSclice';
+import { login, logout, updateUser } from '../features/authSclice';
+import { getAuthToken } from '@/lib/authUtils';
 
-export const fetchUserData = (storedToken) => async (dispatch) => {
+export const fetchUserData = () => async (dispatch) => {
     try {
+        const token = await getAuthToken();
         const response = await fetchAPI('api/revalidate-token', {
             method: 'POST',
             headers: {
-                Authorization: `Bearer ${storedToken}`,
+                Authorization: `Bearer ${token}`,
             },
         });
         if (response.success) {
-            dispatch(updateUser(response.data));
+            dispatch(login(response.data));
         } else {
             dispatch(logout());
         }

@@ -2,11 +2,12 @@ import getCourseDetail from '@/api/getCourseDetail';
 import CourseDescription from '@/components/course-description';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { getAuthToken } from '@/lib/authUtils';
 import { ChevronRightIcon, LockClosedIcon } from '@radix-ui/react-icons';
 import Image from 'next/image';
 
-export default async function Page({ params }) {
-    const course = await getCourseDetail(params);
+export default async function Page({ slug }) {
+    const course = await getCourseDetail(slug, getAuthToken());
     const lessons = [
         {
             id: 1,

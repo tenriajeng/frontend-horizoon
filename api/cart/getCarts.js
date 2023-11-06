@@ -1,7 +1,12 @@
-import { fetchAPI } from '..';
+'use server';
 
-export default async function getCarts(token) {
+import { getAuthToken } from '@/lib/authUtils';
+import { fetchAPI, handleFetchError } from '..';
+
+export default async function getCarts() {
     try {
+        const token = await getAuthToken();
+
         const data = await fetchAPI('api/carts', {
             cache: 'no-store',
             headers: {

@@ -4,7 +4,6 @@ import { IoCartOutline } from 'react-icons/io5';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getAuthToken } from '@/lib/authUtils';
 import getCarts from '@/api/cart/getCarts';
 import { setCartCount } from '@/redux/features/cartCountSlice';
 
@@ -15,14 +14,8 @@ export default function Carts() {
 
     useEffect(() => {
         const fetchCartData = async () => {
-            const authToken = getAuthToken();
-
-            if (authToken) {
-                const cartData = await getCarts(authToken);
-                dispatch(setCartCount(cartData.data.length));
-            } else {
-                dispatch(setCartCount(0));
-            }
+            const cartData = await getCarts();
+            dispatch(setCartCount(cartData.data.length));
         };
         fetchCartData();
     }, [dispatch, isAuthenticated]);

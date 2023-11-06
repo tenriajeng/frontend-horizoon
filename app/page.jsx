@@ -27,6 +27,8 @@ export default async function Home() {
                                 <div className="flex justify-between space-x-4">
                                     <div className="space-y-1">
                                         <Image
+                                            priority
+                                            loading="eager"
                                             width={400}
                                             height={400}
                                             src={course.thumbnail}

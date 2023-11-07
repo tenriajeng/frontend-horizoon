@@ -23,19 +23,21 @@ export default function Carts() {
     }, [dispatch, isAuthenticated]);
 
     return (
-        <div className="relative">
-            <Link
-                href={'/carts'}
-                className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg border bg-slate-950 hover:bg-slate-800"
-            >
-                <span className="sr-only">View Shopping Cart</span>
-                <IoCartOutline className="h-6 w-6" />
-            </Link>
-            {count > 0 && (
-                <span className="absolute right-0 top-0 -mr-1 -mt-2 flex h-4 items-center justify-center rounded-full border bg-white px-1 text-xs font-bold text-slate-900">
-                    {count}
-                </span>
-            )}
-        </div>
+        isAuthenticated && (
+            <div className="relative">
+                <Link
+                    href={'/carts'}
+                    className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg border bg-slate-950 hover:bg-slate-800"
+                >
+                    <span className="sr-only">View Shopping Cart</span>
+                    <IoCartOutline className="h-6 w-6" />
+                </Link>
+                {count > 0 && (
+                    <span className="absolute right-0 top-0 -mr-1 -mt-2 flex h-4 items-center justify-center rounded-full border bg-white px-1 text-xs font-bold text-slate-900">
+                        {count}
+                    </span>
+                )}
+            </div>
+        )
     );
 }

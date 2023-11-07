@@ -3,6 +3,15 @@ export async function fetchAPI(endpoint, options = {}) {
     const url = apiUrl + endpoint;
 
     try {
+        options = options = {
+            ...options,
+            headers: {
+                ...options?.headers,
+                Accept: 'application/json',
+            },
+        };
+
+        console.log(options);
         const response = await fetch(url, options);
         const data = await response.json();
 

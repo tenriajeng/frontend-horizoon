@@ -15,7 +15,9 @@ export default function Carts() {
     useEffect(() => {
         const fetchCartData = async () => {
             const cartData = await getCarts();
-            dispatch(setCartCount(cartData.data.length));
+            if (cartData) {
+                dispatch(setCartCount(cartData.data.length));
+            }
         };
         fetchCartData();
     }, [dispatch, isAuthenticated]);

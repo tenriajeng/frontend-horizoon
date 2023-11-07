@@ -7,14 +7,18 @@ export default async function getCarts() {
     try {
         const token = await getAuthToken();
 
-        const data = await fetchAPI('api/carts', {
-            cache: 'no-store',
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        });
+        if (token) {
+            const headers = {};
 
-        return data;
+            headers.Authorization = `Bearer ${token}`;
+
+            const data = await fetchAPI('api/carts', {
+                cache: 'no-store',
+                headers,
+            });
+
+            return data;
+        }
     } catch (error) {
         handleFetchError(error);
     }

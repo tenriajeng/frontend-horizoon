@@ -5,12 +5,15 @@ export default async function getCourseDetail(slug) {
     try {
         const token = await getAuthToken();
 
+        const headers = {};
+
+        if (token) {
+            headers.Authorization = `Bearer ${token}`;
+        }
+
         const response = await fetchAPI(`api/course/${slug}`, {
             cache: 'no-store',
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`,
-            },
+            headers,
         });
 
         return response.data;

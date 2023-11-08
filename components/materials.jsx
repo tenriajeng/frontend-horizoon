@@ -16,7 +16,9 @@ export default function Materials({ course, materials }) {
                         >
                             <div className="flex items-center gap-2 ">
                                 <span className="font-bold">{index + 1}.</span>
-                                <h3>{material.title}</h3>
+                                <h3 className="line-clamp-1 text-left">
+                                    {material.title}
+                                </h3>
                             </div>
                             <span>
                                 {material.is_free ? (
@@ -34,7 +36,7 @@ export default function Materials({ course, materials }) {
                                         <span className="font-bold">
                                             {index + 1}.
                                         </span>
-                                        <h3 className="text-left">
+                                        <h3 className="line-clamp-1 text-left">
                                             {material.title}
                                         </h3>
                                     </div>
@@ -47,11 +49,11 @@ export default function Materials({ course, materials }) {
                                     </span>
                                 </div>
                             </PopoverTrigger>
-                            <PopoverContent className="w-[360px] rounded-xl bg-transparent/70 backdrop-blur-lg">
-                                <h3 className="text-center text-lg font-semibold text-white">
-                                    Join us to unlock this course!
+                            <PopoverContent className="w-[350px] rounded-xl bg-slate-950/70 backdrop-blur-lg">
+                                <h3 className="mx-3 text-center text-base font-semibold text-white">
+                                    Join us and unlock this course!
                                 </h3>
-                                <p className="mt-1 text-center text-sm text-slate-300">
+                                <p className="mt-1 text-center text-sm text-slate-200">
                                     {`Sign up or sign in now to access our amazing
                                     course. Your journey to success starts here.
                                     Don't miss out!`}

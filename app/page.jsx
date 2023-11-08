@@ -11,6 +11,8 @@ import { CalendarIcon } from '@radix-ui/react-icons';
 import Image from 'next/image';
 
 export default async function Home() {
+    // await new Promise((resolve) => setTimeout(resolve, 10000));
+
     const courses = await getCourses();
 
     return (

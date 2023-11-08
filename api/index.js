@@ -11,7 +11,6 @@ export async function fetchAPI(endpoint, options = {}) {
             },
         };
 
-        console.log(options);
         const response = await fetch(url, options);
         const data = await response.json();
 

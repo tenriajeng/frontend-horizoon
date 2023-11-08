@@ -9,7 +9,7 @@ import { Suspense } from 'react';
 import Loading from './loading';
 
 export default async function Page({ params }) {
-    // await new Promise((resolve) => setTimeout(resolve, 10000));
+    await new Promise((resolve) => setTimeout(resolve, 2000));
     const { slug } = params;
     const course = await getCourseDetail(slug);
 

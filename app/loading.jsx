@@ -18,7 +18,7 @@ export default function Loading() {
                     <div>
                         <Skeleton className="aspect-video w-full  rounded-lg" />
                         <div className="mt-2">
-                            <Skeleton className="mb-2 w-full md:py-4" />
+                            <Skeleton className="mb-2 w-11/12 md:py-3" />
                             <Skeleton className="mb-2 w-full md:py-2" />
                             <Skeleton className="mb-2 w-10/12 md:py-2" />
                             <div className="mt-1 flex items-center justify-between text-sm">
@@ -30,7 +30,7 @@ export default function Loading() {
                     <div>
                         <Skeleton className="aspect-video w-full  rounded-lg" />
                         <div className="mt-2">
-                            <Skeleton className="mb-2 w-full md:py-4" />
+                            <Skeleton className="mb-2 w-11/12 md:py-3" />
                             <Skeleton className="mb-2 w-full md:py-2" />
                             <Skeleton className="mb-2 w-10/12 md:py-2" />
                             <div className="mt-1 flex items-center justify-between text-sm">
@@ -42,7 +42,7 @@ export default function Loading() {
                     <div>
                         <Skeleton className="aspect-video w-full  rounded-lg" />
                         <div className="mt-2">
-                            <Skeleton className="mb-2 w-full md:py-4" />
+                            <Skeleton className="mb-2 w-11/12 md:py-3" />
                             <Skeleton className="mb-2 w-full md:py-2" />
                             <Skeleton className="mb-2 w-10/12 md:py-2" />
                             <div className="mt-1 flex items-center justify-between text-sm">
@@ -54,7 +54,7 @@ export default function Loading() {
                     <div>
                         <Skeleton className="aspect-video w-full  rounded-lg" />
                         <div className="mt-2">
-                            <Skeleton className="mb-2 w-full md:py-4" />
+                            <Skeleton className="mb-2 w-11/12 md:py-3" />
                             <Skeleton className="mb-2 w-full md:py-2" />
                             <Skeleton className="mb-2 w-10/12 md:py-2" />
                             <div className="mt-1 flex items-center justify-between text-sm">
@@ -66,7 +66,7 @@ export default function Loading() {
                     <div>
                         <Skeleton className="aspect-video w-full  rounded-lg" />
                         <div className="mt-2">
-                            <Skeleton className="mb-2 w-full md:py-4" />
+                            <Skeleton className="mb-2 w-11/12 md:py-3" />
                             <Skeleton className="mb-2 w-full md:py-2" />
                             <Skeleton className="mb-2 w-10/12 md:py-2" />
                             <div className="mt-1 flex items-center justify-between text-sm">
@@ -78,7 +78,7 @@ export default function Loading() {
                     <div>
                         <Skeleton className="aspect-video w-full  rounded-lg" />
                         <div className="mt-2">
-                            <Skeleton className="mb-2 w-full md:py-4" />
+                            <Skeleton className="mb-2 w-11/12 md:py-3" />
                             <Skeleton className="mb-2 w-full md:py-2" />
                             <Skeleton className="mb-2 w-10/12 md:py-2" />
                             <div className="mt-1 flex items-center justify-between text-sm">
@@ -90,7 +90,7 @@ export default function Loading() {
                     <div>
                         <Skeleton className="aspect-video w-full  rounded-lg" />
                         <div className="mt-2">
-                            <Skeleton className="mb-2 w-full md:py-4" />
+                            <Skeleton className="mb-2 w-11/12 md:py-3" />
                             <Skeleton className="mb-2 w-full md:py-2" />
                             <Skeleton className="mb-2 w-10/12 md:py-2" />
                             <div className="mt-1 flex items-center justify-between text-sm">
@@ -102,7 +102,7 @@ export default function Loading() {
                     <div>
                         <Skeleton className="aspect-video w-full  rounded-lg" />
                         <div className="mt-2">
-                            <Skeleton className="mb-2 w-full md:py-4" />
+                            <Skeleton className="mb-2 w-11/12 md:py-3" />
                             <Skeleton className="mb-2 w-full md:py-2" />
                             <Skeleton className="mb-2 w-10/12 md:py-2" />
                             <div className="mt-1 flex items-center justify-between text-sm">
@@ -114,7 +114,7 @@ export default function Loading() {
                     <div>
                         <Skeleton className="aspect-video w-full  rounded-lg" />
                         <div className="mt-2">
-                            <Skeleton className="mb-2 w-full md:py-4" />
+                            <Skeleton className="mb-2 w-11/12 md:py-3" />
                             <Skeleton className="mb-2 w-full md:py-2" />
                             <Skeleton className="mb-2 w-10/12 md:py-2" />
                             <div className="mt-1 flex items-center justify-between text-sm">
@@ -126,7 +126,7 @@ export default function Loading() {
                     <div>
                         <Skeleton className="aspect-video w-full  rounded-lg" />
                         <div className="mt-2">
-                            <Skeleton className="mb-2 w-full md:py-4" />
+                            <Skeleton className="mb-2 w-11/12 md:py-3" />
                             <Skeleton className="mb-2 w-full md:py-2" />
                             <Skeleton className="mb-2 w-10/12 md:py-2" />
                             <div className="mt-1 flex items-center justify-between text-sm">
@@ -138,7 +138,7 @@ export default function Loading() {
                     <div>
                         <Skeleton className="aspect-video w-full  rounded-lg" />
                         <div className="mt-2">
-                            <Skeleton className="mb-2 w-full md:py-4" />
+                            <Skeleton className="mb-2 w-11/12 md:py-3" />
                             <Skeleton className="mb-2 w-full md:py-2" />
                             <Skeleton className="mb-2 w-10/12 md:py-2" />
                             <div className="mt-1 flex items-center justify-between text-sm">

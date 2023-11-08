@@ -7,11 +7,10 @@ export default function Materials({ course, materials }) {
     return (
         <>
             {materials.map((material, index) => (
-                <>
+                <div key={material.id}>
                     {material.is_free ? (
                         <Link
                             href={`/courses/${course}/${material.slug}`}
-                            key={material.id}
                             className="my-2 flex cursor-pointer items-center justify-between rounded-sm border p-2 text-sm text-gray-600 hover:bg-slate-900 hover:text-white dark:text-gray-300 dark:hover:bg-white dark:hover:text-gray-950"
                         >
                             <div className="flex items-center gap-2 ">
@@ -29,7 +28,7 @@ export default function Materials({ course, materials }) {
                             </span>
                         </Link>
                     ) : (
-                        <Popover key={material.id}>
+                        <Popover>
                             <PopoverTrigger className="w-full">
                                 <div className="my-2 flex cursor-pointer items-center justify-between rounded-sm border p-2 text-sm text-gray-600 hover:bg-slate-900 hover:text-white dark:text-gray-300 dark:hover:bg-white dark:hover:text-gray-950">
                                     <div className="flex items-center gap-2 ">
@@ -61,7 +60,7 @@ export default function Materials({ course, materials }) {
                             </PopoverContent>
                         </Popover>
                     )}
-                </>
+                </div>
             ))}
         </>
     );

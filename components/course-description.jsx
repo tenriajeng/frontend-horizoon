@@ -7,8 +7,8 @@ function CourseDescription({ body }) {
     return (
         <div className="mb-10">
             <h2 className="mb-4 text-xl font-extrabold">About This Class</h2>
-            <article className="prose prose-dark-mode">
-                <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+            <article className="prose prose-dark-mode ">
+                <ReactMarkdown className="" rehypePlugins={[rehypeRaw]}>
                     {body}
                 </ReactMarkdown>
             </article>

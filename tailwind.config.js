@@ -36,6 +36,11 @@ module.exports = {
         },
         extend: {
             typography: ({ theme }) => ({
+                DEFAULT: {
+                    css: {
+                        maxWidth: '100ch', // add required value here
+                    },
+                },
                 'dark-mode': {
                     css: {
                         '--tw-prose-body': theme('colors.gray[200]'),
@@ -46,7 +51,7 @@ module.exports = {
                         '--tw-prose-counters': theme('colors.gray[400]'),
                         '--tw-prose-bullets': theme('colors.gray[300]'),
                         '--tw-prose-hr': theme('colors.gray[400]'),
-                        '--tw-prose-quotes': theme('colors.gray[400]'),
+                        '--tw-prose-quotes': theme('colors.gray[300]'),
                         '--tw-prose-quote-borders': theme('colors.gray[300]'),
                         '--tw-prose-captions': theme('colors.gray[300]'),
                         '--tw-prose-code': theme('colors.cyan[400]'),

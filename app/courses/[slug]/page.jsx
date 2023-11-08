@@ -1,75 +1,14 @@
 import getCourseDetail from '@/api/getCourseDetail';
 import CourseDescription from '@/components/course-description';
+import Materials from '@/components/materials';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ChevronRightIcon, LockClosedIcon } from '@radix-ui/react-icons';
+import { ChevronRightIcon } from '@radix-ui/react-icons';
 import Image from 'next/image';
 
 export default async function Page({ params }) {
     const { slug } = params;
     const course = await getCourseDetail(slug);
-    const lessons = [
-        {
-            id: 1,
-            title: 'Introduction to Programming',
-            description: 'Learn the basics of programming and coding.',
-            duration: '1 hour',
-        },
-        {
-            id: 2,
-            title: 'Data Structures and Algorithms',
-            description: 'Explore fundamental data structures and algorithms.',
-            duration: '2 hours',
-        },
-        {
-            id: 3,
-            title: 'Web Development Fundamentals',
-            description: 'Get started with web development and HTML/CSS.',
-            duration: '1.5 hours',
-        },
-        {
-            id: 4,
-            title: 'JavaScript Programming',
-            description: 'Learn JavaScript for web development.',
-            duration: '2 hours',
-        },
-        {
-            id: 5,
-            title: 'React.js Basics',
-            description: 'Introduction to the React.js library.',
-            duration: '2.5 hours',
-        },
-        {
-            id: 6,
-            title: 'Node.js Fundamentals',
-            description: 'Explore server-side JavaScript with Node.js.',
-            duration: '2 hours',
-        },
-        {
-            id: 7,
-            title: 'Databases and SQL',
-            description: 'Learn about databases and SQL queries.',
-            duration: '2.5 hours',
-        },
-        {
-            id: 8,
-            title: 'RESTful APIs',
-            description: 'Building RESTful APIs for web applications.',
-            duration: '2 hours',
-        },
-        {
-            id: 9,
-            title: 'Version Control with Git',
-            description: 'Master version control with Git and GitHub.',
-            duration: '1.5 hours',
-        },
-        {
-            id: 10,
-            title: 'Deployment and Hosting',
-            description: 'Deploy your web applications and host them online.',
-            duration: '1 hour',
-        },
-    ];
 
     return (
         <div>
@@ -153,18 +92,10 @@ export default async function Page({ params }) {
                             <span className="font-medium">8 Lessons (44m)</span>
                         </div>
                         <div className="mx-2 xs:px-2 md:px-0">
-                            {lessons.map((lesson) => (
-                                <div
-                                    key={lesson.id}
-                                    className="my-2 flex cursor-pointer justify-between rounded-sm border p-2 text-sm text-gray-600 hover:bg-slate-900 hover:text-white dark:text-gray-300 dark:hover:bg-white dark:hover:text-gray-950"
-                                >
-                                    <div className="flex items-center gap-2">
-                                        <LockClosedIcon />
-                                        <h3>{lesson.title}</h3>
-                                    </div>
-                                    <span>{lesson.duration}</span>
-                                </div>
-                            ))}
+                            <Materials
+                                course={course.slug}
+                                materials={course.materials}
+                            />
                         </div>
                         <div className="mx-2 mt-4 xs:px-2 md:px-0">
                             <CourseDescription body={course.body} />

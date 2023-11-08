@@ -10,8 +10,8 @@ function CoursesCard({ course }) {
                 height={800}
                 src={course.thumbnail}
                 alt={course.title}
-                // priority
-                loading="lazy"
+                priority
+                loading="eager"
                 className="aspect-video rounded-lg border object-cover "
             />
             <div className="mt-2">

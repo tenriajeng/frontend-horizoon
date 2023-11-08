@@ -18,12 +18,13 @@ import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { useDispatch } from 'react-redux';
 import { logout } from '@/redux/features/authSclice';
 import { generateInitials } from '@/lib/initialsUtils';
+import { removeAuthToken } from '@/lib/authUtils';
 
 export function AccountDropdown({ user }) {
     const dispatch = useDispatch();
 
-    const handleLogout = () => {
-        localStorage.removeItem('authToken');
+    const handleLogout = async () => {
+        await removeAuthToken();
         dispatch(logout());
     };
 

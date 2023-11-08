@@ -14,7 +14,6 @@ export function Account() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        // console.log('isAuthenticated ', isAuthenticated);
         dispatch(fetchUserData());
     }, [dispatch]);
 

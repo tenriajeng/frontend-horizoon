@@ -1,14 +1,6 @@
 import getCourses from '@/api/getCourses';
 import CourseCategories from '@/components/course-categories';
 import CoursesCard from '@/components/courses-card';
-
-import {
-    HoverCard,
-    HoverCardContent,
-    HoverCardTrigger,
-} from '@/components/ui/hover-card';
-import { CalendarIcon } from '@radix-ui/react-icons';
-import Image from 'next/image';
 import Loading from './loading';
 import { Suspense } from 'react';
 

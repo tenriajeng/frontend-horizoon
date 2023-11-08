@@ -15,22 +15,138 @@ export default function Loading() {
             </div>
             <div className="mt-4 xs:mx-0 xs:p-0 md:mx-2 ">
                 <div className="grid grid-cols-1 xs:mx-2 xs:mt-2 xs:grid-cols-2 xs:gap-2 sm:grid-cols-2 md:mx-0 md:grid-cols-3 md:gap-5 lg:grid-cols-4">
-                    <Skeleton className="h-60 w-full" />
-                    <Skeleton className="h-60 w-full" />
-                    <Skeleton className="h-60 w-full" />
-                    <Skeleton className="h-60 w-full" />
-                    <Skeleton className="h-60 w-full" />
-                    <Skeleton className="h-60 w-full" />
-                    <Skeleton className="h-60 w-full" />
-                    <Skeleton className="h-60 w-full" />
-                    <Skeleton className="h-60 w-full" />
-                    <Skeleton className="h-60 w-full" />
-                    <Skeleton className="h-60 w-full" />
-                    <Skeleton className="h-60 w-full" />
-                    <Skeleton className="h-60 w-full" />
-                    <Skeleton className="h-60 w-full" />
-                    <Skeleton className="h-60 w-full" />
-                    <Skeleton className="h-60 w-full" />
+                    <div>
+                        <Skeleton className="aspect-video w-full" />
+                        <div className="mt-2">
+                            <Skeleton className="mb-2 w-full md:py-4" />
+                            <Skeleton className="mb-2 w-full md:py-2" />
+                            <Skeleton className="mb-2 w-10/12 md:py-2" />
+                            <div className="mt-1 flex items-center justify-between text-sm">
+                                <Skeleton className="mb-2 w-4/12 py-4" />
+                                <Skeleton className="mb-2 w-2/12 py-4" />
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <Skeleton className="aspect-video w-full" />
+                        <div className="mt-2">
+                            <Skeleton className="mb-2 w-full md:py-4" />
+                            <Skeleton className="mb-2 w-full md:py-2" />
+                            <Skeleton className="mb-2 w-10/12 md:py-2" />
+                            <div className="mt-1 flex items-center justify-between text-sm">
+                                <Skeleton className="mb-2 w-4/12 py-4" />
+                                <Skeleton className="mb-2 w-2/12 py-4" />
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <Skeleton className="aspect-video w-full" />
+                        <div className="mt-2">
+                            <Skeleton className="mb-2 w-full md:py-4" />
+                            <Skeleton className="mb-2 w-full md:py-2" />
+                            <Skeleton className="mb-2 w-10/12 md:py-2" />
+                            <div className="mt-1 flex items-center justify-between text-sm">
+                                <Skeleton className="mb-2 w-4/12 py-4" />
+                                <Skeleton className="mb-2 w-2/12 py-4" />
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <Skeleton className="aspect-video w-full" />
+                        <div className="mt-2">
+                            <Skeleton className="mb-2 w-full md:py-4" />
+                            <Skeleton className="mb-2 w-full md:py-2" />
+                            <Skeleton className="mb-2 w-10/12 md:py-2" />
+                            <div className="mt-1 flex items-center justify-between text-sm">
+                                <Skeleton className="mb-2 w-4/12 py-4" />
+                                <Skeleton className="mb-2 w-2/12 py-4" />
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <Skeleton className="aspect-video w-full" />
+                        <div className="mt-2">
+                            <Skeleton className="mb-2 w-full md:py-4" />
+                            <Skeleton className="mb-2 w-full md:py-2" />
+                            <Skeleton className="mb-2 w-10/12 md:py-2" />
+                            <div className="mt-1 flex items-center justify-between text-sm">
+                                <Skeleton className="mb-2 w-4/12 py-4" />
+                                <Skeleton className="mb-2 w-2/12 py-4" />
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <Skeleton className="aspect-video w-full" />
+                        <div className="mt-2">
+                            <Skeleton className="mb-2 w-full md:py-4" />
+                            <Skeleton className="mb-2 w-full md:py-2" />
+                            <Skeleton className="mb-2 w-10/12 md:py-2" />
+                            <div className="mt-1 flex items-center justify-between text-sm">
+                                <Skeleton className="mb-2 w-4/12 py-4" />
+                                <Skeleton className="mb-2 w-2/12 py-4" />
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <Skeleton className="aspect-video w-full" />
+                        <div className="mt-2">
+                            <Skeleton className="mb-2 w-full md:py-4" />
+                            <Skeleton className="mb-2 w-full md:py-2" />
+                            <Skeleton className="mb-2 w-10/12 md:py-2" />
+                            <div className="mt-1 flex items-center justify-between text-sm">
+                                <Skeleton className="mb-2 w-4/12 py-4" />
+                                <Skeleton className="mb-2 w-2/12 py-4" />
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <Skeleton className="aspect-video w-full" />
+                        <div className="mt-2">
+                            <Skeleton className="mb-2 w-full md:py-4" />
+                            <Skeleton className="mb-2 w-full md:py-2" />
+                            <Skeleton className="mb-2 w-10/12 md:py-2" />
+                            <div className="mt-1 flex items-center justify-between text-sm">
+                                <Skeleton className="mb-2 w-4/12 py-4" />
+                                <Skeleton className="mb-2 w-2/12 py-4" />
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <Skeleton className="aspect-video w-full" />
+                        <div className="mt-2">
+                            <Skeleton className="mb-2 w-full md:py-4" />
+                            <Skeleton className="mb-2 w-full md:py-2" />
+                            <Skeleton className="mb-2 w-10/12 md:py-2" />
+                            <div className="mt-1 flex items-center justify-between text-sm">
+                                <Skeleton className="mb-2 w-4/12 py-4" />
+                                <Skeleton className="mb-2 w-2/12 py-4" />
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <Skeleton className="aspect-video w-full" />
+                        <div className="mt-2">
+                            <Skeleton className="mb-2 w-full md:py-4" />
+                            <Skeleton className="mb-2 w-full md:py-2" />
+                            <Skeleton className="mb-2 w-10/12 md:py-2" />
+                            <div className="mt-1 flex items-center justify-between text-sm">
+                                <Skeleton className="mb-2 w-4/12 py-4" />
+                                <Skeleton className="mb-2 w-2/12 py-4" />
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <Skeleton className="aspect-video w-full" />
+                        <div className="mt-2">
+                            <Skeleton className="mb-2 w-full md:py-4" />
+                            <Skeleton className="mb-2 w-full md:py-2" />
+                            <Skeleton className="mb-2 w-10/12 md:py-2" />
+                            <div className="mt-1 flex items-center justify-between text-sm">
+                                <Skeleton className="mb-2 w-4/12 py-4" />
+                                <Skeleton className="mb-2 w-2/12 py-4" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

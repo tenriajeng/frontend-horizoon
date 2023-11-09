@@ -9,11 +9,11 @@ export default function LoadingCoursesCard() {
             <div>
                 <Skeleton className="aspect-video w-full rounded-lg" />
                 <div className="mt-2">
-                    <Skeleton className="mb-2 w-11/12 md:py-3" />
-                    <Skeleton className="mb-2 w-full md:py-2" />
-                    <Skeleton className="mb-2 w-10/12 md:py-2" />
+                    <Skeleton className="mb-2 w-11/12 rounded-full md:py-3" />
+                    <Skeleton className="mb-2 w-full rounded-full md:py-2" />
+                    <Skeleton className="mb-2 w-10/12 rounded-full md:py-2" />
                     <div className="mt-1 flex items-center justify-between text-sm">
-                        <Skeleton className="mb-2 w-5/12 py-4" />
+                        <Skeleton className="mb-2 w-5/12 rounded-full py-4" />
                         <Skeleton className="mb-2 w-3/12 py-4" />
                     </div>
                 </div>

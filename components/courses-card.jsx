@@ -5,7 +5,7 @@ import { Suspense } from 'react';
 import LoadingCoursesCard from './loading/courses-card';
 
 async function CoursesCard({ course }) {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    // await new Promise((resolve) => setTimeout(resolve, 20000));
     return (
         <Suspense fallback={<LoadingCoursesCard />}>
             <div>

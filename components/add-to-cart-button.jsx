@@ -7,16 +7,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import addToCart from '@/api/cart/addToCart';
 import { useToast } from './ui/use-toast';
 import { setCartCount } from '@/redux/features/cartCountSlice';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
+import Link from 'next/link';
 
-const AddToCartButton = ({ slug }) => {
+const AddToCartButton = ({ course }) => {
     const { toast } = useToast();
     const [isClient, setIsClient] = useState(false);
+    const [isPurchase, setIsPurchase] = useState(false);
     const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
     const dispatch = useDispatch();
 
     async function handleAddToCart() {
-        const response = await addToCart({ slug: slug });
+        const response = await addToCart({ slug: course.slug });
 
         if (response.success) {
             dispatch(setCartCount(response.data.length));
@@ -27,13 +29,26 @@ const AddToCartButton = ({ slug }) => {
     }
 
     useEffect(() => {
+        setIsPurchase(course.is_purchased);
         setIsClient(true);
     }, []);
 
     return (
         isClient && (
             <>
-                {isAuthenticated ? (
+                {isAuthenticated && isPurchase && (
+                    <Link href={`/courses/${course.slug}`}>
+                        <Button
+                            variant="outline"
+                            size="sm"
+                            className="xs:hidden md:flex"
+                        >
+                            Learn
+                        </Button>
+                    </Link>
+                )}
+
+                {isAuthenticated && !isPurchase && (
                     <Button
                         variant="outline"
                         size="sm"
@@ -42,7 +57,9 @@ const AddToCartButton = ({ slug }) => {
                     >
                         <FaPlus className="mr-1 h-3 w-3" /> Cart
                     </Button>
-                ) : (
+                )}
+
+                {!isAuthenticated && (
                     <DialogLogin>
                         <Button
                             variant="outline"

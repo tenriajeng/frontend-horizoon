@@ -31,7 +31,7 @@ const AddToCartButton = ({ course }) => {
     useEffect(() => {
         setIsPurchase(course.is_purchased);
         setIsClient(true);
-    }, []);
+    }, [course.is_purchased]);
 
     return (
         isClient && (

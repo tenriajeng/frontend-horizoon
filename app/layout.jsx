@@ -20,7 +20,7 @@ const RootLayout = ({ children }) => {
             </head>
 
             <body
-                className={`${inter.className} bg-gradient-to-r from-white via-white to-white dark:bg-gradient-to-r dark:from-slate-900 dark:via-slate-950 dark:to-black`}
+                className={`${inter.className} bg-gradient-to-r from-white via-white to-white dark:bg-gradient-to-r dark:via-slate-950 dark:to-black dark:xs:from-slate-950 dark:sm:from-slate-900`}
             >
                 <Providers>
                     <Navigation />

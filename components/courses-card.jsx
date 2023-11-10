@@ -3,6 +3,8 @@ import Link from 'next/link';
 import AddToCartButton from './add-to-cart-button';
 
 async function CoursesCard({ course }) {
+    // await new Promise((resolve) => setTimeout(resolve, 20000));
+
     return (
         <div>
             <Image

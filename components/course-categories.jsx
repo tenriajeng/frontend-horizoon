@@ -3,14 +3,14 @@ import LoadingCourseCategories from './loading/course-categories';
 
 const CourseCategories = () => {
     const courseCategories = [
-        'Web Development',
-        'Data Science',
-        'Design',
-        'Marketing',
-        'Business',
-        'Mobile App Development',
-        'Machine Learning',
-        'Photography',
+        'Artificial Intelligence',
+        'Cybersecurity',
+        'Blockchain',
+        'Game Development',
+        'UI/UX Design',
+        'Digital Marketing',
+        'Finance',
+        'Language Learning',
     ];
 
     return (

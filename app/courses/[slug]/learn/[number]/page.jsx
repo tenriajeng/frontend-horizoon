@@ -26,7 +26,7 @@ export default async function Page({ params }) {
                             </div>
                             <div className="mt-2 rounded-lg border border-slate-700 p-4">
                                 <div>
-                                    <h1 className="xs:font-semibold lg:text-2xl lg:font-bold">
+                                    <h1 className="xs:text-lg xs:font-semibold lg:text-2xl lg:font-bold">
                                         {material.title}
                                     </h1>
                                 </div>

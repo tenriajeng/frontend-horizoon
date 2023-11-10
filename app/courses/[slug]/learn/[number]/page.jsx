@@ -1,4 +1,3 @@
-import getCourseDetail from '@/api/getCourseDetail';
 import getMaterialDetail from '@/api/material/getMaterial';
 import CourseDescription from '@/components/course-description';
 import HorizoonVideo from '@/components/horizoon-video';
@@ -7,10 +6,8 @@ import SideNavMaterials from '@/components/side-nav-materials';
 import { Separator } from '@/components/ui/separator';
 
 export default async function Page({ params }) {
-    const [material, course] = await Promise.all([
-        await getMaterialDetail(params.slug, params.number),
-        await getCourseDetail(params.slug),
-    ]);
+    const { slug, number } = params;
+    const material = await getMaterialDetail(slug, number);
 
     return (
         <>
@@ -24,7 +21,7 @@ export default async function Page({ params }) {
                             <div className="mt-2">
                                 <SideNavMaterials
                                     number={params.number}
-                                    course={course}
+                                    course={material.course}
                                 />
                             </div>
                             <div className="mt-2 rounded-lg border border-slate-700 p-4">
@@ -33,7 +30,7 @@ export default async function Page({ params }) {
                                         {material.title}
                                     </h1>
                                 </div>
-                                <Separator className="my-4 bg-slate-700" />
+                                <Separator className="bg-slate-700 xs:my-2 md:my-4" />
                                 <div className="mb-4">
                                     <CourseDescription body={material.body} />
                                 </div>
@@ -42,18 +39,18 @@ export default async function Page({ params }) {
                         <div className="sticky top-20 h-screen max-h-screen overflow-auto pr-1 xs:hidden lg:inline">
                             <div className="mb-2 rounded-lg border p-2">
                                 <h2 className="text-lg font-semibold">
-                                    {course.title}
+                                    {material.course.title}
                                 </h2>
                                 <span className="text-sm text-gray-400">
-                                    {course.materials.length} Lesson
+                                    {material.course.materials.length} Lesson
                                 </span>
                             </div>
 
                             <div>
                                 <Materials
                                     active={params.number}
-                                    course={course.slug}
-                                    materials={course.materials}
+                                    course={material.course.slug}
+                                    materials={material.course.materials}
                                 />
                             </div>
                         </div>

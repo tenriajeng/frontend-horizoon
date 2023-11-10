@@ -5,6 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ChevronRightIcon } from '@radix-ui/react-icons';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default async function Page({ params }) {
     // await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -45,10 +46,14 @@ export default async function Page({ params }) {
                                     </Badge>
                                 </div>
                                 <div className="mb-0 xs:mb-6 xs:mt-4 md:mt-4">
-                                    <Button className="me-2 rounded-full">
-                                        Learn Now
-                                        <ChevronRightIcon className="ml-2 h-4 w-4" />
-                                    </Button>
+                                    <Link
+                                        href={`/courses/${course.slug}/learn/1`}
+                                    >
+                                        <Button className="me-2 rounded-full">
+                                            Learn Now
+                                            <ChevronRightIcon className="ml-2 h-4 w-4" />
+                                        </Button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

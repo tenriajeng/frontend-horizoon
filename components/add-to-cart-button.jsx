@@ -37,10 +37,10 @@ const AddToCartButton = ({ course }) => {
         isClient && (
             <>
                 {isAuthenticated && isPurchase && (
-                    <Link href={`/courses/${course.slug}`}>
+                    <Link href={`/courses/${course.slug}/learn/1`}>
                         <Button
                             variant="outline"
-                            size="sm"
+                            size="xs"
                             className="xs:hidden md:flex"
                         >
                             Learn
@@ -51,7 +51,7 @@ const AddToCartButton = ({ course }) => {
                 {isAuthenticated && !isPurchase && (
                     <Button
                         variant="outline"
-                        size="sm"
+                        size="xs"
                         className="xs:hidden md:flex"
                         onClick={handleAddToCart}
                     >
@@ -63,7 +63,7 @@ const AddToCartButton = ({ course }) => {
                     <DialogLogin>
                         <Button
                             variant="outline"
-                            size="sm"
+                            size="xs"
                             className="xs:hidden md:flex"
                         >
                             <FaPlus className="mr-1 h-3 w-3" /> Cart

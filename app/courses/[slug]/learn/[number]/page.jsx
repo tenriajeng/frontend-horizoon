@@ -18,7 +18,7 @@ export default async function Page({ params }) {
                             <div>
                                 <HorizoonVideo url={material.content} />
                             </div>
-                            <div className="mt-2">
+                            <div className="mt-2 lg:hidden">
                                 <SideNavMaterials
                                     number={params.number}
                                     course={material.course}

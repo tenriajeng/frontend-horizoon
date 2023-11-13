@@ -19,16 +19,17 @@ import { useDispatch } from 'react-redux';
 import { logout } from '@/redux/features/authSclice';
 import { generateInitials } from '@/lib/initialsUtils';
 import { removeAuthToken } from '@/lib/authUtils';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 export function AccountDropdown({ user }) {
     const dispatch = useDispatch();
     const router = useRouter();
+    const currentPath = usePathname();
 
     const handleLogout = async () => {
         await removeAuthToken();
         dispatch(logout());
-        router.push('/');
+        router.replace(currentPath);
         // redirect to home page after logout if the path is protected
     };
 

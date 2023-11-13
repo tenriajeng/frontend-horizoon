@@ -89,8 +89,8 @@ export default async function Page({ params }) {
                 </div>
             </div>
             <div className="mt-6 md:container">
-                <div className="grid xs:grid-cols-1 md:grid-cols-1 lg:grid-cols-3">
-                    <div className="md:col-span-3 lg:col-span-2">
+                <div className="grid xs:grid-cols-1 md:grid-cols-1 lg:grid-cols-5">
+                    <div className="md:col-span-3 lg:col-span-3">
                         <div className="mx-2 flex justify-between xs:px-2 md:px-0">
                             <h2 className="text-xl font-semibold">
                                 Lessons in This Class
@@ -109,7 +109,7 @@ export default async function Page({ params }) {
                             <CourseDescription body={course.body} />
                         </div>
                     </div>
-                    <div className="sticky top-20 h-72">
+                    <div className="sticky top-20 h-72 lg:col-span-2">
                         <div className="mx-2 flex h-full flex-col items-center justify-center rounded-lg bg-gray-900 p-4 text-white dark:bg-gray-900 dark:text-white md:px-0">
                             <h2 className="mb-3 text-center text-2xl font-bold">
                                 You re Almost In

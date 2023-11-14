@@ -8,9 +8,8 @@ import { ThemeProvider } from '@/components/theme-provider';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-    title: {
-        template: '%s — Showcasething',
-    },
+    title: 'Horizoon',
+    description: 'Horizoon',
 };
 
 const RootLayout = ({ children }) => {

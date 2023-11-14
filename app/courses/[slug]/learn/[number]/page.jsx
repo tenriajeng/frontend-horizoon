@@ -24,13 +24,13 @@ export default async function Page({ params }) {
                                     course={material.course}
                                 />
                             </div>
-                            <div className="mt-2 rounded-lg border border-slate-700 p-4">
+                            <div className="mt-2 rounded-lg border p-4">
                                 <div>
-                                    <h1 className="xs:text-lg xs:font-semibold lg:text-2xl lg:font-bold">
+                                    <h1 className="xs:text-lg xs:font-semibold lg:text-xl lg:font-bold">
                                         {material.title}
                                     </h1>
                                 </div>
-                                <Separator className="bg-slate-700 xs:my-2 md:my-4" />
+                                <Separator className=" xs:my-2 md:my-4" />
                                 <div className="mb-4">
                                     <CourseDescription body={material.body} />
                                 </div>
@@ -41,7 +41,7 @@ export default async function Page({ params }) {
                                 <h2 className="text-lg font-semibold">
                                     {material.course.title}
                                 </h2>
-                                <span className="text-sm text-gray-400">
+                                <span className="text-sm text-slate-800 dark:text-gray-400">
                                     {material.course.materials.length} Lesson
                                 </span>
                             </div>

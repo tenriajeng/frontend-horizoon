@@ -6,7 +6,7 @@ import rehypeRaw from 'rehype-raw';
 function CourseDescription({ body }) {
     return (
         <div className="mb-10">
-            <article className="prose prose-dark-mode ">
+            <article className="prose prose-sm dark:prose-dark-mode ">
                 <ReactMarkdown className="" rehypePlugins={[rehypeRaw]}>
                     {body}
                 </ReactMarkdown>

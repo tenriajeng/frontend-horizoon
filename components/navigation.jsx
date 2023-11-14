@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Account } from './account';
 import Carts from './carts';
 import { useEffect, useState } from 'react';
+import ModeToggle from './mode-toggle';
 
 function Navigation() {
     const [isClient, setIsClient] = useState(false);
@@ -34,6 +35,7 @@ function Navigation() {
                         </kbd>
                     </button>
                     <Carts />
+                    <ModeToggle />
                     <div className="flex h-9 w-9 items-center justify-center rounded-lg border hover:bg-slate-800 dark:bg-slate-950 md:hidden">
                         <MagnifyingGlassIcon className="h-6 w-6 " />
                     </div>

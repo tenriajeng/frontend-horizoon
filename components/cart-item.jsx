@@ -8,6 +8,7 @@ import {
 } from './ui/tooltip';
 import { Cross2Icon } from '@radix-ui/react-icons';
 import { Separator } from './ui/separator';
+import Link from 'next/link';
 
 export default function CartItem({ cart }) {
     return (
@@ -24,9 +25,11 @@ export default function CartItem({ cart }) {
                         />
                     </div>
                     <div className="flex flex-col justify-center xs:col-span-2 sm:col-span-2 md:col-span-2 lg:col-span-3">
-                        <h4 className="font-semibold xs:line-clamp-1 xs:text-base sm:text-lg md:line-clamp-1 lg:text-xl">
-                            {cart.course.title}
-                        </h4>
+                        <Link href={`courses/${cart.course.slug}`}>
+                            <h4 className="font-semibold hover:underline xs:line-clamp-1 xs:text-base sm:text-lg md:line-clamp-1 lg:text-xl">
+                                {cart.course.title}
+                            </h4>
+                        </Link>
 
                         <div className="mt-2 line-clamp-1">
                             <Badge

@@ -27,7 +27,7 @@ export default function Carts() {
             <div className="relative">
                 <Link
                     href={'/carts'}
-                    className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg border bg-slate-950 hover:bg-slate-800"
+                    className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg border bg-white dark:bg-slate-950 dark:hover:bg-slate-800"
                 >
                     <span className="sr-only">View Shopping Cart</span>
                     <IoCartOutline className="h-6 w-6" />

@@ -72,7 +72,7 @@ export default function HorizoonVideo({ url }) {
     }, []);
 
     return (
-        <div className="aspect-video w-full overflow-hidden rounded-lg">
+        <div className="w-full overflow-hidden rounded-lg border">
             {isClient && <Plyr source={videoSrc} options={options} />}
         </div>
     );

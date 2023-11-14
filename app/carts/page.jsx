@@ -1,10 +1,6 @@
 import Checkout from '@/components/checkout';
 import CoursesCartCard from '@/components/courses-cart-card';
 
-export const metadata = {
-    title: 'Page Title',
-};
-
 export default function Page() {
     return (
         <>

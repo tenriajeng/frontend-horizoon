@@ -2,18 +2,19 @@ import React from 'react';
 import { Button } from './ui/button';
 import { ChevronRight } from 'lucide-react';
 import { ChevronLeftIcon } from '@radix-ui/react-icons';
+import Link from 'next/link';
 
 const Pagination = ({ pagination }) => {
-    pagination = {
-        current_page: 6,
-        total_pages: 10,
-        per_page: 10,
-        total: 12,
-        has_next: true,
-        has_previous: true,
-        next_page: 7,
-        previous_page: 5,
-    };
+    // pagination = {
+    //     current_page: 6,
+    //     total_pages: 10,
+    //     per_page: 10,
+    //     total: 12,
+    //     has_next: true,
+    //     has_previous: true,
+    //     next_page: 7,
+    //     previous_page: 5,
+    // };
 
     const {
         current_page,
@@ -39,17 +40,19 @@ const Pagination = ({ pagination }) => {
         for (let i = startPage; i <= endPage; i++) {
             if (i !== total_pages) {
                 pageNumbers.push(
-                    <Button
-                        key={i}
-                        disabled={current_page === i}
-                        variant="outline"
-                        className={`${
-                            current_page === i &&
-                            'bg-gray-300 dark:bg-slate-600'
-                        } p-1 xs:h-8 xs:w-8 xs:rounded-md sm:h-10 sm:w-10 lg:rounded-lg`}
-                    >
-                        {i}
-                    </Button>,
+                    <Link href={`/?page=${i}`}>
+                        <Button
+                            key={i}
+                            disabled={current_page === i}
+                            variant="outline"
+                            className={`${
+                                current_page === i &&
+                                'bg-gray-300 dark:bg-slate-600'
+                            } p-1 xs:h-8 xs:w-8 xs:rounded-md xs:text-xs sm:h-10 sm:w-10 lg:rounded-lg`}
+                        >
+                            {i}
+                        </Button>
+                    </Link>,
                 );
             }
         }
@@ -60,7 +63,7 @@ const Pagination = ({ pagination }) => {
                     key="dots-start"
                     variant="outline"
                     disabled
-                    className="p-1 xs:h-8 xs:w-8 xs:rounded-md sm:h-10 sm:w-10 lg:rounded-lg"
+                    className="p-1 xs:h-8 xs:w-8 xs:rounded-md xs:text-xs sm:h-10 sm:w-10 lg:rounded-lg"
                 >
                     ...
                 </Button>,
@@ -73,7 +76,7 @@ const Pagination = ({ pagination }) => {
                     key="dots-end"
                     variant="outline"
                     disabled
-                    className="p-1 xs:h-8 xs:w-8 xs:rounded-md sm:h-10 sm:w-10 lg:rounded-lg"
+                    className="p-1 xs:h-8 xs:w-8 xs:rounded-md xs:text-xs sm:h-10 sm:w-10 lg:rounded-lg"
                 >
                     ...
                 </Button>,
@@ -86,45 +89,51 @@ const Pagination = ({ pagination }) => {
     return (
         <div className="mx-2 my-8 flex items-center justify-center">
             <nav className="flex space-x-1" aria-label="Pagination">
-                <Button
-                    variant="outline"
-                    href="#"
-                    disabled={!has_previous}
-                    className="p-1 xs:h-8 xs:w-8 xs:rounded-md sm:h-10 sm:w-10 lg:rounded-lg"
-                >
-                    <ChevronLeftIcon className="h-4 w-4" />
-                </Button>
-
-                {current_page > 1 && (
+                <Link href={`/?page=${previous_page}`}>
                     <Button
                         variant="outline"
                         href="#"
-                        disabled={!has_next}
-                        className="p-1 xs:h-8 xs:w-8 xs:rounded-md sm:h-10 sm:w-10 lg:rounded-lg"
+                        disabled={!has_previous}
+                        className="p-1 xs:h-8 xs:w-8 xs:rounded-md xs:text-xs sm:h-10 sm:w-10 lg:rounded-lg"
                     >
-                        1
+                        <ChevronLeftIcon className="h-4 w-4" />
                     </Button>
+                </Link>
+                {current_page > 1 && (
+                    <Link href={`/?page=1`}>
+                        <Button
+                            variant="outline"
+                            href="#"
+                            disabled={!has_next}
+                            className="p-1 xs:h-8 xs:w-8 xs:rounded-md xs:text-xs sm:h-10 sm:w-10 lg:rounded-lg"
+                        >
+                            1
+                        </Button>
+                    </Link>
                 )}
 
                 {renderPageNumbers()}
 
-                <Button
-                    variant="outline"
-                    href="#"
-                    disabled={!has_next}
-                    className="p-1 xs:h-8 xs:w-8 xs:rounded-md sm:h-10 sm:w-10 lg:rounded-lg"
-                >
-                    {total_pages}
-                </Button>
-
-                <Button
-                    variant="outline"
-                    href="#"
-                    disabled={!has_next}
-                    className="p-1 xs:h-8 xs:w-8 xs:rounded-md sm:h-10 sm:w-10 lg:rounded-lg"
-                >
-                    <ChevronRight className="h-4 w-4" />
-                </Button>
+                <Link href={`/?page=${total_pages}`}>
+                    <Button
+                        variant="outline"
+                        href="#"
+                        disabled={!has_next}
+                        className="p-1 xs:h-8 xs:w-8 xs:rounded-md xs:text-xs sm:h-10 sm:w-10 lg:rounded-lg"
+                    >
+                        {total_pages}
+                    </Button>
+                </Link>
+                <Link href={`/?page=${next_page}`}>
+                    <Button
+                        variant="outline"
+                        href="#"
+                        disabled={!has_next}
+                        className="p-1 xs:h-8 xs:w-8 xs:rounded-md xs:text-xs sm:h-10 sm:w-10 lg:rounded-lg"
+                    >
+                        <ChevronRight className="h-4 w-4" />
+                    </Button>
+                </Link>
             </nav>
         </div>
     );

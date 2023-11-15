@@ -34,7 +34,6 @@ export default function CoursesCartCard() {
                 const cartData = await getCarts();
                 setCarts(cartData.data);
                 calculateTotalPrice(cartData.data);
-                console.log(cartData);
             } catch (error) {
                 console.error('Error while fetching carts:', error);
             } finally {

@@ -16,11 +16,11 @@ function CoursesCard({ course }) {
             />
             <div className="mt-2">
                 <Link href={`/courses/${course.slug}`}>
-                    <h2 className="line-clamp-1 text-base font-medium hover:underline xs:text-sm">
+                    <h2 className="line-clamp-1 text-base font-semibold hover:underline xs:text-sm">
                         {course.title}
                     </h2>
                 </Link>
-                <span className="mt-1 line-clamp-2 text-sm dark:text-gray-400">
+                <span className="mt-1 line-clamp-2 text-gray-600 dark:text-gray-400  xs:text-xs sm:text-sm">
                     {course.meta_description}
                 </span>
                 <div className="mt-1 flex items-center justify-between text-sm">

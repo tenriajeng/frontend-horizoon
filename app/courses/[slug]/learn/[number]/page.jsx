@@ -27,8 +27,9 @@ export default async function Page({ params }) {
                             </div>
                             <div className="mt-2 lg:hidden">
                                 <SideNavMaterials
-                                    number={params.number}
+                                    active={params.number}
                                     course={material.data.course}
+                                    materials={material.data.course.materials}
                                 />
                             </div>
                             <div className="mt-2 rounded-lg border p-4">

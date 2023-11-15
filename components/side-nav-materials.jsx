@@ -3,7 +3,7 @@ import { ActivityLogIcon } from '@radix-ui/react-icons';
 import Materials from './materials';
 import { Separator } from './ui/separator';
 
-export default function SideNavMaterials({ course, number }) {
+export default function SideNavMaterials({ active, course, materials }) {
     return (
         <Sheet>
             <SheetTrigger>
@@ -25,9 +25,9 @@ export default function SideNavMaterials({ course, number }) {
                 </span>
                 <Separator className="mb-2 bg-slate-700" />
                 <Materials
-                    active={number}
-                    course={course.slug}
-                    materials={course.materials}
+                    active={active}
+                    course={course}
+                    materials={materials}
                 />
             </SheetContent>
         </Sheet>

@@ -3,30 +3,33 @@
 import getCourses from '@/api/getCourses';
 import CoursesCard from './courses-card';
 import LoadingCoursesCard from './loading/courses-card';
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense, useEffect, useMemo, useState } from 'react';
 import Pagination from './pagination';
 import { useSearchParams } from 'next/navigation';
 
 const Courses = () => {
     const searchParams = useSearchParams();
     const [isLoading, setIsLoading] = useState(true);
-    const page = searchParams.get('page') || 1;
+    const page = parseInt(searchParams.get('page')) || 1;
     const [courses, setCourses] = useState([]);
 
+    const fetchCartData = async () => {
+        try {
+            const coursesData = await getCourses(page);
+            console.log(coursesData, 'coursesData');
+            setCourses(coursesData);
+        } catch (error) {
+            console.error('Error while fetching carts:', error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    const memoizedFetchCartData = useMemo(() => fetchCartData, [page]);
+
     useEffect(() => {
-        const fetchCartData = async () => {
-            try {
-                const coursesData = await getCourses(page);
-                console.log(coursesData, 'coursesData');
-                setCourses(coursesData);
-            } catch (error) {
-                console.error('Error while fetching carts:', error);
-            } finally {
-                setIsLoading(false);
-            }
-        };
-        fetchCartData();
-    }, [page]);
+        memoizedFetchCartData();
+    }, [page, memoizedFetchCartData]);
 
     return (
         <>

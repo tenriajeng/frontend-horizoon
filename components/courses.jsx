@@ -1,7 +1,7 @@
 'use client';
 
 import getCourses from '@/api/getCourses';
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import CoursesCard from './courses-card';
 import LoadingCoursesCard from './loading/courses-card';
@@ -34,8 +34,6 @@ const Courses = () => {
         fetchData();
     }, []);
 
-    const memoizedCourses = useMemo(() => courses, [courses]);
-
     return (
         <InfiniteScroll
             className="grid grid-cols-1 xs:mx-2 xs:mt-2 xs:grid-cols-2 xs:gap-2 sm:grid-cols-2 md:mx-0 md:grid-cols-3 md:gap-5 lg:grid-cols-4"
@@ -56,4 +54,4 @@ const Courses = () => {
     );
 };
 
-export default React.memo(Courses);
+export default Courses;

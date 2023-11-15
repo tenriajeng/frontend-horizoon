@@ -29,9 +29,8 @@ const Pagination = ({ pagination }) => {
         for (let i = startPage; i <= endPage; i++) {
             if (i !== total_pages) {
                 pageNumbers.push(
-                    <Link scroll={false} href={`/?page=${i}`}>
+                    <Link key={i} scroll={false} href={`/?page=${i}`}>
                         <Button
-                            key={i}
                             disabled={current_page === i}
                             variant="outline"
                             className={`${
@@ -88,12 +87,13 @@ const Pagination = ({ pagination }) => {
                         href="#"
                         disabled={!has_previous}
                         className="p-1 xs:h-8 xs:w-8 xs:rounded-md xs:text-xs sm:h-10 sm:w-10 lg:rounded-lg"
+                        aria-label="Previous"
                     >
                         <ChevronLeftIcon className="h-4 w-4" />
                     </Button>
                 </Link>
                 {current_page > 3 && (
-                    <Link scroll={false} href={`/?page=1`}>
+                    <Link key={1} scroll={false} href={`/?page=1`}>
                         <Button
                             variant="outline"
                             href="#"
@@ -127,6 +127,7 @@ const Pagination = ({ pagination }) => {
                         href="#"
                         disabled={!has_next}
                         className="p-1 xs:h-8 xs:w-8 xs:rounded-md xs:text-xs sm:h-10 sm:w-10 lg:rounded-lg"
+                        aria-label="Next"
                     >
                         <ChevronRight className="h-4 w-4" />
                     </Button>

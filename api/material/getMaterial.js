@@ -22,7 +22,7 @@ export default async function getMaterialDetail(slug, number) {
             headers,
         });
 
-        return response.data;
+        return response;
     } catch (error) {
         handleFetchError(error);
     }

@@ -1,7 +1,7 @@
 import { getAuthToken } from '@/lib/authUtils';
 import { fetchAPI, handleFetchError } from '.';
 
-export default async function getCourses() {
+export default async function getCourses(page) {
     try {
         const token = await getAuthToken();
         let headers = {};
@@ -10,7 +10,7 @@ export default async function getCourses() {
             headers.Authorization = `Bearer ${token}`;
         }
 
-        const data = await fetchAPI('api/courses', {
+        const data = await fetchAPI(`api/courses?per_page=12&page=${page}`, {
             cache: 'no-store',
             headers,
         });

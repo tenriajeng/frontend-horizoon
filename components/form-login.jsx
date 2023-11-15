@@ -29,8 +29,8 @@ function FormLogin() {
     const form = useForm({
         resolver: zodResolver(LoginValidation),
         defaultValues: {
-            email: 'ilhamtenriajeng03@gmail.com',
-            password: 'ilhamilham123',
+            email: 'ilhamtenriajeng30@gmail.com',
+            password: 'ilham123',
         },
     });
 

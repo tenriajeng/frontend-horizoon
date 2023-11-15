@@ -1,13 +1,20 @@
+import { Suspense } from 'react';
 import getMaterialDetail from '@/api/material/getMaterial';
 import CourseDescription from '@/components/course-description';
 import HorizoonVideo from '@/components/horizoon-video';
 import Materials from '@/components/materials';
 import SideNavMaterials from '@/components/side-nav-materials';
 import { Separator } from '@/components/ui/separator';
+import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
 export default async function Page({ params }) {
     const { slug, number } = params;
     const material = await getMaterialDetail(slug, number);
+
+    if (!material.success) {
+        redirect('/');
+    }
 
     return (
         <>
@@ -16,42 +23,53 @@ export default async function Page({ params }) {
                     <div className="grid grid-cols-1 xs:mx-2 xs:mt-2 xs:grid-cols-1 xs:gap-2 sm:grid-cols-1 md:mx-0 md:grid-cols-1 md:gap-5 lg:grid-cols-3">
                         <div className="mb-4 lg:col-span-2">
                             <div>
-                                <HorizoonVideo url={material.content} />
+                                <HorizoonVideo url={material.data.content} />
                             </div>
                             <div className="mt-2 lg:hidden">
                                 <SideNavMaterials
                                     number={params.number}
-                                    course={material.course}
+                                    course={material.data.course}
                                 />
                             </div>
                             <div className="mt-2 rounded-lg border p-4">
                                 <div>
                                     <h1 className="xs:text-lg xs:font-semibold lg:text-xl lg:font-bold">
-                                        {material.title}
+                                        {material.data.title}
                                     </h1>
                                 </div>
                                 <Separator className=" xs:my-2 md:my-4" />
                                 <div className="mb-4">
-                                    <CourseDescription body={material.body} />
+                                    <CourseDescription
+                                        body={material.data.body}
+                                    />
                                 </div>
                             </div>
                         </div>
                         <div className="sticky top-20 h-screen max-h-screen overflow-auto pr-1 xs:hidden lg:inline">
                             <div className="mb-2 rounded-lg border p-2">
-                                <h2 className="text-lg font-semibold">
-                                    {material.course.title}
-                                </h2>
+                                <Link
+                                    href={`/courses/${material.data.course.slug}`}
+                                >
+                                    <h2 className="text-lg font-semibold hover:underline">
+                                        {material.data.course.title}
+                                    </h2>
+                                </Link>
                                 <span className="text-sm text-slate-800 dark:text-gray-400">
-                                    {material.course.materials.length} Lesson
+                                    {material.data.course.materials.length}{' '}
+                                    Lesson
                                 </span>
                             </div>
 
                             <div>
-                                <Materials
-                                    active={params.number}
-                                    course={material.course.slug}
-                                    materials={material.course.materials}
-                                />
+                                <Suspense fallback={<h1>halo</h1>}>
+                                    <Materials
+                                        active={params.number}
+                                        course={material.data.course}
+                                        materials={
+                                            material.data.course.materials
+                                        }
+                                    />
+                                </Suspense>
                             </div>
                         </div>
                     </div>

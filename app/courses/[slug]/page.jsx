@@ -46,35 +46,26 @@ export default async function Page({ params }) {
                                     </Badge>
                                 </div>
                                 <div className="mb-0 xs:mb-6 xs:mt-4 md:mt-4">
-                                    <Link
-                                        href={`/courses/${course.slug}/learn/1`}
-                                    >
+                                    {course.is_purchased ? (
+                                        <Link
+                                            href={`/courses/${course.slug}/learn/1`}
+                                        >
+                                            <Button className="me-2 rounded-full">
+                                                Learn Now
+                                                <ChevronRightIcon className="ml-2 h-4 w-4" />
+                                            </Button>
+                                        </Link>
+                                    ) : (
                                         <Button className="me-2 rounded-full">
                                             Learn Now
                                             <ChevronRightIcon className="ml-2 h-4 w-4" />
                                         </Button>
-                                    </Link>
+                                    )}
                                 </div>
                             </div>
                         </div>
 
                         <div className="flex items-center md:mx-2">
-                            {/* <video
-                            controls={true}
-                            playsInline={true}
-                            autoPlay={true}
-                            muted
-                        >
-                            <source
-                                src="https://sejawat.s3.ap-southeast-1.amazonaws.com/sejawat/post_video/8852d62265879343d8d6f5c151d26a49/JPA_Feed.mp4"
-                                type="video/mp4"
-                            />
-                            Download the
-                            <a href="https://sejawat.s3.ap-southeast-1.amazonaws.com/sejawat/post_video/8852d62265879343d8d6f5c151d26a49/JPA_Feed.mp4">
-                                MP4
-                            </a>
-                            video.
-                        </video> */}
                             <Image
                                 priority
                                 loading="eager"
@@ -101,7 +92,7 @@ export default async function Page({ params }) {
                         </div>
                         <div className="xs:px-2 md:mx-2 md:px-0">
                             <Materials
-                                course={course.slug}
+                                course={course}
                                 materials={course.materials}
                             />
                         </div>

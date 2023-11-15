@@ -1,19 +1,19 @@
-import { LockClosedIcon, PlayIcon } from '@radix-ui/react-icons';
 import Link from 'next/link';
-import React from 'react';
+import { LockClosedIcon, PlayIcon } from '@radix-ui/react-icons';
 import { Popover, PopoverContent, PopoverTrigger } from './ui/popover';
 
 export default function Materials({ course, materials, active }) {
     const buttonStyle =
         'mb-2 flex cursor-pointer items-center justify-between rounded-md border p-2 text-sm hover:bg-slate-900 hover:text-white dark:text-gray-300 dark:hover:bg-white dark:hover:text-gray-950';
+    const isPurchase = course.is_purchased;
 
     return (
         <>
             {materials.map((material, index) => (
                 <div key={material.id}>
-                    {material.is_free ? (
+                    {material.is_free || isPurchase ? (
                         <Link
-                            href={`/courses/${course}/learn/${index + 1}`}
+                            href={`/courses/${course.slug}/learn/${index + 1}`}
                             className={`${buttonStyle} ${
                                 active == index + 1
                                     ? 'dark:bg-white dark:text-gray-950'
@@ -27,7 +27,7 @@ export default function Materials({ course, materials, active }) {
                                 </h3>
                             </div>
                             <span>
-                                {material.is_free ? (
+                                {material.is_free || isPurchase ? (
                                     <PlayIcon />
                                 ) : (
                                     <LockClosedIcon />
@@ -53,11 +53,7 @@ export default function Materials({ course, materials, active }) {
                                         </h3>
                                     </div>
                                     <span>
-                                        {material.is_free ? (
-                                            <PlayIcon />
-                                        ) : (
-                                            <LockClosedIcon />
-                                        )}
+                                        <LockClosedIcon />
                                     </span>
                                 </div>
                             </PopoverTrigger>

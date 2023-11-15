@@ -1,13 +1,13 @@
 'use client';
 
 import getCourses from '@/api/getCourses';
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import CoursesCard from './courses-card';
 import LoadingCoursesCard from './loading/courses-card';
 
 const Courses = () => {
-    const [items, setItems] = useState([]);
+    const [courses, setCourses] = useState([]);
     const [hasMore, setHasMore] = useState(true);
     const [page, setPage] = useState(1);
 
@@ -16,7 +16,7 @@ const Courses = () => {
             const response = await getCourses(page);
 
             if (response.success) {
-                setItems([...items, ...response.data]);
+                setCourses([...courses, ...response.data]);
                 setHasMore(response.pagination.has_next);
             }
 
@@ -34,10 +34,12 @@ const Courses = () => {
         fetchData();
     }, []);
 
+    const memoizedCourses = useMemo(() => courses, [courses]);
+
     return (
         <InfiniteScroll
             className="grid grid-cols-1 xs:mx-2 xs:mt-2 xs:grid-cols-2 xs:gap-2 sm:grid-cols-2 md:mx-0 md:grid-cols-3 md:gap-5 lg:grid-cols-4"
-            dataLength={items.length}
+            dataLength={courses.length}
             next={fetchData}
             hasMore={hasMore}
             loader={<LoadingCoursesCard />}
@@ -47,11 +49,11 @@ const Courses = () => {
                 </div>
             }
         >
-            {items.map((item, index) => (
+            {courses.map((item, index) => (
                 <CoursesCard key={index} course={item} />
             ))}
         </InfiniteScroll>
     );
 };
 
-export default Courses;
+export default React.memo(Courses);

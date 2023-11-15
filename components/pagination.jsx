@@ -78,7 +78,11 @@ const Pagination = ({ pagination }) => {
     return (
         <div className="mx-2 my-8 flex items-center justify-center">
             <nav className="flex space-x-1" aria-label="Pagination">
-                <Link scroll={false} href={`/?page=${previous_page}`}>
+                <Link
+                    scroll={false}
+                    href={`/?page=${previous_page}`}
+                    aria-label="Previous Page"
+                >
                     <Button
                         variant="outline"
                         href="#"
@@ -113,7 +117,11 @@ const Pagination = ({ pagination }) => {
                         {total_pages}
                     </Button>
                 </Link>
-                <Link scroll={false} href={`/?page=${next_page}`}>
+                <Link
+                    scroll={false}
+                    href={`/?page=${next_page}`}
+                    aria-label="Next Page"
+                >
                     <Button
                         variant="outline"
                         href="#"

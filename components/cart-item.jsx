@@ -20,6 +20,8 @@ export default function CartItem({ cart }) {
                             width={800}
                             height={800}
                             src={cart.course.thumbnail}
+                            priority
+                            loading="eager"
                             alt="Shopping Cart"
                             className="h-full w-full rounded-lg border sm:aspect-video"
                         />

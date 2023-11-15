@@ -5,17 +5,6 @@ import { ChevronLeftIcon } from '@radix-ui/react-icons';
 import Link from 'next/link';
 
 const Pagination = ({ pagination }) => {
-    // pagination = {
-    //     current_page: 6,
-    //     total_pages: 10,
-    //     per_page: 10,
-    //     total: 12,
-    //     has_next: true,
-    //     has_previous: true,
-    //     next_page: 7,
-    //     previous_page: 5,
-    // };
-
     const {
         current_page,
         total_pages,
@@ -40,7 +29,7 @@ const Pagination = ({ pagination }) => {
         for (let i = startPage; i <= endPage; i++) {
             if (i !== total_pages) {
                 pageNumbers.push(
-                    <Link href={`/?page=${i}`}>
+                    <Link scroll={false} href={`/?page=${i}`}>
                         <Button
                             key={i}
                             disabled={current_page === i}
@@ -89,7 +78,7 @@ const Pagination = ({ pagination }) => {
     return (
         <div className="mx-2 my-8 flex items-center justify-center">
             <nav className="flex space-x-1" aria-label="Pagination">
-                <Link href={`/?page=${previous_page}`}>
+                <Link scroll={false} href={`/?page=${previous_page}`}>
                     <Button
                         variant="outline"
                         href="#"
@@ -99,8 +88,8 @@ const Pagination = ({ pagination }) => {
                         <ChevronLeftIcon className="h-4 w-4" />
                     </Button>
                 </Link>
-                {current_page > 1 && (
-                    <Link href={`/?page=1`}>
+                {current_page > 3 && (
+                    <Link scroll={false} href={`/?page=1`}>
                         <Button
                             variant="outline"
                             href="#"
@@ -114,7 +103,7 @@ const Pagination = ({ pagination }) => {
 
                 {renderPageNumbers()}
 
-                <Link href={`/?page=${total_pages}`}>
+                <Link scroll={false} href={`/?page=${total_pages}`}>
                     <Button
                         variant="outline"
                         href="#"
@@ -124,7 +113,7 @@ const Pagination = ({ pagination }) => {
                         {total_pages}
                     </Button>
                 </Link>
-                <Link href={`/?page=${next_page}`}>
+                <Link scroll={false} href={`/?page=${next_page}`}>
                     <Button
                         variant="outline"
                         href="#"

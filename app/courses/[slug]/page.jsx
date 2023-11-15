@@ -22,7 +22,7 @@ export default async function Page({ params }) {
                                 <h1 className="pb-4 font-semibold leading-8 xs:text-xl lg:text-3xl">
                                     {course.title}
                                 </h1>
-                                <p className="leading-7 dark:text-gray-200 xs:text-sm md:text-base md:leading-8">
+                                <p className="line-clamp-4 leading-7 dark:text-gray-200 xs:text-sm md:text-base md:leading-8">
                                     {course.meta_description}
                                 </p>
                                 <div className="mt-4">
@@ -72,7 +72,7 @@ export default async function Page({ params }) {
                                 width={1200}
                                 height={1200}
                                 src={course.thumbnail}
-                                alt=" Membangun Toko Online Dipelajaran kali ini, kita akan"
+                                alt={course.title}
                                 className="aspect-video border object-cover md:rounded-2xl "
                             />
                         </div>

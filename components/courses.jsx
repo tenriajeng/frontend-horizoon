@@ -12,18 +12,22 @@ const Courses = () => {
     const [page, setPage] = useState(1);
 
     const fetchData = async () => {
-        const response = await getCourses(page);
+        try {
+            const response = await getCourses(page);
 
-        if (response.success) {
-            setItems([...items, ...response.data]);
-            setHasMore(response.pagination.has_next);
+            if (response.success) {
+                setItems([...items, ...response.data]);
+                setHasMore(response.pagination.has_next);
+            }
+
+            if (!response.success) {
+                setHasMore(false);
+            }
+
+            setPage(page + 1);
+        } catch (error) {
+            console.error('Error fetching data:', error);
         }
-
-        if (response.length === 0) {
-            setHasMore(false);
-        }
-
-        setPage(page + 1);
     };
 
     useEffect(() => {
@@ -37,15 +41,15 @@ const Courses = () => {
             next={fetchData}
             hasMore={hasMore}
             loader={<LoadingCoursesCard />}
+            endMessage={
+                <div className="mb-10 h-5 text-center font-bold xs:col-span-2 xs:gap-2 sm:col-span-2 md:col-span-3 md:mx-0 md:gap-5 lg:col-span-4">
+                    No more data
+                </div>
+            }
         >
             {items.map((item, index) => (
                 <CoursesCard key={index} course={item} />
             ))}
-            {!hasMore && (
-                <div className="mb-10 h-5 text-center xs:col-span-2 xs:gap-2 sm:col-span-2 md:col-span-3 md:mx-0 md:gap-5 lg:col-span-4">
-                    No more data
-                </div>
-            )}
         </InfiniteScroll>
     );
 };

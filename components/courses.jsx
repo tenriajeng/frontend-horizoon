@@ -6,6 +6,7 @@ import LoadingCoursesCard from './loading/courses-card';
 import { useEffect, useState } from 'react';
 import Pagination from './pagination';
 import { useSearchParams } from 'next/navigation';
+import LoadingPagination from './loading/pagination';
 
 const Courses = () => {
     const searchParams = useSearchParams();
@@ -40,7 +41,11 @@ const Courses = () => {
                     <LoadingCoursesCard />
                 )}
             </div>
-            {!isLoading && <Pagination pagination={courses.pagination} />}
+            {!isLoading ? (
+                <Pagination pagination={courses.pagination} />
+            ) : (
+                <LoadingPagination />
+            )}
         </>
     );
 };

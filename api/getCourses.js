@@ -10,7 +10,7 @@ export default async function getCourses(page) {
             headers.Authorization = `Bearer ${token}`;
         }
 
-        const data = await fetchAPI(`api/courses?per_page=8&page=${page}`, {
+        const data = await fetchAPI(`api/courses?per_page=20&page=${page}`, {
             cache: 'no-store',
             headers,
         });

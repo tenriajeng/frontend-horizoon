@@ -49,14 +49,14 @@ const Pagination = ({ pagination }) => {
     };
 
     return (
-        <div className="mx-2 flex items-center justify-center xs:my-4 md:my-8">
+        <div className="mx-2 flex items-center justify-center xs:col-span-2 xs:my-4 md:col-span-3 md:my-8 lg:col-span-4">
             <nav className="flex space-x-1" aria-label="Pagination">
                 <PaginationButton
                     key={'previous_page'}
                     label={<ChevronLeftIcon className="h-4 w-4" />}
                     page={previous_page}
                     disabled={!has_previous}
-                    aria-label="Go to previous page"
+                    ariaLabel="Go to previous page"
                 />
                 {current_page > 3 && (
                     <PaginationButton key={1} label={1} page={1} />
@@ -68,7 +68,7 @@ const Pagination = ({ pagination }) => {
                     label={<ChevronRight className="h-4 w-4" />}
                     page={next_page}
                     disabled={!has_next}
-                    aria-label="Go to next page"
+                    ariaLabel="Go to next page"
                 />
             </nav>
         </div>

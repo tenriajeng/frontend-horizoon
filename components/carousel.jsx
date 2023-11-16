@@ -144,6 +144,8 @@ export default function Carousel() {
                                                     height={300}
                                                     src={course.thumbnail}
                                                     alt={course.title}
+                                                    priority={true}
+                                                    loading="eager"
                                                     className="w-full object-cover opacity-70 hover:opacity-100"
                                                 />
                                             </button>

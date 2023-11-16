@@ -10,12 +10,17 @@ export default function PaginationButton({
     ariaLabel,
 }) {
     return (
-        <Link key={keyValue} scroll={false} href={`/?page=${page}`}>
+        <Link
+            key={keyValue}
+            scroll={false}
+            href={`/?page=${page}`}
+            aria-label={ariaLabel || `Go to page ${page}`}
+        >
             <Button
                 variant="outline"
                 disabled={disabled}
                 className={`p-1 xs:h-8 xs:w-8 xs:rounded-md xs:text-xs sm:h-10 sm:w-10 lg:rounded-lg`}
-                aria-label={ariaLabel}
+                aria-label={ariaLabel || `Go to page ${page}`}
             >
                 {label}
             </Button>

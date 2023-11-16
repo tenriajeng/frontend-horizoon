@@ -1,8 +1,7 @@
-import React from 'react';
-import { Button } from './ui/button';
 import { ChevronRight } from 'lucide-react';
 import { ChevronLeftIcon } from '@radix-ui/react-icons';
-import Link from 'next/link';
+import DotsButton from './dots-button';
+import PaginationButton from './pagination-button';
 
 const Pagination = ({ pagination }) => {
     const {
@@ -16,118 +15,59 @@ const Pagination = ({ pagination }) => {
 
     const renderPageNumbers = () => {
         const pageNumbers = [];
-        const maxButtons = 5; // Adjust this to control the number of visible buttons
+        const maxButtons = 3;
 
         let startPage = Math.max(current_page - Math.floor(maxButtons / 2), 1);
         let endPage = Math.min(startPage + maxButtons - 1, total_pages);
 
-        // Adjust startPage if the current_page is near the end of the total_pages
         if (endPage - startPage < maxButtons - 1) {
             startPage = Math.max(endPage - maxButtons + 1, 1);
+        }
+
+        if (startPage > 1) {
+            pageNumbers.unshift(<DotsButton key={'dots-left'} label="..." />);
         }
 
         for (let i = startPage; i <= endPage; i++) {
             if (i !== total_pages) {
                 pageNumbers.push(
-                    <Link key={i} scroll={false} href={`/?page=${i}`}>
-                        <Button
-                            disabled={current_page === i}
-                            variant="outline"
-                            className={`${
-                                current_page === i &&
-                                'bg-gray-300 dark:bg-slate-600'
-                            } p-1 xs:h-8 xs:w-8 xs:rounded-md xs:text-xs sm:h-10 sm:w-10 lg:rounded-lg`}
-                        >
-                            {i}
-                        </Button>
-                    </Link>,
+                    <PaginationButton
+                        key={i}
+                        label={i}
+                        page={i}
+                        disabled={current_page === i}
+                    />,
                 );
             }
         }
 
-        if (startPage > 1) {
-            pageNumbers.unshift(
-                <Button
-                    key="dots-start"
-                    variant="outline"
-                    disabled
-                    className="p-1 xs:h-8 xs:w-8 xs:rounded-md xs:text-xs sm:h-10 sm:w-10 lg:rounded-lg"
-                >
-                    ...
-                </Button>,
-            );
-        }
-
         if (endPage < total_pages) {
-            pageNumbers.push(
-                <Button
-                    key="dots-end"
-                    variant="outline"
-                    disabled
-                    className="p-1 xs:h-8 xs:w-8 xs:rounded-md xs:text-xs sm:h-10 sm:w-10 lg:rounded-lg"
-                >
-                    ...
-                </Button>,
-            );
+            pageNumbers.push(<DotsButton key={'dots-right'} label="..." />);
         }
 
         return pageNumbers;
     };
 
     return (
-        <div className="mx-2 my-8 flex items-center justify-center">
+        <div className="mx-2 flex items-center justify-center xs:my-4 md:my-8">
             <nav className="flex space-x-1" aria-label="Pagination">
-                <Link
-                    scroll={false}
-                    href={`/?page=${previous_page}`}
-                    aria-label="Previous Page"
-                >
-                    <Button
-                        variant="outline"
-                        disabled={!has_previous}
-                        className="p-1 xs:h-8 xs:w-8 xs:rounded-md xs:text-xs sm:h-10 sm:w-10 lg:rounded-lg"
-                        aria-label="Previous"
-                    >
-                        <ChevronLeftIcon className="h-4 w-4" />
-                    </Button>
-                </Link>
+                <PaginationButton
+                    key={'previous_page'}
+                    label={<ChevronLeftIcon className="h-4 w-4" />}
+                    page={previous_page}
+                    disabled={!has_previous}
+                />
                 {current_page > 3 && (
-                    <Link key={1} scroll={false} href={`/?page=1`}>
-                        <Button
-                            variant="outline"
-                            disabled={!has_next}
-                            className="p-1 xs:h-8 xs:w-8 xs:rounded-md xs:text-xs sm:h-10 sm:w-10 lg:rounded-lg"
-                        >
-                            1
-                        </Button>
-                    </Link>
+                    <PaginationButton key={1} label={1} page={1} />
                 )}
-
                 {renderPageNumbers()}
-
-                <Link scroll={false} href={`/?page=${total_pages}`}>
-                    <Button
-                        variant="outline"
-                        disabled={!has_next}
-                        className="p-1 xs:h-8 xs:w-8 xs:rounded-md xs:text-xs sm:h-10 sm:w-10 lg:rounded-lg"
-                    >
-                        {total_pages}
-                    </Button>
-                </Link>
-                <Link
-                    scroll={false}
-                    href={`/?page=${next_page}`}
-                    aria-label="Next Page"
-                >
-                    <Button
-                        variant="outline"
-                        disabled={!has_next}
-                        className="p-1 xs:h-8 xs:w-8 xs:rounded-md xs:text-xs sm:h-10 sm:w-10 lg:rounded-lg"
-                        aria-label="Next"
-                    >
-                        <ChevronRight className="h-4 w-4" />
-                    </Button>
-                </Link>
+                <PaginationButton label={total_pages} page={total_pages} />
+                <PaginationButton
+                    key={'next_page'}
+                    label={<ChevronRight className="h-4 w-4" />}
+                    page={next_page}
+                    disabled={!has_next}
+                />
             </nav>
         </div>
     );

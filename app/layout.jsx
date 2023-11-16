@@ -4,6 +4,7 @@ import { Providers } from '@/redux/providers';
 import Navigation from '@/components/navigation';
 import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/components/theme-provider';
+import { Analytics } from '@vercel/analytics/react';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -32,6 +33,7 @@ const RootLayout = ({ children }) => {
                     >
                         <Navigation />
                         {children}
+                        <Analytics />
                         <Toaster />
                     </ThemeProvider>
                 </Providers>

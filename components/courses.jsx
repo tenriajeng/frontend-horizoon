@@ -31,7 +31,7 @@ const Courses = () => {
 
     return (
         <>
-            <div className="mb-10 grid grid-cols-1 xs:mx-2 xs:mt-2 xs:grid-cols-2 xs:gap-2 sm:grid-cols-2 md:mx-0 md:grid-cols-3 md:gap-5 lg:grid-cols-4">
+            <div className="grid grid-cols-1 xs:mx-2 xs:mb-5 xs:mt-2 xs:grid-cols-2 xs:gap-2 sm:grid-cols-2 md:mx-0 md:mb-10 md:grid-cols-3 md:gap-5 lg:grid-cols-4">
                 {!isLoading ? (
                     courses.data.map((item, index) => (
                         <CoursesCard key={index} course={item} />

@@ -7,6 +7,11 @@ import { ChevronRightIcon } from '@radix-ui/react-icons';
 import Image from 'next/image';
 import Link from 'next/link';
 
+export const metadata = {
+    title: 'Horizoon Course',
+    description: 'Horizoon',
+};
+
 export default async function Page({ params }) {
     // await new Promise((resolve) => setTimeout(resolve, 2000));
     const { slug } = params;

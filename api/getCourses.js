@@ -10,8 +10,6 @@ export default async function getCourses(page, perPage = 20) {
             headers.Authorization = `Bearer ${token}`;
         }
 
-        headers['Accept-Encoding'] = 'gzip';
-
         const data = await fetchAPI(
             `api/courses?per_page=${perPage}&page=${page}`,
             {

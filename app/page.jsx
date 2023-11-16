@@ -1,8 +1,9 @@
-import Carousel from '@/components/carousel';
 import CourseCategories from '@/components/course-categories';
 import Courses from '@/components/courses';
 import LoadingCoursesCard from '@/components/loading/courses-card';
 import { Suspense } from 'react';
+import dynamic from 'next/dynamic';
+const Carousel = dynamic(() => import('@/components/carousel'));
 
 export default async function Home() {
     return (

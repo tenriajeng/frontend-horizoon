@@ -66,7 +66,7 @@ export default function Carousel() {
                                             <p className="line-clamp-4 leading-7 dark:text-gray-200  xs:text-sm md:text-base md:leading-8">
                                                 {course.meta_description}
                                             </p>
-                                            <div className="mt-4 xs:hidden">
+                                            <div className="mt-4 xs:hidden md:block">
                                                 <Badge
                                                     variant="secondary"
                                                     className="mb-2 me-2 px-2 py-1 text-xs font-normal"

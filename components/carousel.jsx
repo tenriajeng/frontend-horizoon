@@ -41,7 +41,7 @@ export default function Carousel() {
         <section>
             <div className="">
                 <Swiper
-                    loop={true}
+                    loop={false}
                     spaceBetween={10}
                     navigation={false}
                     thumbs={{
@@ -56,17 +56,17 @@ export default function Carousel() {
                     {!isLoading &&
                         courses.data.map((course, index) => (
                             <SwiperSlide key={index} className="relative">
-                                <div className="absolute left-0 top-0 h-full w-full bg-gradient-to-r from-black via-transparent to-transparent opacity-100"></div>
+                                <div className="absolute left-0 top-0 h-full w-full bg-gradient-to-r from-black to-transparent opacity-100 md:via-transparent"></div>
                                 <div className="absolute z-10 flex h-full transform items-center text-left text-white">
-                                    <div className="container mx-6 w-6/12">
+                                    <div className="lg:container xs:mx-2 xs:w-full  lg:mx-6 lg:w-6/12">
                                         <div>
-                                            <h1 className="pb-4 font-semibold leading-8 xs:text-xl lg:text-3xl">
+                                            <h1 className="pb-4 font-semibold leading-8 xs:text-lg lg:text-3xl">
                                                 {course.title}
                                             </h1>
-                                            <p className="line-clamp-4 leading-7 dark:text-gray-200 xs:text-sm md:text-base md:leading-8">
+                                            <p className="line-clamp-4 leading-7 dark:text-gray-200  xs:text-sm md:text-base md:leading-8">
                                                 {course.meta_description}
                                             </p>
-                                            <div className="mt-4">
+                                            <div className="mt-4 xs:hidden">
                                                 <Badge
                                                     variant="secondary"
                                                     className="mb-2 me-2 px-2 py-1 text-xs font-normal"
@@ -92,13 +92,13 @@ export default function Carousel() {
                                                     <Link
                                                         href={`/courses/${course.slug}/learn/1`}
                                                     >
-                                                        <Button className="me-2 rounded-full">
+                                                        <Button className="me-2 rounded-full xs:h-8 xs:text-xs">
                                                             Learn Now
                                                             <ChevronRightIcon className="ml-2 h-4 w-4" />
                                                         </Button>
                                                     </Link>
                                                 ) : (
-                                                    <Button className="me-2 rounded-full">
+                                                    <Button className="me-2 rounded-full xs:h-8 xs:text-xs">
                                                         Learn Now
                                                         <ChevronRightIcon className="ml-2 h-4 w-4" />
                                                     </Button>
@@ -113,6 +113,8 @@ export default function Carousel() {
                                         height={1000}
                                         src={course.thumbnail}
                                         alt={course.title}
+                                        priority={true}
+                                        loading="eager"
                                         className="block h-full w-full object-cover"
                                     />
                                 </div>
@@ -123,7 +125,7 @@ export default function Carousel() {
                 <div className="lg:container xs:px-2 lg:px-11">
                     <Swiper
                         onSwiper={setThumbsSwiper}
-                        loop={true}
+                        loop={false}
                         spaceBetween={12}
                         slidesPerView={4}
                         freeMode={true}

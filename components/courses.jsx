@@ -14,10 +14,11 @@ const Courses = () => {
     const [courses, setCourses] = useState([]);
 
     useEffect(() => {
+        setIsLoading(true);
+
         const fetchCartData = async () => {
             try {
                 const coursesData = await getCourses(page);
-                console.log(coursesData, 'coursesData');
                 setCourses(coursesData);
             } catch (error) {
                 console.error('Error while fetching carts:', error);

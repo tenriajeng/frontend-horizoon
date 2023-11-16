@@ -2,14 +2,12 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
-
 import getCourses from '@/api/getCourses';
 import { Badge } from './ui/badge';
 import Link from 'next/link';
@@ -122,7 +120,7 @@ export default function Carousel() {
                         ))}
                 </Swiper>
 
-                <div className="absolute bottom-0 right-0 z-20 flex h-full w-full items-end justify-end text-white xs:pb-4 lg:pb-10">
+                <div className="absolute bottom-0 right-0 z-10 flex h-full w-full items-end justify-end text-white xs:pb-4 lg:pb-10">
                     <div className="flex justify-end md:container xs:mx-2 xs:w-full md:mx-0 lg:px-6">
                         <div className="mt-4 xs:mx-0 xs:w-2/3 xs:p-0 md:mx-2 md:w-1/2  lg:mx-2 lg:w-1/3 lg:pr-3">
                             <Swiper

@@ -8,7 +8,6 @@ export async function fetchAPI(endpoint, options = {}) {
             headers: {
                 ...options?.headers,
                 Accept: 'application/json',
-                'Accept-Encoding': 'gzip',
             },
         };
 

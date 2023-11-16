@@ -82,7 +82,7 @@ export default async function Page({ params }) {
             <div className="mt-6 md:container">
                 <div className="grid xs:grid-cols-1 md:grid-cols-1 lg:grid-cols-5">
                     <div className="md:col-span-3 lg:col-span-3">
-                        <div className="mx-2 flex justify-between xs:px-2 md:px-0">
+                        <div className="flex justify-between xs:px-2 md:mx-2 md:px-0">
                             <h2 className="text-xl font-semibold">
                                 Lessons in This Class
                             </h2>

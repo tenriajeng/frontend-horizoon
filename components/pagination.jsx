@@ -84,7 +84,6 @@ const Pagination = ({ pagination }) => {
                 >
                     <Button
                         variant="outline"
-                        href="#"
                         disabled={!has_previous}
                         className="p-1 xs:h-8 xs:w-8 xs:rounded-md xs:text-xs sm:h-10 sm:w-10 lg:rounded-lg"
                         aria-label="Previous"
@@ -96,7 +95,6 @@ const Pagination = ({ pagination }) => {
                     <Link key={1} scroll={false} href={`/?page=1`}>
                         <Button
                             variant="outline"
-                            href="#"
                             disabled={!has_next}
                             className="p-1 xs:h-8 xs:w-8 xs:rounded-md xs:text-xs sm:h-10 sm:w-10 lg:rounded-lg"
                         >
@@ -110,7 +108,6 @@ const Pagination = ({ pagination }) => {
                 <Link scroll={false} href={`/?page=${total_pages}`}>
                     <Button
                         variant="outline"
-                        href="#"
                         disabled={!has_next}
                         className="p-1 xs:h-8 xs:w-8 xs:rounded-md xs:text-xs sm:h-10 sm:w-10 lg:rounded-lg"
                     >
@@ -124,7 +121,6 @@ const Pagination = ({ pagination }) => {
                 >
                     <Button
                         variant="outline"
-                        href="#"
                         disabled={!has_next}
                         className="p-1 xs:h-8 xs:w-8 xs:rounded-md xs:text-xs sm:h-10 sm:w-10 lg:rounded-lg"
                         aria-label="Next"

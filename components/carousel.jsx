@@ -52,10 +52,10 @@ export default function Carousel() {
                         courses.data.map((course, index) => (
                             <SwiperSlide key={index} className="relative">
                                 <div className="absolute left-0 top-0 h-full w-full bg-gradient-to-br from-black to-transparent opacity-80 md:via-transparent"></div>
-                                <div className="absolute z-10 flex h-full transform items-center text-left text-white md:pb-10">
+                                <div className="bg-blue absolute z-10 flex h-full transform items-center text-left text-white xs:pb-0 md:pb-10">
                                     <div className="md:container">
                                         <div className="mt-4 xs:mx-2 xs:p-0 md:mx-2 md:w-8/12 lg:mx-2 lg:w-7/12 lg:px-3">
-                                            <h1 className="pb-4 font-semibold leading-8 xs:text-lg lg:text-3xl">
+                                            <h1 className="pb-4 font-semibold leading-8 xs:text-lg lg:text-4xl">
                                                 {course.title}
                                             </h1>
                                             <p className="line-clamp-4 leading-7 dark:text-gray-200  xs:text-sm md:text-base md:leading-8">

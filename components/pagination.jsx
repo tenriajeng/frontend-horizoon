@@ -56,6 +56,7 @@ const Pagination = ({ pagination }) => {
                     label={<ChevronLeftIcon className="h-4 w-4" />}
                     page={previous_page}
                     disabled={!has_previous}
+                    aria-label="Go to previous page"
                 />
                 {current_page > 3 && (
                     <PaginationButton key={1} label={1} page={1} />
@@ -67,6 +68,7 @@ const Pagination = ({ pagination }) => {
                     label={<ChevronRight className="h-4 w-4" />}
                     page={next_page}
                     disabled={!has_next}
+                    aria-label="Go to next page"
                 />
             </nav>
         </div>

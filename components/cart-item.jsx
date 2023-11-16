@@ -28,9 +28,9 @@ export default function CartItem({ cart }) {
                     </div>
                     <div className="flex flex-col justify-center xs:col-span-2 sm:col-span-2 md:col-span-2 lg:col-span-3">
                         <Link href={`courses/${cart.course.slug}`}>
-                            <h4 className="font-semibold hover:underline xs:line-clamp-1 xs:text-base sm:text-lg md:line-clamp-1 lg:text-xl">
+                            <h1 className="font-semibold hover:underline xs:line-clamp-1 xs:text-base sm:text-lg md:line-clamp-1 lg:text-xl">
                                 {cart.course.title}
-                            </h4>
+                            </h1>
                         </Link>
 
                         <div className="mt-2 line-clamp-1">
@@ -55,7 +55,7 @@ export default function CartItem({ cart }) {
                 <div className="absolute right-0 top-0">
                     <TooltipProvider>
                         <Tooltip>
-                            <TooltipTrigger>
+                            <TooltipTrigger aria-label="Delete">
                                 <Cross2Icon className="h-4 w-4 text-slate-400 hover:text-white" />
                             </TooltipTrigger>
                             <TooltipContent>

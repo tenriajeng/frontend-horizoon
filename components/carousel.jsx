@@ -16,6 +16,12 @@ export default function Carousel() {
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     const [courses, setCourses] = useState([]);
 
+    const [activeSlide, setActiveSlide] = useState(0);
+
+    const handleSlideChange = (swiper) => {
+        setActiveSlide(swiper.activeIndex);
+    };
+
     useEffect(() => {
         setIsLoading(true);
 
@@ -47,11 +53,12 @@ export default function Carousel() {
                     }}
                     modules={[FreeMode, Navigation, Thumbs]}
                     className="w-full xs:aspect-video lg:h-[600px]"
+                    onSlideChange={(swiper) => handleSlideChange(swiper)}
                 >
                     {!isLoading &&
                         courses.data.map((course, index) => (
                             <SwiperSlide key={index} className="relative">
-                                <div className="absolute left-0 top-0 h-full w-full bg-gradient-to-br from-black to-transparent opacity-80 md:via-transparent"></div>
+                                <div className="absolute left-0 top-0 h-full w-full bg-gradient-to-r from-black to-transparent opacity-80 md:via-transparent"></div>
                                 <div className="bg-blue absolute z-10 flex h-full transform items-center text-left text-white xs:pb-0 md:pb-10">
                                     <div className="md:container">
                                         <div className="mt-4 xs:mx-2 xs:p-0 md:mx-2 md:w-8/12 lg:mx-2 lg:w-7/12 lg:px-3">
@@ -141,7 +148,11 @@ export default function Carousel() {
                                                     alt={course.title}
                                                     priority={true}
                                                     loading="eager"
-                                                    className="w-full object-cover opacity-70 hover:opacity-100"
+                                                    className={`w-full object-cover ${
+                                                        activeSlide == index
+                                                            ? 'opacity-100'
+                                                            : 'opacity-50'
+                                                    }  hover:opacity-100`}
                                                 />
                                             </button>
                                         </SwiperSlide>

@@ -12,7 +12,6 @@ function CoursesCard({ course }) {
                 alt={course.title}
                 priority
                 loading="eager"
-                quality={50}
                 className="aspect-video rounded-lg border object-cover "
             />
             <div className="mt-2">

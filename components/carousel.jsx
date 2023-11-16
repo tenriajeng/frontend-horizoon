@@ -140,8 +140,8 @@ export default function Carousel() {
                                         <SwiperSlide key={index}>
                                             <button className="flex items-center justify-center overflow-hidden border border-white/50 duration-300 ease-in-out xs:rounded-md lg:rounded-lg">
                                                 <Image
-                                                    width={1000}
-                                                    height={1000}
+                                                    width={300}
+                                                    height={300}
                                                     src={course.thumbnail}
                                                     alt={course.title}
                                                     className="w-full object-cover opacity-70 hover:opacity-100"

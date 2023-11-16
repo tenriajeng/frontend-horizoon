@@ -16,11 +16,6 @@ export const metadata = {
 const RootLayout = ({ children }) => {
     return (
         <html lang="en" className="dark" suppressHydrationWarning={true}>
-            <head>
-                <title>{metadata.title}</title>
-                <meta name="description" content={metadata.description} />
-            </head>
-
             <body
                 className={`${inter.className} bg-gradient-to-r from-white via-white to-white dark:bg-gradient-to-r dark:via-slate-950 dark:to-black dark:xs:from-slate-950 dark:sm:from-slate-900`}
             >

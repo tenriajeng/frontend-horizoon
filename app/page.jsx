@@ -8,7 +8,6 @@ export default async function Home() {
     return (
         <>
             <Carousel />
-
             <div className="md:container">
                 <CourseCategories />
                 <div className="mt-4 xs:mx-0 xs:p-0 md:mx-2 ">

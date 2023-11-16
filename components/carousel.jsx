@@ -10,9 +10,6 @@ import Link from 'next/link';
 import { Button } from './ui/button';
 import { ChevronRightIcon } from '@radix-ui/react-icons';
 import 'swiper/css';
-import 'swiper/css/free-mode';
-import 'swiper/css/navigation';
-import 'swiper/css/thumbs';
 
 export default function Carousel() {
     const [isLoading, setIsLoading] = useState(true);

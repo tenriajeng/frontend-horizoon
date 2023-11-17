@@ -1,7 +1,7 @@
 import { getAuthToken } from '@/lib/authUtils';
 import { fetchAPI, handleFetchError } from '.';
 
-export default async function getCourses(page, perPage = 8) {
+export default async function getCourses(page, perPage = 12) {
     try {
         const token = await getAuthToken();
         let headers = {};

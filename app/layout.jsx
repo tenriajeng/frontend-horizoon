@@ -5,6 +5,7 @@ import Navigation from '@/components/navigation';
 import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Analytics } from '@vercel/analytics/react';
+import { HandleAuthentication } from '@/utils/authUtils';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -26,6 +27,7 @@ const RootLayout = ({ children }) => {
                         enableSystem
                         disableTransitionOnChange
                     >
+                        <HandleAuthentication />
                         <Navigation />
                         {children}
                         <Analytics />

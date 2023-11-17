@@ -1,5 +1,3 @@
-'use client';
-
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -15,23 +13,12 @@ import {
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
-import { useDispatch } from 'react-redux';
-import { logout } from '@/redux/features/authSclice';
 import { generateInitials } from '@/lib/initialsUtils';
-import { removeAuthToken } from '@/lib/authUtils';
-import { usePathname, useRouter } from 'next/navigation';
+import { fetchUser } from '@/api/auth/user';
+import Logout from './logout';
 
-export function AccountDropdown({ user }) {
-    const dispatch = useDispatch();
-    const router = useRouter();
-    const currentPath = usePathname();
-
-    const handleLogout = async () => {
-        await removeAuthToken();
-        dispatch(logout());
-        router.replace(currentPath);
-        // redirect to home page after logout if the path is protected
-    };
+export async function AccountDropdown() {
+    const user = await fetchUser();
 
     return (
         <DropdownMenu>
@@ -47,7 +34,7 @@ export function AccountDropdown({ user }) {
                         alt="@shadcn"
                     />
                     <AvatarFallback>
-                        {generateInitials(user?.name)}
+                        {generateInitials(user.data.name)}
                     </AvatarFallback>
                 </Avatar>
             </DropdownMenuTrigger>
@@ -98,10 +85,7 @@ export function AccountDropdown({ user }) {
                 <DropdownMenuItem>Support</DropdownMenuItem>
                 <DropdownMenuItem disabled>API</DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={handleLogout}>
-                    Log out
-                    <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-                </DropdownMenuItem>
+                <Logout />
             </DropdownMenuContent>
         </DropdownMenu>
     );

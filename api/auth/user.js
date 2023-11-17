@@ -1,19 +1,20 @@
+'use server';
+
+import { getAuthToken } from '@/lib/authUtils';
 import { fetchAPI, handleFetchError } from '..';
 
 export const fetchUser = async () => {
     try {
+        const token = await getAuthToken();
+
         const response = await fetchAPI('api/revalidate-token', {
             method: 'POST',
             headers: {
-                Authorization: `Bearer 18|zSlg8OyueVB89ZVVFLRjii8TitKQ8MoSLWrbQquL`,
+                Authorization: `Bearer ${token}`,
             },
         });
 
-        if (response.ok) {
-            return response;
-        } else {
-            handleFetchError('Failed to fetch user data');
-        }
+        return response;
     } catch (error) {
         handleFetchError('An error occurred while fetching user data', error);
     }

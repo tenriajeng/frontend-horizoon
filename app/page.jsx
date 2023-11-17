@@ -1,4 +1,3 @@
-import Carousel from '@/components/carousel';
 import CourseCategories from '@/components/course-categories';
 import Courses from '@/components/courses';
 import LoadingCourseCategories from '@/components/loading/course-categories';
@@ -8,9 +7,6 @@ import { Suspense } from 'react';
 export default async function Home() {
     return (
         <>
-            <Suspense fallback={<h1>Loading ...</h1>}>
-                <Carousel />
-            </Suspense>
             <div className="md:container">
                 <Suspense fallback={<LoadingCourseCategories />}>
                     <CourseCategories />

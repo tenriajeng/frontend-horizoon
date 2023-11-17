@@ -1,24 +1,14 @@
-'use client';
-
 import { AccountDropdown } from './account-dropdown';
 import { DialogLogin } from './dialog-login';
 import { Button } from './ui/button';
 import { DialogSignUp } from './dialog-sign-up';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { fetchUserData } from '@/redux/action/authAction';
+import { getAuthToken } from '@/lib/authUtils';
 
-export function Account() {
-    const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-    const user = useSelector((state) => state.auth.user);
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(fetchUserData());
-    }, [dispatch]);
+export async function Account() {
+    const isAuthenticated = await getAuthToken();
 
     return isAuthenticated ? (
-        <AccountDropdown user={user} />
+        <AccountDropdown />
     ) : (
         <>
             <DialogLogin>

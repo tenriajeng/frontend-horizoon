@@ -1,3 +1,4 @@
+'use client';
 import { Button } from './ui/button';
 import {
     DropdownMenu,
@@ -17,7 +18,7 @@ function ModeToggle() {
                 <Button
                     variant="outline"
                     size="icon"
-                    className="h-9 w-9 focus:outline-none xs:hidden md:flex"
+                    className="h-9 w-9 bg-white/50 focus:outline-none dark:bg-slate-950 xs:hidden md:flex"
                 >
                     <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
                     <MoonIcon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />

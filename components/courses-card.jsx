@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import AddToCartButton from './add-to-cart-button';
+import ButtonCardCourse from './button-card-course';
 
 function CoursesCard({ course }) {
     return (
@@ -28,7 +28,7 @@ function CoursesCard({ course }) {
                     {` ${Number(course.price).toLocaleString('id-ID', {
                         maximumFractionDigits: 3,
                     })}`}
-                    <AddToCartButton course={course} />
+                    <ButtonCardCourse course={course} />
                 </div>
             </div>
         </div>

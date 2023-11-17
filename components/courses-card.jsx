@@ -14,7 +14,6 @@ const CoursesCard = React.memo(({ course }) => {
                     alt={course.title}
                     loading="eager"
                     priority
-                    quality={10}
                     className="aspect-video rounded-lg border object-cover"
                 />
             </Link>

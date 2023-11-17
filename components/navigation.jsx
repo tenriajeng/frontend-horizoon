@@ -16,7 +16,7 @@ function Navigation() {
                 </Link>
 
                 <div className="flex items-center space-x-2 md:mx-2">
-                    <button className="ransition-colors relative inline-flex h-9 w-full items-center justify-start rounded-lg border  border-input bg-white/50 px-4 py-2 text-sm font-medium  text-gray-600 hover:bg-white hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 dark:bg-slate-900 xs:hidden sm:pr-12 md:inline-flex md:w-40 lg:w-64">
+                    <button className="ransition-colors relative inline-flex h-9 w-full items-center justify-start rounded-lg border  border-input bg-white/50 px-4 py-2 text-sm font-medium  text-gray-600 hover:bg-white hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 dark:bg-slate-900 dark:text-gray-100 xs:hidden sm:pr-12 md:inline-flex md:w-40 lg:w-64">
                         <span className="hidden lg:inline-flex">
                             Find Your Courses...
                         </span>

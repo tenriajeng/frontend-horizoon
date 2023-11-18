@@ -6,6 +6,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Analytics } from '@vercel/analytics/react';
 import { HandleAuthentication } from '@/utils/authUtils';
+import { getAuthToken } from '@/lib/authUtils';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -15,6 +16,7 @@ export const metadata = {
 };
 
 const RootLayout = ({ children }) => {
+    const token = getAuthToken();
     return (
         <html lang="en" className="dark" suppressHydrationWarning={true}>
             <body
@@ -27,7 +29,7 @@ const RootLayout = ({ children }) => {
                         enableSystem
                         disableTransitionOnChange
                     >
-                        <HandleAuthentication />
+                        <HandleAuthentication token={token} />
                         <Navigation />
                         {children}
                         <Analytics />

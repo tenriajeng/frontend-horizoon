@@ -1,21 +1,15 @@
 'use client';
 
-import { getAuthToken } from '@/lib/authUtils';
 import { login } from '@/redux/features/authSclice';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-export const HandleAuthentication = () => {
+export const HandleAuthentication = (token) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        const fetchToken = async () => {
-            const token = await getAuthToken();
-            if (token) {
-                dispatch(login());
-            }
-        };
-
-        fetchToken();
-    }, [dispatch]);
+        if (token) {
+            dispatch(login());
+        }
+    }, [dispatch, token]);
 };

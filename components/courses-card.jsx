@@ -31,7 +31,7 @@ const CoursesCard = React.memo(({ course }) => {
                     {` ${Number(course.price).toLocaleString('id-ID', {
                         maximumFractionDigits: 3,
                     })}`}
-                    <ButtonCardCourse course={course} />
+                    {/* <ButtonCardCourse course={course} /> */}
                 </div>
             </div>
         </div>

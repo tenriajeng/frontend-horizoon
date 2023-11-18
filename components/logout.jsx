@@ -12,7 +12,7 @@ export default function Logout() {
     const currentPath = usePathname();
 
     const handleLogout = async () => {
-        // await removeAuthToken();
+        await removeAuthToken();
         dispatch(logout());
         router.replace(currentPath);
     };

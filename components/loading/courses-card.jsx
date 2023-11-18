@@ -1,9 +1,7 @@
 import React from 'react';
 import { Skeleton } from '../ui/skeleton';
 
-export default function LoadingCoursesCard() {
-    const numCards = 8;
-
+export default function LoadingCoursesCard({ numCards = 8 }) {
     const cards = Array.from({ length: numCards }, (_, index) => (
         <div key={index}>
             <div>

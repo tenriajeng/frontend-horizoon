@@ -6,6 +6,8 @@ import Image from 'next/image';
 import { ChevronRightIcon } from '@radix-ui/react-icons';
 
 export default async function HomeCourses() {
+    // await new Promise((resolve) => setTimeout(resolve, 10000));
+
     const categories = await getCategories();
 
     return (

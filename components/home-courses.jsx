@@ -3,6 +3,7 @@ import React from 'react';
 import CoursesCard from './courses-card';
 import Link from 'next/link';
 import Image from 'next/image';
+import { ChevronRightIcon } from '@radix-ui/react-icons';
 
 export default async function HomeCourses() {
     const categories = await getCategories();
@@ -11,12 +12,18 @@ export default async function HomeCourses() {
         <>
             {categories.data.map((category, index) => (
                 <div key={index} className="mb-4">
-                    <div className="flex">
-                        <h2 className="text-xl font-semibold">
+                    <div className="flex items-end justify-between">
+                        <h2 className="text-2xl font-semibold">
                             {category.name}
                         </h2>
+                        <Link href={'/'}>
+                            <span className="flex items-center justify-between text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white">
+                                View All
+                                <ChevronRightIcon className="h-4 w-4" />
+                            </span>
+                        </Link>
                     </div>
-                    <div className="scrollbar-hidden no-scrollbar flex  snap-x overflow-x-scroll">
+                    <div className="scrollbar-hidden no-scrollbar flex snap-x overflow-x-scroll">
                         <div className="flex flex-nowrap">
                             {category.courses.map((course, i) => (
                                 <div

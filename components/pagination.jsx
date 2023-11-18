@@ -58,7 +58,7 @@ const Pagination = ({ pagination }) => {
                     disabled={!has_previous}
                     ariaLabel="Go to previous page"
                 />
-                {current_page > 3 && (
+                {current_page > 2 && (
                     <PaginationButton key={1} label={1} page={1} />
                 )}
                 {renderPageNumbers()}

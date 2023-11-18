@@ -13,9 +13,9 @@ export default async function HomeCourses() {
     return (
         <>
             {categories.data.map((category, index) => (
-                <div key={index} className="mb-4">
+                <div key={index} className="mb-6">
                     <div className="flex items-end justify-between">
-                        <h2 className="text-xl font-semibold xs:text-lg xs:font-medium">
+                        <h2 className="font-semibold xs:text-lg xs:font-medium md:text-xl">
                             {category.name}
                         </h2>
 
@@ -30,10 +30,7 @@ export default async function HomeCourses() {
                     <div className="scrollbar-hidden no-scrollbar flex snap-x snap-mandatory overflow-x-scroll">
                         <div className="flex flex-nowrap">
                             {category.courses.map((course, i) => (
-                                <div
-                                    key={i}
-                                    className="inline-block snap-center pr-3"
-                                >
+                                <div key={i} className="snap-center pr-3">
                                     <div className="h-auto max-w-xs overflow-hidden transition-shadow duration-300 ease-in-out xs:w-56 md:w-72 ">
                                         <CoursesCard key={i} course={course} />
                                     </div>

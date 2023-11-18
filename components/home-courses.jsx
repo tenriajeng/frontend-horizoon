@@ -13,7 +13,7 @@ export default async function HomeCourses() {
             {categories.data.map((category, index) => (
                 <div key={index} className="mb-4">
                     <div className="flex items-end justify-between">
-                        <h2 className="text-2xl font-semibold">
+                        <h2 className="text-xl font-semibold">
                             {category.name}
                         </h2>
 

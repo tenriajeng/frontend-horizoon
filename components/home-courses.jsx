@@ -16,12 +16,11 @@ export default async function HomeCourses() {
                         <h2 className="text-2xl font-semibold">
                             {category.name}
                         </h2>
-                        <Link href={'/'}>
-                            <span className="flex items-center justify-between text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white">
-                                View All
-                                <ChevronRightIcon className="h-4 w-4" />
-                            </span>
-                        </Link>
+
+                        <span className="flex items-center justify-between text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white">
+                            View All
+                            <ChevronRightIcon className="h-4 w-4" />
+                        </span>
                     </div>
                     <div className="scrollbar-hidden no-scrollbar flex snap-x overflow-x-scroll">
                         <div className="flex flex-nowrap">

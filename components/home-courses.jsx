@@ -21,7 +21,7 @@ export default async function HomeCourses() {
 
                         <Link
                             href={'/'}
-                            className="flex items-center justify-between text-sm text-gray-500 hover:text-black dark:text-gray-200 dark:hover:text-white"
+                            className="flex items-center justify-between text-sm dark:text-white"
                         >
                             View All
                             <ChevronRightIcon className="h-4 w-4" />

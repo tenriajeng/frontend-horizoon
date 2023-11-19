@@ -2,7 +2,6 @@ import getCategories from '@/api/category/getCategory';
 
 const CourseCategories = async () => {
     // await new Promise((resolve) => setTimeout(resolve, 2000));
-
     const categories = await getCategories();
 
     return (

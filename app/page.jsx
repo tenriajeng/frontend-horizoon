@@ -1,3 +1,4 @@
+import getCategories from '@/api/category/getCategory';
 import CourseCategories from '@/components/course-categories';
 import HomeCourses from '@/components/home-courses';
 import LoadingCourseCategories from '@/components/loading/course-categories';

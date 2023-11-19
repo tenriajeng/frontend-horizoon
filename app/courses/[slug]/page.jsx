@@ -1,11 +1,13 @@
 import getCourseDetail from '@/api/getCourseDetail';
 import CourseDescription from '@/components/course-description';
+import LoadingMaterials from '@/components/loading/materials';
 import Materials from '@/components/materials';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ChevronRightIcon } from '@radix-ui/react-icons';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Suspense } from 'react';
 
 export default async function Page({ params }) {
     // await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -82,7 +84,7 @@ export default async function Page({ params }) {
             <div className="mt-6 md:container">
                 <div className="grid xs:grid-cols-1 md:grid-cols-1 lg:grid-cols-5">
                     <div className="md:col-span-3 lg:col-span-3">
-                        <div className="flex justify-between xs:px-2 md:mx-2 md:px-0">
+                        <div className="mb-2 flex justify-between xs:px-2 md:mx-2 md:px-0">
                             <h2 className="text-xl font-semibold">
                                 Lessons in This Class
                             </h2>
@@ -91,10 +93,14 @@ export default async function Page({ params }) {
                             </span>
                         </div>
                         <div className="xs:px-2 md:mx-2 md:px-0">
-                            <Materials
-                                course={course}
-                                materials={course.materials}
-                            />
+                            <Suspense
+                                fallback={<LoadingMaterials numbers={10} />}
+                            >
+                                <Materials
+                                    course={course}
+                                    materials={course.materials}
+                                />
+                            </Suspense>
                         </div>
                         <div className="mt-4 xs:px-2 md:mx-2 md:px-0">
                             <CourseDescription body={course.body} />

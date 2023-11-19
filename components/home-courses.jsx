@@ -13,15 +13,15 @@ export default async function HomeCourses() {
     return (
         <>
             {categories.data.map((category, index) => (
-                <div key={index} className="mb-6">
-                    <div className="flex items-end justify-between">
+                <div key={index} className="mb-8">
+                    <div className="mb-2 flex items-end justify-between">
                         <h2 className="font-semibold xs:text-lg xs:font-medium md:text-xl">
                             {category.name}
                         </h2>
 
                         <Link
                             href={'/'}
-                            className="flex items-center justify-between text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white xs:text-sm md:text-base"
+                            className="flex items-center justify-between text-sm text-gray-500 hover:text-black dark:text-gray-200 dark:hover:text-white"
                         >
                             View All
                             <ChevronRightIcon className="h-4 w-4" />

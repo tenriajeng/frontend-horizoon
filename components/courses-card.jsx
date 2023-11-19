@@ -27,10 +27,12 @@ const CoursesCard = React.memo(({ course }) => {
                     {course.meta_description}
                 </span>
                 <div className="mt-1 flex items-center justify-between text-sm">
-                    IDR{' '}
-                    {` ${Number(course.price).toLocaleString('id-ID', {
-                        maximumFractionDigits: 3,
-                    })}`}
+                    {course.price < 1
+                        ? 'Free'
+                        : `IDR ${Number(course.price).toLocaleString('id-ID', {
+                              maximumFractionDigits: 3,
+                          })}`}
+
                     {/* <ButtonCardCourse course={course} /> */}
                 </div>
             </div>

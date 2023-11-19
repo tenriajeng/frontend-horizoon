@@ -27,7 +27,7 @@ export default function Carousel() {
 
         const fetchCartData = async () => {
             try {
-                const coursesData = await getCourses(20, 4);
+                const coursesData = await getCourses(3, 8);
                 setCourses(coursesData);
             } catch (error) {
                 console.error('Error while fetching carts:', error);

@@ -31,7 +31,7 @@ export default async function HomeCourses() {
                         <div className="flex flex-nowrap">
                             {category.courses.map((course, i) => (
                                 <div key={i} className="snap-center pr-3">
-                                    <div className="h-auto max-w-xs overflow-hidden transition-shadow duration-300 ease-in-out xs:w-56 md:w-72 ">
+                                    <div className="h-auto max-w-xs overflow-hidden transition-shadow duration-300 ease-in-out xs:w-40 md:w-72 ">
                                         <CoursesCard key={i} course={course} />
                                     </div>
                                 </div>

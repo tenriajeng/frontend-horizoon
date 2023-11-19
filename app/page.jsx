@@ -19,7 +19,7 @@ export default async function Home() {
                         <CourseCategories />
                     </Suspense>
                 </div> */}
-                <div className="mt-4 xs:mx-0 xs:p-0 md:mx-2 ">
+                <div className="mt-4 xs:mx-0 xs:p-0 md:mx-2">
                     <div className="xs:mx-2 xs:mb-5 xs:mt-2 md:mx-0 md:mb-10">
                         <Suspense fallback={<LoadingHomeCourses />}>
                             <HomeCourses />

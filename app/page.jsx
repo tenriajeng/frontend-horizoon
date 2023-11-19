@@ -1,5 +1,5 @@
-import getCategories from '@/api/category/getCategory';
 import CourseCategories from '@/components/course-categories';
+import Hero from '@/components/hero';
 import HomeCourses from '@/components/home-courses';
 import LoadingCourseCategories from '@/components/loading/course-categories';
 import LoadingHomeCourses from '@/components/loading/home-courses';
@@ -9,11 +9,16 @@ export default async function Home() {
     return (
         <>
             <div className="md:container">
-                <div className="grid grid-cols-1 xs:mx-2 xs:mt-2 xs:grid-cols-4 xs:gap-2 sm:grid-cols-4 md:mt-4 md:grid-cols-4 md:gap-5 lg:grid-cols-8">
+                <div className="mt-4 xs:mx-0 xs:p-0 md:mx-2 ">
+                    <div className="xs:mx-2 xs:mb-5 xs:mt-2 md:mx-0 md:mb-10">
+                        <Hero />
+                    </div>
+                </div>
+                {/* <div className="grid grid-cols-1 xs:mx-2 xs:mt-2 xs:grid-cols-4 xs:gap-2 sm:grid-cols-4 md:mt-4 md:grid-cols-4 md:gap-5 lg:grid-cols-8">
                     <Suspense fallback={<LoadingCourseCategories />}>
                         <CourseCategories />
                     </Suspense>
-                </div>
+                </div> */}
                 <div className="mt-4 xs:mx-0 xs:p-0 md:mx-2 ">
                     <div className="xs:mx-2 xs:mb-5 xs:mt-2 md:mx-0 md:mb-10">
                         <Suspense fallback={<LoadingHomeCourses />}>

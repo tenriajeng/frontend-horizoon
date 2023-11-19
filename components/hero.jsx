@@ -6,7 +6,7 @@ export default function Hero() {
     return (
         <div className="relative isolate">
             <div
-                className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+                className="absolute inset-x-0 -top-40 -z-10 transform-gpu blur-3xl sm:-top-80"
                 aria-hidden="true"
             >
                 <div
@@ -49,7 +49,7 @@ export default function Hero() {
                             <Button
                                 size="lg"
                                 variant="outline"
-                                className=" bg-indigo-600 text-white hover:bg-indigo-500"
+                                className="bg-indigo-600 text-sm font-semibold text-white outline-indigo-600  hover:bg-indigo-500 hover:text-white"
                             >
                                 Get started
                             </Button>

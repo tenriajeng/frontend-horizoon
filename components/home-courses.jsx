@@ -21,14 +21,14 @@ export default async function HomeCourses() {
 
                         <Link
                             href={'/'}
-                            className="flex items-center justify-between text-sm dark:text-white"
+                            className="z-10 flex items-center justify-between text-sm dark:text-white"
                         >
                             View All
                             <ChevronRightIcon className="h-4 w-4" />
                         </Link>
                     </div>
-                    <div className="scrollbar-hidden no-scrollbar flex snap-x snap-mandatory overflow-x-scroll">
-                        <div className="flex flex-nowrap">
+                    <div className="scrollbar-hidden  no-scrollbar flex snap-x snap-mandatory overflow-x-scroll">
+                        <div className="z-10 flex flex-nowrap">
                             {category.courses.map((course, i) => (
                                 <div key={i} className="snap-center pr-3">
                                     <div className="h-auto max-w-xs overflow-hidden transition-shadow duration-300 ease-in-out xs:w-40 md:w-72 ">

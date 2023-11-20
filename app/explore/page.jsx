@@ -3,8 +3,10 @@
 import getCategories from '@/api/category/getCategory';
 import Courses from '@/components/courses';
 import Filter from '@/components/filter';
+import LoadingCoursesCard from '@/components/loading/courses-card';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { MixerVerticalIcon } from '@radix-ui/react-icons';
+import { Suspense } from 'react';
 
 export default async function Page({ searchParams }) {
     const categories = await getCategories(6);
@@ -22,15 +24,14 @@ export default async function Page({ searchParams }) {
                                 Explore
                             </h2>
                             <Sheet>
-                                <SheetTrigger>
-                                    <span
-                                        size="sm"
-                                        className="mb-2 inline-flex h-9 items-center justify-center whitespace-nowrap rounded-lg border border-input bg-background px-3 text-sm font-medium ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 lg:hidden"
-                                        variant="outline"
-                                    >
-                                        <MixerVerticalIcon className="mr-2" />
-                                        Filters
-                                    </span>
+                                <SheetTrigger
+                                    aria-label="Open filters"
+                                    size="sm"
+                                    className="mb-2 inline-flex h-9 items-center justify-center whitespace-nowrap rounded-lg border border-input bg-background px-3 text-sm font-medium ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 lg:hidden"
+                                    variant="outline"
+                                >
+                                    <MixerVerticalIcon className="mr-2" />
+                                    Filters
                                 </SheetTrigger>
                                 <SheetContent
                                     side={'left'}
@@ -41,7 +42,9 @@ export default async function Page({ searchParams }) {
                             </Sheet>
                         </div>
                         <div className="grid xs:grid-cols-2 xs:gap-2 md:grid-cols-3 md:gap-3 lg:grid-cols-4">
-                            <Courses page={searchParams.page} />
+                            <Suspense fallback={<LoadingCoursesCard />}>
+                                <Courses page={searchParams.page} />
+                            </Suspense>
                         </div>
                     </div>
                 </div>

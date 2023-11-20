@@ -36,13 +36,13 @@ export default function Hero() {
                 </div>
                 <div className="text-start">
                     <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
-                        Elevate Your Expertise with Horizoon
+                        Expand Your Horizoon
                     </h1>
                     <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
-                        Immerse yourself in meticulously crafted courses
-                        designed to facilitate profound learning experiences.
-                        Allow Horizoon to serve as your conduit to unparalleled
-                        knowledge and mastery.
+                        Revamped education, sustainability, swift platform
+                        performance, and user-centric design. Our courses
+                        showcase meticulously curated content, guaranteeing an
+                        exceptional learning journey.
                     </p>
                     <div className="mt-10 flex items-center gap-x-2">
                         <Link href="#">

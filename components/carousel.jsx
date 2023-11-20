@@ -92,7 +92,7 @@ export default function Carousel() {
                                             <div className="mb-0 xs:mb-6 xs:mt-4 md:mt-4">
                                                 {course.is_purchased ? (
                                                     <Link
-                                                        href={`/courses/${course.slug}/learn/1`}
+                                                        href={`/explore/${course.slug}/learn/1`}
                                                     >
                                                         <Button className="me-2 rounded-full xs:h-8 xs:text-xs md:h-10 md:text-base">
                                                             Learn Now

@@ -15,7 +15,7 @@ export default async function Materials({ course, materials, active }) {
                 <div key={material.id}>
                     {material.is_free || isPurchase ? (
                         <Link
-                            href={`/courses/${course.slug}/learn/${index + 1}`}
+                            href={`/explore/${course.slug}/learn/${index + 1}`}
                             className={`${buttonStyle} ${
                                 active == index + 1
                                     ? 'dark:bg-white dark:text-gray-950'

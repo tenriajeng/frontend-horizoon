@@ -49,7 +49,7 @@ export default async function Page({ params }) {
                         <div className="sticky top-20 h-screen max-h-screen overflow-auto pr-1 xs:hidden lg:inline">
                             <div className="mb-2 rounded-lg border p-2">
                                 <Link
-                                    href={`/courses/${material.data.course.slug}`}
+                                    href={`/explore/${material.data.course.slug}`}
                                 >
                                     <h2 className="text-lg font-semibold hover:underline">
                                         {material.data.course.title}

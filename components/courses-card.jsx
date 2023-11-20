@@ -6,7 +6,7 @@ import ButtonCardCourse from './button-card-course';
 const CoursesCard = React.memo(({ course }) => {
     return (
         <div>
-            <Link href={`/courses/${course.slug}`}>
+            <Link href={`/explore/${course.slug}`}>
                 <Image
                     width={400}
                     height={400}
@@ -18,7 +18,7 @@ const CoursesCard = React.memo(({ course }) => {
                 />
             </Link>
             <div className="mt-2">
-                <Link href={`/courses/${course.slug}`}>
+                <Link href={`/explore/${course.slug}`}>
                     <h2 className="line-clamp-1 text-base font-semibold hover:underline xs:text-sm">
                         {course.title}
                     </h2>

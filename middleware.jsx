@@ -13,5 +13,5 @@ export async function middleware(request) {
 
 // protected path
 export const config = {
-    matcher: ['/courses/:slug/learn/:number*', '/carts'],
+    matcher: ['/explore/:slug/learn/:number*', '/carts'],
 };

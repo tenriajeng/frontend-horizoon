@@ -19,7 +19,7 @@ const ButtonCardCourse = ({ course }) => {
     return (
         <>
             {isAuthenticated && isPurchase && (
-                <Link href={`/courses/${course.slug}/learn/1`}>
+                <Link href={`/explore/${course.slug}/learn/1`}>
                     <Button
                         variant="outline"
                         size="xs"

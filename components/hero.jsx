@@ -54,7 +54,7 @@ export default function Hero() {
                                 Get started
                             </Button>
                         </Link>
-                        <Link href="#">
+                        <Link href={'explore'}>
                             <Button
                                 size="lg"
                                 variant="outline"

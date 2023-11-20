@@ -13,7 +13,7 @@ export default function PaginationButton({
         <Link
             key={keyValue}
             scroll={false}
-            href={disabled ? `/#` : `/?page=${page}`}
+            href={disabled ? `/#` : `/explore?page=${page}`}
             aria-label={ariaLabel || `Go to page ${page}`}
         >
             <Button

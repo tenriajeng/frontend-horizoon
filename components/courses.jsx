@@ -4,7 +4,7 @@ import Pagination from './pagination';
 
 const Courses = async ({ page }) => {
     const courses = await getCourses(page);
-    console.log(page);
+
     return (
         <>
             {courses.data.map((item, index) => (

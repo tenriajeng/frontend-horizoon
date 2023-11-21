@@ -52,8 +52,8 @@ function FormLogin() {
                 title: 'Login Failed',
                 description: `Oops! 😞 It seems we couldn't find your account. Please double-check your credentials or contact our support team for assistance.`,
             });
+            setIsLoading(false);
         }
-        setIsLoading(false);
     }
 
     return (

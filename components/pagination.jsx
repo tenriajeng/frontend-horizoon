@@ -49,7 +49,7 @@ const Pagination = ({ pagination }) => {
     };
 
     return (
-        <div className="mx-2 flex items-center justify-center xs:col-span-2 xs:my-4 md:col-span-3 md:my-8 lg:col-span-4">
+        <div className="mx-2 flex items-center justify-center xs:col-span-2 xs:my-4 md:col-span-3 md:my-8 lg:col-span-3">
             <nav className="flex space-x-1" aria-label="Pagination">
                 <PaginationButton
                     key={'previous_page'}

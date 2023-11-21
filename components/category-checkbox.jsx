@@ -1,6 +1,11 @@
 'use client';
 
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import {
+    redirect,
+    usePathname,
+    useRouter,
+    useSearchParams,
+} from 'next/navigation';
 import { Checkbox } from './ui/checkbox';
 import { useState } from 'react';
 
@@ -13,7 +18,14 @@ export default function CategoryCheckbox({ category }) {
         categories.includes(category.slug),
     );
 
+    const logExecutionTime = (start, message) => {
+        const end = performance.now();
+        console.log(`${message}: ${end - start} milliseconds`);
+    };
+
     const handleCheckboxChange = () => {
+        const start = performance.now(); // Record the start time
+
         const params = new URLSearchParams(searchParams);
 
         if (isChecked) {
@@ -24,6 +36,8 @@ export default function CategoryCheckbox({ category }) {
 
         router.push(pathname + '?' + params.toString());
         setIsChecked(!isChecked);
+
+        logExecutionTime(start, 'handleCheckboxChange'); // Log the execution time
     };
 
     return (

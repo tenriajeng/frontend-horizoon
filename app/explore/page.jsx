@@ -4,6 +4,8 @@ import getCategories from '@/api/category/getCategory';
 import Courses from '@/components/courses';
 import Filter from '@/components/filter';
 import LoadingCoursesCard from '@/components/loading/courses-card';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { MixerVerticalIcon } from '@radix-ui/react-icons';
 import { Suspense, useEffect, useState } from 'react';
 
 export default function Page() {
@@ -34,7 +36,7 @@ export default function Page() {
                                     <h2 className="mb-2 text-xl font-medium">
                                         Explore
                                     </h2>
-                                    {/* <Sheet>
+                                    <Sheet>
                                         <SheetTrigger
                                             aria-label="Open filters"
                                             size="sm"
@@ -49,7 +51,7 @@ export default function Page() {
                                         >
                                             <Filter categories={categories} />
                                         </SheetContent>
-                                    </Sheet> */}
+                                    </Sheet>
                                 </div>
                                 <div className="grid xs:grid-cols-2 xs:gap-2 md:grid-cols-3 md:gap-3 lg:grid-cols-3">
                                     <Suspense fallback={<LoadingCoursesCard />}>

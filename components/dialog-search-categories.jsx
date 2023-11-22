@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     Dialog,
     DialogContent,
@@ -13,7 +13,18 @@ import CategoryCheckbox from './category-checkbox';
 import { Button } from './ui/button';
 
 export default function DialogSearchCategories({ children }) {
-    // const categories = await getCategories(1000);
+    const [categories, setCategories] = useState();
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        setLoading(true);
+        async function fetchData() {
+            const response = await getCategories(1000);
+            setCategories(response);
+            setLoading(false);
+        }
+        fetchData();
+    }, []);
     return (
         <Dialog>
             <DialogTrigger asChild>{children}</DialogTrigger>
@@ -26,11 +37,12 @@ export default function DialogSearchCategories({ children }) {
                     className="mt-5 h-12 w-full rounded-md border p-2 text-base"
                 /> */}
 
-                {/* <div className="grid overflow-y-scroll xs:grid-cols-2 md:grid-cols-3  lg:grid-cols-4">
-                    {categories.data.map((category, index) => (
-                        <CategoryCheckbox key={index} category={category} />
-                    ))}
-                </div> */}
+                <div className="grid overflow-y-scroll xs:grid-cols-2 md:grid-cols-3  lg:grid-cols-4">
+                    {!loading &&
+                        categories.data.map((category, index) => (
+                            <CategoryCheckbox key={index} category={category} />
+                        ))}
+                </div>
                 <DialogFooter className="sm:justify-end">
                     <Button type="button" size="sm" variant="secondary">
                         Apply

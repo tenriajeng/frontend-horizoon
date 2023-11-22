@@ -16,7 +16,6 @@ const Courses = () => {
         setLoading(true);
         async function fetchData() {
             const response = await getCourses(page);
-            console.log(page);
             setCourses(response);
             setLoading(false);
         }

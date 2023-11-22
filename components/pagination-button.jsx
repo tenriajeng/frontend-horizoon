@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 
 export default function PaginationButton({
     setPage,
-
     keyValue,
     label,
     page,
@@ -17,7 +16,13 @@ export default function PaginationButton({
     const handleClick = () => {
         if (!disabled) {
             setPage(page);
-            router.push(`/explore?page=${page}`);
+            const currentParams = new URLSearchParams(window.location.search);
+            currentParams.set('page', page);
+            const newUrl = `${
+                window.location.pathname
+            }?${currentParams.toString()}`;
+
+            router.push(newUrl);
         }
     };
 

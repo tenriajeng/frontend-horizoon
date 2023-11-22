@@ -20,6 +20,8 @@ export default function CategoryCheckbox({ category }) {
 
     const handleCheckboxChange = () => {
         const params = new URLSearchParams(searchParams);
+        const page = params.get('page');
+        params.delete('page', page);
 
         if (isChecked) {
             params.delete('c', category.slug);

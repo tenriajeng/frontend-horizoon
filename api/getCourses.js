@@ -11,7 +11,10 @@ export default async function getCourses(page, perPage = 12, categories) {
         }
 
         const categoriesQueryString = categories
-            .map((category) => `c=${category}`)
+            .map(
+                (category, index) =>
+                    `c[${index}]=${encodeURIComponent(category)}`,
+            )
             .join('&');
 
         const data = await fetchAPI(

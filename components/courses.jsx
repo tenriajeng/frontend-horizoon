@@ -1,17 +1,17 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import getCourses from '@/api/getCourses';
 import CoursesCard from './courses-card';
 import Pagination from './pagination';
 import LoadingCoursesCard from './loading/courses-card';
+import { Badge } from './ui/badge';
 
 const Courses = () => {
-    const [courses, setCourses] = useState();
+    const [courses, setCourses] = useState(null);
     const [loading, setLoading] = useState(true);
     const [page, setPage] = useState(1);
     const [categories, setCategories] = useState([]);
-
     const searchParams = useSearchParams();
 
     useEffect(() => {
@@ -28,7 +28,12 @@ const Courses = () => {
         };
 
         fetchCourses();
-    }, [page, categories, searchParams]);
+    }, [page, categories]);
+
+    useEffect(() => {
+        setPage(parseInt(searchParams.get('page')) || 1);
+        setCategories(searchParams.getAll('c') || []);
+    }, [searchParams]);
 
     return (
         <>

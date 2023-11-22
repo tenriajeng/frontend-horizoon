@@ -1,11 +1,20 @@
-'use client';
-
 import Courses from '@/components/courses';
 import Filter from '@/components/filter';
+import { Badge } from '@/components/ui/badge';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { MixerVerticalIcon } from '@radix-ui/react-icons';
 
-export default function Page() {
+export default function Page({ searchParams }) {
+    const categories = Array.isArray(searchParams.c)
+        ? searchParams.c
+        : [searchParams.c];
+
+    function formatCategory(category) {
+        return category
+            .replace(/-/g, ' ')
+            .replace(/\b\w/g, (char) => char.toUpperCase());
+    }
+
     return (
         <>
             <div className="relative md:container">
@@ -16,9 +25,9 @@ export default function Page() {
                         </div>
                         <div className="xs:col-span-2 md:col-span-4 lg:col-span-3">
                             <div className="flex items-center justify-between">
-                                <h2 className="mb-2 text-xl font-medium">
+                                <h1 className="mb-2 text-xl font-medium">
                                     Explore
-                                </h2>
+                                </h1>
                                 <Sheet>
                                     <SheetTrigger
                                         aria-label="Open filters"
@@ -35,6 +44,20 @@ export default function Page() {
                                         <Filter />
                                     </SheetContent>
                                 </Sheet>
+                            </div>
+                            <div className="flex flex-wrap">
+                                {categories.map(
+                                    (category, index) =>
+                                        category && (
+                                            <Badge
+                                                variant={'secondary'}
+                                                key={index}
+                                                className="mb-2 mr-1"
+                                            >
+                                                {formatCategory(category)}
+                                            </Badge>
+                                        ),
+                                )}
                             </div>
                             <div className="grid xs:grid-cols-2 xs:gap-2 md:grid-cols-3 md:gap-3 lg:grid-cols-3">
                                 <Courses />

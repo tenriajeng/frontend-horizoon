@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import ButtonCardCourse from './button-card-course';
+import { Badge } from './ui/badge';
 
 const CoursesCard = React.memo(({ course }) => {
     return (
@@ -26,6 +27,11 @@ const CoursesCard = React.memo(({ course }) => {
                 <span className="mt-1 line-clamp-2 text-gray-600 dark:text-gray-400 xs:text-xs sm:text-sm">
                     {course.meta_description}
                 </span>
+                {course.categories.map((category, index) => (
+                    <Badge key={index} variant="secondary">
+                        {category.name}
+                    </Badge>
+                ))}
                 <div className="mt-1 flex items-center justify-between text-sm">
                     {course.price < 1
                         ? 'Free'

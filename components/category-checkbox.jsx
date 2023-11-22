@@ -36,16 +36,18 @@ export default function CategoryCheckbox({ category }) {
 
         router.push(pathname + '?' + params.toString());
         setIsChecked(!isChecked);
-        redirect(pathname + '?' + params.toString());
         logExecutionTime(start, 'handleCheckboxChange'); // Log the execution time
+        redirect(pathname + '?' + params.toString());
     };
 
     return (
         <div>
-            <div className="my-3 flex items-center space-x-2">
+            <div
+                className="my-3 flex items-center space-x-2"
+                onClick={handleCheckboxChange}
+            >
                 <Checkbox
                     checked={isChecked}
-                    onCheckedChange={handleCheckboxChange}
                     aria-label={category.slug}
                     name="category"
                     value={category.slug}

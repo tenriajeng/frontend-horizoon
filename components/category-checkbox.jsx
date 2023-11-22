@@ -36,7 +36,7 @@ export default function CategoryCheckbox({ category }) {
 
         router.push(pathname + '?' + params.toString());
         setIsChecked(!isChecked);
-
+        redirect(pathname + '?' + params.toString());
         logExecutionTime(start, 'handleCheckboxChange'); // Log the execution time
     };
 

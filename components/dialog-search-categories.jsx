@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import {
     Dialog,
@@ -11,8 +12,8 @@ import getCategories from '@/api/category/getCategory';
 import CategoryCheckbox from './category-checkbox';
 import { Button } from './ui/button';
 
-export default async function DialogSearchCategories({ children }) {
-    const categories = await getCategories(1000);
+export default function DialogSearchCategories({ children }) {
+    // const categories = await getCategories(1000);
     return (
         <Dialog>
             <DialogTrigger asChild>{children}</DialogTrigger>
@@ -25,11 +26,11 @@ export default async function DialogSearchCategories({ children }) {
                     className="mt-5 h-12 w-full rounded-md border p-2 text-base"
                 /> */}
 
-                <div className="grid overflow-y-scroll xs:grid-cols-2 md:grid-cols-3  lg:grid-cols-4">
+                {/* <div className="grid overflow-y-scroll xs:grid-cols-2 md:grid-cols-3  lg:grid-cols-4">
                     {categories.data.map((category, index) => (
                         <CategoryCheckbox key={index} category={category} />
                     ))}
-                </div>
+                </div> */}
                 <DialogFooter className="sm:justify-end">
                     <Button type="button" size="sm" variant="secondary">
                         Apply

@@ -18,11 +18,6 @@ export default function CategoryCheckbox({ category }) {
         categories.includes(category.slug),
     );
 
-    // const logExecutionTime = (start, message) => {
-    //     const end = performance.now();
-    //     console.log(`${message}: ${end - start} milliseconds`);
-    // };
-
     const handleCheckboxChange = () => {
         const params = new URLSearchParams(searchParams);
 
@@ -53,8 +48,8 @@ export default function CategoryCheckbox({ category }) {
                     id={`category-${category.slug}`}
                 />
                 <label
-                    htmlFor={`category-${category.slug}`}
-                    className="cursor-pointer text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 dark:text-gray-300"
+                    // htmlFor={`category-${category.slug}`}
+                    className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 dark:text-gray-300"
                 >
                     {category.name}
                 </label>

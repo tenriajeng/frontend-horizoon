@@ -1,32 +1,39 @@
 'use client';
-
+import React, { useEffect, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import getCourses from '@/api/getCourses';
 import CoursesCard from './courses-card';
 import Pagination from './pagination';
-import { useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
 import LoadingCoursesCard from './loading/courses-card';
 
 const Courses = () => {
     const [courses, setCourses] = useState();
     const [loading, setLoading] = useState(true);
+    const [page, setPage] = useState(1);
+    const [categories, setCategories] = useState([]);
+
     const searchParams = useSearchParams();
-    const [page, setPage] = useState(parseInt(searchParams.get('page')) || 1);
 
     useEffect(() => {
-        setLoading(true);
-        async function fetchData() {
-            const response = await getCourses(page);
-            setCourses(response);
-            setLoading(false);
-        }
-        fetchData();
-    }, [page]);
+        const fetchCourses = async () => {
+            setLoading(true);
+            try {
+                const response = await getCourses(page, 12, categories);
+                setCourses(response);
+            } catch (error) {
+                console.error('Error fetching courses:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchCourses();
+    }, [page, categories, searchParams]);
 
     return (
         <>
             {!loading ? (
-                courses.data.map((item, index) => (
+                courses?.data.map((item, index) => (
                     <CoursesCard key={index} course={item} />
                 ))
             ) : (
@@ -34,7 +41,10 @@ const Courses = () => {
             )}
 
             {!loading && (
-                <Pagination setPage={setPage} pagination={courses.pagination} />
+                <Pagination
+                    setPage={setPage}
+                    pagination={courses?.pagination}
+                />
             )}
         </>
     );

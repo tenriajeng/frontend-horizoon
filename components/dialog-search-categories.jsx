@@ -29,7 +29,7 @@ export default function DialogSearchCategories({ children }) {
     return (
         <Dialog>
             <DialogTrigger asChild>{children}</DialogTrigger>
-            <DialogContent className="h-[500px] sm:max-w-[1000px]">
+            <DialogContent className=" sm:max-w-[800px]">
                 <DialogHeader>
                     <DialogTitle>Categories</DialogTitle>
                 </DialogHeader>
@@ -38,12 +38,12 @@ export default function DialogSearchCategories({ children }) {
                     className="mt-5 h-12 w-full rounded-md border p-2 text-base"
                 /> */}
 
-                <div className="grid overflow-y-scroll xs:grid-cols-2 md:grid-cols-3  lg:grid-cols-4">
+                {/* <div className="grid gap-2 overflow-y-scroll xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                     {!loading &&
                         categories.data.map((category, index) => (
                             <CategoryCheckbox key={index} category={category} />
                         ))}
-                </div>
+                </div> */}
                 <DialogFooter className="sm:justify-end">
                     <Button type="button" size="sm" variant="secondary">
                         Apply

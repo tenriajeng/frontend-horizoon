@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { Separator } from './ui/separator';
-import { Checkbox } from './ui/checkbox';
 import { Button } from './ui/button';
 import { Label } from './ui/label';
 import { RadioGroup, RadioGroupItem } from './ui/radio-group';
@@ -86,7 +85,7 @@ export default function Filter({ categories }) {
                                 className="cursor-pointer text-sm dark:text-gray-300"
                                 htmlFor="200"
                             >
-                                {'200.000 >'}{' '}
+                                {'IDR 200.000 >'}{' '}
                             </Label>
                         </div>
                     </RadioGroup>

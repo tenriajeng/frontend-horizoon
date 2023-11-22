@@ -25,6 +25,7 @@ export default function DialogSearchCategories({ children }) {
         }
         fetchData();
     }, []);
+
     return (
         <Dialog>
             <DialogTrigger asChild>{children}</DialogTrigger>

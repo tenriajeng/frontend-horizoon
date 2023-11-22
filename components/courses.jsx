@@ -5,6 +5,7 @@ import CoursesCard from './courses-card';
 import Pagination from './pagination';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
+import LoadingCoursesCard from './loading/courses-card';
 
 const Courses = () => {
     const [courses, setCourses] = useState();
@@ -24,10 +25,13 @@ const Courses = () => {
 
     return (
         <>
-            {!loading &&
+            {!loading ? (
                 courses.data.map((item, index) => (
                     <CoursesCard key={index} course={item} />
-                ))}
+                ))
+            ) : (
+                <LoadingCoursesCard numCards={12} />
+            )}
 
             {!loading && (
                 <Pagination setPage={setPage} pagination={courses.pagination} />

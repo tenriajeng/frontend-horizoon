@@ -1,14 +1,29 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Separator } from './ui/separator';
 import { Button } from './ui/button';
 import { Label } from './ui/label';
 import { RadioGroup, RadioGroupItem } from './ui/radio-group';
 import DialogSearchCategories from './dialog-search-categories';
 import CategoryCheckbox from './category-checkbox';
+import getCategories from '@/api/category/getCategory';
+import LoadingCategoryCheckbox from './loading/category-checkbox';
 
-export default function Filter({ categories }) {
+export default function Filter() {
+    const [categories, setCategories] = useState();
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        setLoading(true);
+        async function fetchData() {
+            const response = await getCategories();
+            setCategories(response);
+            setLoading(false);
+        }
+        fetchData();
+    }, []);
+
     return (
         <>
             <h2 className="mb-2 text-lg font-medium">Filter</h2>
@@ -17,9 +32,13 @@ export default function Filter({ categories }) {
             <div>
                 <div className="w-full">
                     <h3 className="font-medium">Categories</h3>
-                    {categories.data.map((category, index) => (
-                        <CategoryCheckbox key={index} category={category} />
-                    ))}
+                    {!loading ? (
+                        categories.data.map((category, index) => (
+                            <CategoryCheckbox key={index} category={category} />
+                        ))
+                    ) : (
+                        <LoadingCategoryCheckbox />
+                    )}
 
                     <DialogSearchCategories>
                         <Button variant="link" className="px-0 py-0">

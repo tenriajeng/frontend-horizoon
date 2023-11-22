@@ -18,14 +18,12 @@ export default function CategoryCheckbox({ category }) {
         categories.includes(category.slug),
     );
 
-    const logExecutionTime = (start, message) => {
-        const end = performance.now();
-        console.log(`${message}: ${end - start} milliseconds`);
-    };
+    // const logExecutionTime = (start, message) => {
+    //     const end = performance.now();
+    //     console.log(`${message}: ${end - start} milliseconds`);
+    // };
 
     const handleCheckboxChange = () => {
-        const start = performance.now(); // Record the start time
-
         const params = new URLSearchParams(searchParams);
 
         if (isChecked) {
@@ -35,18 +33,17 @@ export default function CategoryCheckbox({ category }) {
         }
 
         router.push(pathname + '?' + params.toString());
+
         setIsChecked(!isChecked);
-        logExecutionTime(start, 'handleCheckboxChange'); // Log the execution time
+
         redirect(pathname + '?' + params.toString());
     };
 
     return (
         <div>
-            <div
-                className="my-3 flex items-center space-x-2"
-                onClick={handleCheckboxChange}
-            >
+            <div className="my-3 flex items-center space-x-2">
                 <Checkbox
+                    onClick={handleCheckboxChange}
                     checked={isChecked}
                     aria-label={category.slug}
                     name="category"

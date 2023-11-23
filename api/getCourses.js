@@ -22,7 +22,6 @@ export default async function getCourses(page, perPage = 12, categories) {
                 categoriesQueryString ? `&${categoriesQueryString}` : ''
             }`,
             {
-                cache: 'no-store',
                 headers,
             },
         );

@@ -1,6 +1,6 @@
 import Courses from '@/components/courses';
 import Filter from '@/components/filter';
-import { Badge } from '@/components/ui/badge';
+import SelectedFilter from '@/components/selected-filter';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { MixerVerticalIcon } from '@radix-ui/react-icons';
 
@@ -8,12 +8,6 @@ export default function Page({ searchParams }) {
     const categories = Array.isArray(searchParams.c)
         ? searchParams.c
         : [searchParams.c];
-
-    function formatCategory(category) {
-        return category
-            .replace(/-/g, ' ')
-            .replace(/\b\w/g, (char) => char.toUpperCase());
-    }
 
     return (
         <>
@@ -58,20 +52,9 @@ export default function Page({ searchParams }) {
                                 </Sheet>
                             </div>
                             <div className="flex flex-wrap">
-                                {categories.map(
-                                    (category, index) =>
-                                        category && (
-                                            <Badge
-                                                variant={'secondary'}
-                                                key={index}
-                                                className="mb-2 mr-1"
-                                            >
-                                                {formatCategory(category)}
-                                            </Badge>
-                                        ),
-                                )}
+                                <SelectedFilter categories={categories} />
                             </div>
-                            <div className="grid xs:grid-cols-2 xs:gap-2 md:grid-cols-3 md:gap-3 lg:grid-cols-3">
+                            <div className="grid xs:grid-cols-2 xs:gap-2 md:grid-cols-3 md:gap-4 lg:grid-cols-3">
                                 <Courses />
                             </div>
                         </div>

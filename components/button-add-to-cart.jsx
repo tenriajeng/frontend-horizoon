@@ -13,7 +13,6 @@ export default function ButtonAddToCart({ course }) {
 
     async function handleAddToCart() {
         const response = await addToCart({ slug: course.slug });
-        console.log(response);
         if (response.success) {
             dispatch(setCartCount(response.data.length));
             toast({

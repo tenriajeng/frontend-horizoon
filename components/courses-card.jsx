@@ -24,20 +24,25 @@ const CoursesCard = React.memo(({ course }) => {
                         {course.title}
                     </h2>
                 </Link>
-                <span className="mt-1 line-clamp-2 text-gray-600 dark:text-gray-400 xs:text-xs sm:text-sm">
+                <span className="mt-1 line-clamp-2 text-gray-600 dark:text-gray-300 xs:text-xs sm:text-sm">
                     {course.meta_description}
                 </span>
-                {course.categories.map((category, index) => (
+                {/* {course.categories.map((category, index) => (
                     <Badge key={index} variant="secondary">
                         {category.name}
                     </Badge>
-                ))}
+                ))} */}
                 <div className="mt-1 flex items-center justify-between text-sm">
-                    {course.price < 1
-                        ? 'Free'
-                        : `IDR ${Number(course.price).toLocaleString('id-ID', {
-                              maximumFractionDigits: 3,
-                          })}`}
+                    <span className="font-semibold">
+                        {course.price < 1
+                            ? 'Free'
+                            : `IDR ${Number(course.price).toLocaleString(
+                                  'id-ID',
+                                  {
+                                      maximumFractionDigits: 3,
+                                  },
+                              )}`}
+                    </span>
 
                     {/* <ButtonCardCourse course={course} /> */}
                 </div>

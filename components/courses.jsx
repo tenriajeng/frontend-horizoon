@@ -1,11 +1,11 @@
 'use client';
+
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import getCourses from '@/api/getCourses';
 import CoursesCard from './courses-card';
 import Pagination from './pagination';
 import LoadingCoursesCard from './loading/courses-card';
-import { Badge } from './ui/badge';
 
 const Courses = () => {
     const [courses, setCourses] = useState(null);

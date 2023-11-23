@@ -1,30 +1,36 @@
 'use client';
 
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
-import { Checkbox } from './ui/checkbox';
 import { useEffect, useState } from 'react';
 
 export default function CategoryCheckbox({ category }) {
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
-    const [isChecked, setIsChecked] = useState(
-        searchParams.getAll('c').includes(category.slug),
-    );
+    const [isChecked, setIsChecked] = useState(false);
 
     const handleCheckboxChange = () => {
         const params = new URLSearchParams(searchParams);
-        isChecked
-            ? params.delete('c', category.slug)
-            : params.append('c', category.slug);
-        router.push(`${pathname}?${params.toString()}`);
+
+        if (params.has('page')) {
+            params.delete('page');
+        }
+        if (isChecked) {
+            params.delete('c', category.slug);
+        } else {
+            params.append('c', category.slug);
+        }
+
+        router.push(pathname + '?' + params.toString());
+
         setIsChecked(!isChecked);
+
+        // redirect(pathname + '?' + params.toString());
     };
 
-    useEffect(
-        () => setIsChecked(searchParams.getAll('c').includes(category.slug)),
-        [searchParams, category.slug],
-    );
+    useEffect(() => {
+        setIsChecked(searchParams.getAll('c').includes(category.slug));
+    }, [searchParams, category.slug]);
 
     return (
         <div>

@@ -28,24 +28,17 @@ export default async function Page({ params }) {
                                     {course.meta_description}
                                 </p>
                                 <div className="mt-4">
-                                    <Badge
-                                        variant="secondary"
-                                        className="mb-2 me-2 px-2 py-1 text-xs font-normal"
-                                    >
-                                        Art Supplies and Tools
-                                    </Badge>
-                                    <Badge
-                                        variant="secondary"
-                                        className="mb-2 me-2 px-2 py-1 text-xs font-normal"
-                                    >
-                                        Techniques and Skills
-                                    </Badge>
-                                    <Badge
-                                        variant="secondary"
-                                        className="mb-2 me-2 px-2 py-1 text-xs font-normal"
-                                    >
-                                        Projects and Creative Expression
-                                    </Badge>
+                                    {course.categories.map(
+                                        (category, index) => (
+                                            <Badge
+                                                key={index}
+                                                variant="secondary"
+                                                className="mb-2 me-2 px-2 py-1 text-xs font-normal"
+                                            >
+                                                {category.name}
+                                            </Badge>
+                                        ),
+                                    )}
                                 </div>
                                 <div className="mb-0 xs:mb-6 xs:mt-4 md:mt-4">
                                     {course.is_purchased ? (

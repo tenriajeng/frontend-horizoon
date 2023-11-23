@@ -258,5 +258,6 @@ module.exports = {
         'prettier-plugin-tailwindcss',
         require('tailwindcss-animate'),
         require('@tailwindcss/typography'),
+        require('@tailwindcss/forms'),
     ],
 };

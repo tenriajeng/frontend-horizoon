@@ -15,17 +15,17 @@ export default function CategoryCheckbox({ category }) {
         if (params.has('page')) {
             params.delete('page');
         }
+
+        const categorySlugs = params.getAll('c');
+
         if (isChecked) {
             params.delete('c', category.slug);
-        } else {
+        } else if (!categorySlugs.includes(category.slug)) {
             params.append('c', category.slug);
         }
 
-        router.push(pathname + '?' + params.toString());
-
+        router.push(`${pathname}?${params.toString()}`);
         setIsChecked(!isChecked);
-
-        // redirect(pathname + '?' + params.toString());
     };
 
     useEffect(() => {

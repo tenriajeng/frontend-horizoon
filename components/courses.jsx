@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import getCourses from '@/api/getCourses';
 import CoursesCard from './courses-card';
@@ -11,21 +11,34 @@ const Courses = () => {
     const searchParams = useSearchParams();
     const [courses, setCourses] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [page, setPage] = useState(1);
-    const [categories, setCategories] = useState([]);
-    const [keyword, setKeyword] = useState('');
+    const [page, setPage] = useState(parseInt(searchParams.get('page')) || 1);
+    const [categories, setCategories] = useState(
+        searchParams.getAll('c') || [],
+    );
+    const [keyword, setKeyword] = useState(searchParams.get('q') || '');
+
+    const config = useMemo(
+        () => ({ page, categories, keyword }),
+        [page, categories, keyword],
+    );
+
+    useEffect(() => {
+        console.log('params');
+        setPage(parseInt(searchParams.get('page')) || 1);
+        setKeyword(searchParams.get('q'));
+        setCategories(searchParams.getAll('c') || []);
+    }, [searchParams]);
 
     useEffect(() => {
         const fetchCourses = async () => {
             setLoading(true);
             try {
                 const response = await getCourses(
-                    page,
+                    config.page,
                     12,
-                    categories,
-                    keyword,
+                    config.categories,
+                    config.keyword,
                 );
-
                 setCourses(response);
             } catch (error) {
                 console.error('Error fetching courses:', error);
@@ -35,17 +48,11 @@ const Courses = () => {
         };
 
         fetchCourses();
-    }, [page, categories, keyword]);
-
-    useEffect(() => {
-        setPage(parseInt(searchParams.get('page')) || 1);
-        setKeyword(searchParams.get('q'));
-        setCategories(searchParams.getAll('c') || []);
-    }, [searchParams]);
+    }, [config]);
 
     return (
         <>
-            {!loading && courses.success ? (
+            {!loading && courses?.success ? (
                 courses?.data.map((item, index) => (
                     <CoursesCard key={index} course={item} />
                 ))
@@ -60,7 +67,7 @@ const Courses = () => {
                 <LoadingCoursesCard numCards={12} />
             )}
 
-            {!loading && courses.success && (
+            {!loading && courses?.success && (
                 <Pagination pagination={courses?.pagination} />
             )}
         </>

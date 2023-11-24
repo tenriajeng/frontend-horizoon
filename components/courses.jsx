@@ -23,7 +23,6 @@ const Courses = () => {
     );
 
     useEffect(() => {
-        console.log('params');
         setPage(parseInt(searchParams.get('page')) || 1);
         setKeyword(searchParams.get('q'));
         setCategories(searchParams.getAll('c') || []);

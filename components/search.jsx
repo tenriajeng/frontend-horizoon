@@ -28,7 +28,7 @@ export default function Search() {
     }, []);
 
     useEffect(() => {
-        if (window.location.hash === '#search' || searchParams.get('q')) {
+        if (window.location.hash === '#search') {
             buttonRef.current.click();
         }
     }, [searchParams]);

@@ -3,7 +3,7 @@ import { ChevronLeftIcon } from '@radix-ui/react-icons';
 import DotsButton from './dots-button';
 import PaginationButton from './pagination-button';
 
-const Pagination = ({ setPage, pagination }) => {
+const Pagination = ({ pagination }) => {
     const {
         current_page,
         total_pages,
@@ -32,7 +32,6 @@ const Pagination = ({ setPage, pagination }) => {
             if (i !== total_pages) {
                 pageNumbers.push(
                     <PaginationButton
-                        setPage={setPage}
                         key={i}
                         label={i}
                         page={i}
@@ -53,7 +52,6 @@ const Pagination = ({ setPage, pagination }) => {
         <div className="mx-2 flex items-center justify-center xs:col-span-2 xs:my-4 md:col-span-3 md:my-8 lg:col-span-3">
             <nav className="flex space-x-1" aria-label="Pagination">
                 <PaginationButton
-                    setPage={setPage}
                     key={'previous_page'}
                     label={<ChevronLeftIcon className="h-4 w-4" />}
                     page={previous_page}
@@ -61,21 +59,11 @@ const Pagination = ({ setPage, pagination }) => {
                     ariaLabel="Go to previous page"
                 />
                 {current_page > 2 && (
-                    <PaginationButton
-                        setPage={setPage}
-                        key={1}
-                        label={1}
-                        page={1}
-                    />
+                    <PaginationButton key={1} label={1} page={1} />
                 )}
                 {renderPageNumbers()}
+                <PaginationButton label={total_pages} page={total_pages} />
                 <PaginationButton
-                    setPage={setPage}
-                    label={total_pages}
-                    page={total_pages}
-                />
-                <PaginationButton
-                    setPage={setPage}
                     key={'next_page'}
                     label={<ChevronRight className="h-4 w-4" />}
                     page={next_page}

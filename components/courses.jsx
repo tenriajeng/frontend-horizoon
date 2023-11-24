@@ -11,11 +11,9 @@ const Courses = () => {
     const searchParams = useSearchParams();
     const [courses, setCourses] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [page, setPage] = useState(parseInt(searchParams.get('page')) || 1);
-    const [categories, setCategories] = useState(
-        searchParams.getAll('c') || [],
-    );
-    const [keyword, setKeyword] = useState(searchParams.get('q') || '');
+    const [page, setPage] = useState(1);
+    const [categories, setCategories] = useState([]);
+    const [keyword, setKeyword] = useState('');
 
     useEffect(() => {
         const fetchCourses = async () => {
@@ -27,7 +25,6 @@ const Courses = () => {
                     categories,
                     keyword,
                 );
-                console.log(response);
 
                 setCourses(response);
             } catch (error) {
@@ -64,10 +61,7 @@ const Courses = () => {
             )}
 
             {!loading && courses.success && (
-                <Pagination
-                    setPage={setPage}
-                    pagination={courses?.pagination}
-                />
+                <Pagination pagination={courses?.pagination} />
             )}
         </>
     );

@@ -1,43 +1,49 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import getCourses from '@/api/getCourses';
 import CoursesCard from './courses-card';
 import Pagination from './pagination';
 import LoadingCoursesCard from './loading/courses-card';
+import { useCallback } from 'react';
 
 const Courses = () => {
     const searchParams = useSearchParams();
     const [courses, setCourses] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [page, setPage] = useState(parseInt(searchParams.get('page')) || 1);
-    const [categories, setCategories] = useState(
-        searchParams.getAll('c') || [],
-    );
-    const [keyword, setKeyword] = useState(searchParams.get('q') || '');
 
-    const config = useMemo(
-        () => ({ page, categories, keyword }),
-        [page, categories, keyword],
+    const getConfigFromSearchParams = useCallback(
+        () => ({
+            page: parseInt(searchParams.get('page')) || 1,
+            perPage: parseInt(12),
+            categories: searchParams.getAll('c') || [],
+            keyword: searchParams.get('q') || '',
+            minPrice: parseInt(searchParams.get('min-price')) || null,
+            maxPrice: parseInt(searchParams.get('max-price')) || null,
+        }),
+        [searchParams],
     );
+
+    const [config, setConfig] = useState(getConfigFromSearchParams());
 
     useEffect(() => {
-        setPage(parseInt(searchParams.get('page')) || 1);
-        setKeyword(searchParams.get('q'));
-        setCategories(searchParams.getAll('c') || []);
-    }, [searchParams]);
+        setConfig(getConfigFromSearchParams());
+    }, [getConfigFromSearchParams, searchParams]);
 
     useEffect(() => {
-        const fetchCourses = async () => {
+        const fetchCoursesData = async () => {
             setLoading(true);
             try {
                 const response = await getCourses(
                     config.page,
-                    12,
+                    config.perPage,
                     config.categories,
                     config.keyword,
+                    config.minPrice,
+                    config.maxPrice,
                 );
+
                 setCourses(response);
             } catch (error) {
                 console.error('Error fetching courses:', error);
@@ -46,7 +52,7 @@ const Courses = () => {
             }
         };
 
-        fetchCourses();
+        fetchCoursesData();
     }, [config]);
 
     return (

@@ -4,12 +4,7 @@ import SelectedFilter from '@/components/selected-filter';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { MixerVerticalIcon } from '@radix-ui/react-icons';
 
-export default function Page({ searchParams }) {
-    const categories = Array.isArray(searchParams.c)
-        ? searchParams.c
-        : [searchParams.c];
-    const querySearch = searchParams.q;
-
+export default function Page() {
     return (
         <>
             <div className="relative md:container">
@@ -53,10 +48,7 @@ export default function Page({ searchParams }) {
                                 </Sheet>
                             </div>
                             <div className="flex flex-wrap">
-                                <SelectedFilter
-                                    querySearch={querySearch}
-                                    categories={categories}
-                                />
+                                <SelectedFilter />
                             </div>
                             <div className="grid xs:grid-cols-2 xs:gap-2 md:grid-cols-3 md:gap-4 lg:grid-cols-3">
                                 <Courses />

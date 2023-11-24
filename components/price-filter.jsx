@@ -1,66 +1,63 @@
-import React from 'react';
-import { RadioGroup, RadioGroupItem } from './ui/radio-group';
-import { Label } from './ui/label';
+import { useCallback, useState, useEffect } from 'react';
+import { Input } from './ui/input';
+import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 
 export default function PriceFilter() {
+    const router = useRouter();
+    const searchParams = useSearchParams();
+    const pathname = usePathname();
+
+    const getQueryParam = useCallback(
+        (param) => searchParams.get(param) || '',
+        [searchParams],
+    );
+
+    const [minPrice, setMinPrice] = useState(getQueryParam('min-price'));
+    const [maxPrice, setMaxPrice] = useState(getQueryParam('max-price'));
+
+    useEffect(() => {
+        setMinPrice(getQueryParam('min-price'));
+        setMaxPrice(getQueryParam('max-price'));
+    }, [getQueryParam, searchParams]);
+
+    const updateUrlParams = useCallback(() => {
+        const params = new URLSearchParams(searchParams.toString());
+        console.log(minPrice);
+        minPrice
+            ? params.set('min-price', minPrice)
+            : params.delete('min-price');
+
+        maxPrice
+            ? params.set('max-price', maxPrice)
+            : params.delete('max-price');
+
+        const newUrl = `${pathname}?${params.toString()}`;
+        router.push(newUrl);
+    }, [searchParams, minPrice, maxPrice, pathname, router]);
+
+    const handleChange = (key) => (event) => {
+        if (key === 'min') setMinPrice(event.target.value);
+        if (key === 'max') setMaxPrice(event.target.value);
+    };
+
+    const handleBlur = useCallback(() => updateUrlParams(), [updateUrlParams]);
+
     return (
-        <RadioGroup defaultValue="comfortable">
-            <div className="mb-1 mt-3 flex items-center space-x-2">
-                <RadioGroupItem
-                    aria-label="free"
-                    className="h-5 w-5"
-                    value="free"
-                    id="free"
-                />
-                <Label
-                    className="cursor-pointer text-sm dark:text-gray-300"
-                    htmlFor="free"
-                >
-                    Free
-                </Label>
-            </div>
-            <div className="mb-1 flex items-center space-x-2">
-                <RadioGroupItem
-                    aria-label="0-100000"
-                    className="h-5 w-5"
-                    value="0-100000"
-                    id="0-100"
-                />
-                <Label
-                    className="cursor-pointer text-sm dark:text-gray-300"
-                    htmlFor="0-100"
-                >
-                    IDR 0 - 100.000
-                </Label>
-            </div>
-            <div className="mb-1 flex items-center space-x-2">
-                <RadioGroupItem
-                    aria-label="100000-200000"
-                    className="h-5 w-5"
-                    value="100000-200000"
-                    id="100-200"
-                />
-                <Label
-                    className="cursor-pointer text-sm dark:text-gray-300"
-                    htmlFor="100-200"
-                >
-                    IDR 100.000 - 200.000
-                </Label>
-            </div>
-            <div className="mb-1 flex items-center space-x-2">
-                <RadioGroupItem
-                    aria-label="200000"
-                    className="h-5 w-5"
-                    value="200000"
-                    id="200"
-                />
-                <Label
-                    className="cursor-pointer text-sm dark:text-gray-300"
-                    htmlFor="200"
-                >
-                    {'IDR 200.000 >'}{' '}
-                </Label>
-            </div>
-        </RadioGroup>
+        <div className="mt-2 xs:w-full lg:w-10/12">
+            <Input
+                placeholder="Min"
+                value={minPrice}
+                className="my-2 h-9 rounded-md xs:dark:bg-slate-950 dark:lg:bg-slate-900"
+                onBlur={handleBlur}
+                onChange={handleChange('min')}
+            />
+            <Input
+                placeholder="Max"
+                value={maxPrice}
+                className="my-2 h-9 rounded-md xs:dark:bg-slate-950 dark:lg:bg-slate-900"
+                onBlur={handleBlur}
+                onChange={handleChange('max')}
+            />
+        </div>
     );
 }

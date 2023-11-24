@@ -1,34 +1,50 @@
 import { getAuthToken } from '@/lib/authUtils';
 import { fetchAPI, handleFetchError } from '.';
 
+const buildCategoriesQueryString = (categories) =>
+    categories
+        .map((category, index) => `c[${index}]=${encodeURIComponent(category)}`)
+        .join('&');
+
+const buildUrl = (page, perPage, categories, keyword, minPrice, maxPrice) => {
+    const categoriesQueryString = buildCategoriesQueryString(categories);
+
+    const params = new URLSearchParams({
+        per_page: perPage,
+        page: page,
+        ...(keyword && { q: keyword }),
+        ...(minPrice !== null && { min_price: minPrice }),
+        ...(maxPrice !== null && { max_price: maxPrice }),
+    });
+
+    return `api/courses?${params.toString()}&${categoriesQueryString}`;
+};
+
+const buildHeaders = async () => {
+    const token = await getAuthToken();
+    return token ? { Authorization: `Bearer ${token}` } : {};
+};
+
 export default async function getCourses(
-    page,
+    page = 1,
     perPage = 12,
     categories,
     keyword = '',
+    minPrice = null,
+    maxPrice = null,
 ) {
     try {
-        const token = await getAuthToken();
-        let headers = {};
+        const headers = await buildHeaders();
+        const url = buildUrl(
+            page,
+            perPage,
+            categories,
+            keyword,
+            minPrice,
+            maxPrice,
+        );
 
-        if (token) {
-            headers.Authorization = `Bearer ${token}`;
-        }
-
-        const categoriesQueryString = categories
-            .map(
-                (category, index) =>
-                    `c[${index}]=${encodeURIComponent(category)}`,
-            )
-            .join('&');
-
-        const url = `api/courses?per_page=${perPage}&page=${page}${
-            categoriesQueryString ? `&${categoriesQueryString}` : ''
-        }${keyword ? `&q=${keyword}` : ''}`;
-
-        const data = await fetchAPI(url, {
-            headers,
-        });
+        const data = await fetchAPI(url, { headers });
 
         return data;
     } catch (error) {

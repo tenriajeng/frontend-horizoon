@@ -32,9 +32,14 @@ export default function SelectedFilter() {
             .replace(/-/g, ' ')
             .replace(/\b\w/g, (char) => char.toUpperCase());
 
-    const removeFilterFromUrl = (param) => {
+    const removeFilterFromUrl = (param, value) => {
         const urlSearchParams = new URLSearchParams(searchParams);
-        urlSearchParams.delete(param);
+        if (value) {
+            urlSearchParams.delete(param, value);
+        } else {
+            urlSearchParams.delete(param);
+        }
+
         router.push(pathname + '?' + urlSearchParams.toString());
     };
 
@@ -62,12 +67,17 @@ export default function SelectedFilter() {
                 variant={'secondary'}
                 className="mb-2 mr-1 h-8 px-3 text-sm font-medium"
             >
-                {value}
+                {label == 'c' ? formatCategory(value) : value}
                 <TooltipProvider>
                     <Tooltip>
                         <TooltipTrigger asChild>
                             <Cross2Icon
-                                onClick={() => removeFilterFromUrl(label)}
+                                onClick={() =>
+                                    removeFilterFromUrl(
+                                        label,
+                                        label == 'c' ? value : null,
+                                    )
+                                }
                                 className="ml-[6px] cursor-pointer rounded-full bg-gray-200 p-[1px] hover:rounded-full dark:bg-slate-600"
                             />
                         </TooltipTrigger>
@@ -82,7 +92,7 @@ export default function SelectedFilter() {
     return (
         <>
             {categories.map((category, index) =>
-                renderBadge(formatCategory(category), 'c', index),
+                renderBadge(category, 'c', index),
             )}
             {renderBadge(keyword, 'q')}
             {renderBadge(formatPrice(minPrice), 'min-price')}

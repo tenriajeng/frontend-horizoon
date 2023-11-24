@@ -34,7 +34,7 @@ export default function DialogSearch({ children }) {
                         <Input
                             onChange={handleChange}
                             onKeyDown={handleKeyPress}
-                            className="rounded-md bg-transparent/60 xs:h-12 xs:text-lg md:h-14 md:text-xl "
+                            className="rounded-md dark:bg-transparent/60 xs:h-12 xs:text-lg md:h-14 md:text-xl "
                             placeholder="Search course..."
                         />
                         <span className="xs:text-md mx-1 text-gray-500 md:text-lg">

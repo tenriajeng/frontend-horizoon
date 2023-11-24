@@ -27,6 +27,12 @@ export default function Search() {
         };
     }, []);
 
+    useEffect(() => {
+        if (window.location.hash === '#search' || searchParams.get('q')) {
+            buttonRef.current.click();
+        }
+    }, [searchParams]);
+
     return (
         <>
             <DialogSearch>

@@ -10,6 +10,7 @@ import {
 import { Button } from './ui/button';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import formatPrice from '@/lib/moneyFormat';
 
 export default function SelectedFilter() {
     const router = useRouter();
@@ -30,19 +31,6 @@ export default function SelectedFilter() {
         category
             .replace(/-/g, ' ')
             .replace(/\b\w/g, (char) => char.toUpperCase());
-
-    const formatPrice = (price) => {
-        if (price === null) {
-            return null;
-        }
-        const formatter = new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'IDR',
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 0,
-        });
-        return formatter.format(price);
-    };
 
     const removeFilterFromUrl = (param) => {
         const urlSearchParams = new URLSearchParams(searchParams);

@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import ButtonCardCourse from './button-card-course';
 import { Badge } from './ui/badge';
+import formatPrice from '@/lib/moneyFormat';
 
 const CoursesCard = React.memo(({ course }) => {
     return (
@@ -34,14 +35,7 @@ const CoursesCard = React.memo(({ course }) => {
                 ))} */}
                 <div className="mt-1 flex items-center justify-between text-sm">
                     <span className="font-semibold">
-                        {course.price < 1
-                            ? 'Free'
-                            : `IDR ${Number(course.price).toLocaleString(
-                                  'id-ID',
-                                  {
-                                      maximumFractionDigits: 3,
-                                  },
-                              )}`}
+                        {course.price < 1 ? 'Free' : formatPrice(course.price)}
                     </span>
 
                     {/* <ButtonCardCourse course={course} /> */}

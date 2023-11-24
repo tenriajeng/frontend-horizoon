@@ -56,6 +56,7 @@ export default function SelectedFilter() {
         urlSearchParams.delete('q');
         urlSearchParams.delete('min-price');
         urlSearchParams.delete('max-price');
+        urlSearchParams.delete('page');
         router.push(pathname + '?' + urlSearchParams.toString());
     };
 

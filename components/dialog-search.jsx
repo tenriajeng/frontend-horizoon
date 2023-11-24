@@ -2,11 +2,10 @@
 import { useRef, useState } from 'react';
 import { Dialog, DialogContent, DialogTrigger } from './ui/dialog';
 import { Input } from './ui/input';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 export default function DialogSearch({ children }) {
     const router = useRouter();
-    const pathname = usePathname();
     const searchParams = useSearchParams();
     const searchQueryRef = useRef('');
     const [isOpen, setIsOpen] = useState(false);

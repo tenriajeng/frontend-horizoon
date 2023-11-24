@@ -22,7 +22,8 @@ export default function PriceFilter() {
 
     const updateUrlParams = useCallback(() => {
         const params = new URLSearchParams(searchParams.toString());
-        console.log(minPrice);
+        params.delete('page');
+
         minPrice
             ? params.set('min-price', minPrice)
             : params.delete('min-price');

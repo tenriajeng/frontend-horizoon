@@ -24,7 +24,7 @@ export async function AccountDropdown() {
         <DropdownMenu>
             <DropdownMenuTrigger asChild aria-label="Open Menu">
                 <Avatar
-                    className="hover:cursor-pointer"
+                    className="h-9 w-9 hover:cursor-pointer"
                     role="img"
                     aria-label="User Avatar"
                 >

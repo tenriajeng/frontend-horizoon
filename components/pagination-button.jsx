@@ -22,7 +22,7 @@ export default function PaginationButton({
                 window.location.pathname
             }?${currentParams.toString()}`;
 
-            router.push(newUrl);
+            router.push(newUrl, { scroll: false });
         }
     };
 

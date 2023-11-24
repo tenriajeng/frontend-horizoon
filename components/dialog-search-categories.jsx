@@ -90,17 +90,17 @@ export default function DialogSearchCategories({ children }) {
                     onChange={handleSearchInputChange}
                 />
 
-                <div className="grid max-h-[400px] gap-4 overflow-y-scroll p-2 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                <div className="grid max-h-[400px] overflow-y-scroll xs:grid-cols-1 xs:gap-2 sm:grid-cols-2 md:grid-cols-3 md:gap-5 lg:grid-cols-3">
                     {!loading &&
                         filteredCategories.map((category) => (
-                            <div
+                            <label
                                 key={category.slug}
-                                className="flex h-14 items-center space-x-2"
+                                className="flex h-9 w-full items-center space-x-2 rounded-md border px-2 py-4 hover:bg-gray-200 dark:border-gray-500 dark:bg-slate-950 dark:hover:border-white dark:hover:bg-slate-700 "
                             >
                                 <input
                                     type="checkbox"
                                     id={`category-${category.slug}`}
-                                    className="peer h-[19px] w-[19px] rounded-sm border p-1"
+                                    className="peer h-4 w-4 rounded-sm border p-1 "
                                     checked={checkedCategories.includes(
                                         category.slug,
                                     )}
@@ -110,14 +110,14 @@ export default function DialogSearchCategories({ children }) {
                                         )
                                     }
                                 />
-                                <label className="text-sm font-medium dark:text-gray-200">
+                                <span className="line-clamp-1  text-sm font-medium dark:text-gray-200">
                                     {category.name}
-                                </label>
-                            </div>
+                                </span>
+                            </label>
                         ))}
                 </div>
 
-                <DialogFooter className="sm:justify-end">
+                <DialogFooter className="justify-end gap-2 ">
                     <Button
                         size="sm"
                         variant="secondary"

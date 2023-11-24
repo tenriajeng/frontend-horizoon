@@ -11,7 +11,7 @@ import {
 import { Button } from './ui/button';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
-export default function SelectedFilter({ categories }) {
+export default function SelectedFilter({ querySearch, categories }) {
     const searchParams = useSearchParams();
     const pathname = usePathname();
     const router = useRouter();
@@ -28,6 +28,14 @@ export default function SelectedFilter({ categories }) {
             urlSearchParams.delete('c');
         }
         urlSearchParams.delete('c', category);
+        urlSearchParams.delete('q');
+
+        router.push(pathname + '?' + urlSearchParams.toString());
+    }
+
+    function removeQuerySearchFromUrl() {
+        const urlSearchParams = new URLSearchParams(searchParams);
+        urlSearchParams.delete('q');
         router.push(pathname + '?' + urlSearchParams.toString());
     }
 
@@ -49,7 +57,7 @@ export default function SelectedFilter({ categories }) {
                                             onClick={() => {
                                                 removeCategoryFromUrl(category);
                                             }}
-                                            className="ml-[6px] cursor-pointer rounded-full bg-slate-600 p-[1px] hover:rounded-full"
+                                            className="ml-[6px] cursor-pointer rounded-full bg-gray-200 p-[1px] hover:rounded-full dark:bg-slate-600"
                                         />
                                     </TooltipTrigger>
                                     <TooltipContent className="dark:bg-slate-800">
@@ -60,7 +68,29 @@ export default function SelectedFilter({ categories }) {
                         </Badge>
                     ),
             )}
-            {!categories.every((value) => value === null) && (
+
+            {querySearch && (
+                <Badge
+                    variant={'secondary'}
+                    className="mb-2 mr-1 h-8 px-3 text-sm font-medium"
+                >
+                    {querySearch}
+                    <TooltipProvider>
+                        <Tooltip>
+                            <TooltipTrigger asChild>
+                                <Cross2Icon
+                                    onClick={removeQuerySearchFromUrl}
+                                    className="ml-[6px] cursor-pointer rounded-full bg-gray-200 p-[1px] hover:rounded-full dark:bg-slate-600"
+                                />
+                            </TooltipTrigger>
+                            <TooltipContent className="dark:bg-slate-800">
+                                Remove
+                            </TooltipContent>
+                        </Tooltip>
+                    </TooltipProvider>
+                </Badge>
+            )}
+            {(!categories.every((value) => value === null) || querySearch) && (
                 <Button
                     variant="link"
                     size="xs"

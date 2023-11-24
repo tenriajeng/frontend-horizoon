@@ -8,6 +8,7 @@ export default function Page({ searchParams }) {
     const categories = Array.isArray(searchParams.c)
         ? searchParams.c
         : [searchParams.c];
+    const querySearch = searchParams.q;
 
     return (
         <>
@@ -45,14 +46,17 @@ export default function Page({ searchParams }) {
                                     </SheetTrigger>
                                     <SheetContent
                                         side={'left'}
-                                        className="w-[350px] p-2 sm:w-[350px]"
+                                        className="w-[350px] overflow-y-auto p-2 sm:w-[350px] "
                                     >
                                         <Filter />
                                     </SheetContent>
                                 </Sheet>
                             </div>
                             <div className="flex flex-wrap">
-                                <SelectedFilter categories={categories} />
+                                <SelectedFilter
+                                    querySearch={querySearch}
+                                    categories={categories}
+                                />
                             </div>
                             <div className="grid xs:grid-cols-2 xs:gap-2 md:grid-cols-3 md:gap-4 lg:grid-cols-3">
                                 <Courses />

@@ -1,7 +1,12 @@
 import { getAuthToken } from '@/lib/authUtils';
 import { fetchAPI, handleFetchError } from '.';
 
-export default async function getCourses(page, perPage = 12, categories) {
+export default async function getCourses(
+    page,
+    perPage = 12,
+    categories,
+    keyword = '',
+) {
     try {
         const token = await getAuthToken();
         let headers = {};
@@ -17,14 +22,13 @@ export default async function getCourses(page, perPage = 12, categories) {
             )
             .join('&');
 
-        const data = await fetchAPI(
-            `api/courses?per_page=${perPage}&page=${page}${
-                categoriesQueryString ? `&${categoriesQueryString}` : ''
-            }`,
-            {
-                headers,
-            },
-        );
+        const url = `api/courses?per_page=${perPage}&page=${page}${
+            categoriesQueryString ? `&${categoriesQueryString}` : ''
+        }${keyword ? `&q=${keyword}` : ''}`;
+
+        const data = await fetchAPI(url, {
+            headers,
+        });
 
         return data;
     } catch (error) {

@@ -1,13 +1,12 @@
 import getCategories from '@/api/category/getCategory';
 import React from 'react';
-import CoursesCard from './courses-card';
 import Link from 'next/link';
-import Image from 'next/image';
 import { ChevronRightIcon } from '@radix-ui/react-icons';
-import CourseSnapScroll from './course-snap-scroll';
+import dynamic from 'next/dynamic';
+
+const CourseSnapScroll = dynamic(() => import('./course-snap-scroll'));
 
 export default async function HomeCourses() {
-    // await new Promise((resolve) => setTimeout(resolve, 10000));
     const perPage = 4;
     const categories = await getCategories(perPage);
 

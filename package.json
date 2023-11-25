@@ -54,6 +54,7 @@
         "shadcn-ui": "^0.4.1",
         "sharp": "^0.32.6",
         "swiper": "^11.0.4",
+        "swr": "^2.2.4",
         "tailwind-merge": "^1.14.0",
         "tailwindcss-animate": "^1.0.7",
         "tooltip": "^1.6.1",

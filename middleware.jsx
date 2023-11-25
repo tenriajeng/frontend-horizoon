@@ -4,11 +4,11 @@ import { NextResponse } from 'next/server';
 export async function middleware(request) {
     const token = await getAuthToken();
 
-    if (token) {
-        return NextResponse.next();
+    if (!token) {
+        return NextResponse.redirect(new URL('/', request.url));
     }
 
-    return NextResponse.redirect(new URL('/', request.url));
+    return NextResponse.next();
 }
 
 // protected path

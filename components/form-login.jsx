@@ -19,8 +19,8 @@ import { setAuthToken } from '@/lib/authUtils';
 import LoginValidation from '@/validation/login';
 import { useToast } from '@/components/ui/use-toast';
 import { useState } from 'react';
-import { ReloadIcon } from '@radix-ui/react-icons';
 import { ButtonLoading } from './button-loading';
+import ButtonSocialLogin from './button-social-login';
 
 function FormLogin() {
     const [isLoading, setIsLoading] = useState(false);
@@ -46,6 +46,7 @@ function FormLogin() {
 
             setAuthToken(response.data.token);
             dispatch(login(user));
+            setIsLoading(false);
         } else {
             toast({
                 variant: 'destructive',
@@ -58,7 +59,10 @@ function FormLogin() {
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
+            <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="w-full space-y-3"
+            >
                 <FormField
                     control={form.control}
                     name="email"
@@ -100,10 +104,13 @@ function FormLogin() {
                 {isLoading ? (
                     <ButtonLoading />
                 ) : (
-                    <Button type="submit" className="xs:w-full ">
-                        Log in
-                    </Button>
+                    <>
+                        <Button type="submit" className="xs:w-full">
+                            Log in
+                        </Button>
+                    </>
                 )}
+                <ButtonSocialLogin />
             </form>
         </Form>
     );

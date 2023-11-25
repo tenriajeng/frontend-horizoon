@@ -1,59 +1,52 @@
 'use client';
-
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useSearchParams } from 'next/navigation';
+import useSWR from 'swr';
 import getCourses from '@/api/getCourses';
 import CoursesCard from './courses-card';
 import Pagination from './pagination';
 import LoadingCoursesCard from './loading/courses-card';
-import { useCallback } from 'react';
 
 const Courses = () => {
     const searchParams = useSearchParams();
-    const [courses, setCourses] = useState(null);
-    const [loading, setLoading] = useState(true);
 
-    const getConfigFromSearchParams = useCallback(
-        () => ({
-            page: parseInt(searchParams.get('page')) || 1,
-            perPage: parseInt(12),
-            categories: searchParams.getAll('c') || [],
-            keyword: searchParams.get('q') || '',
-            minPrice: parseInt(searchParams.get('min-price')) || null,
-            maxPrice: parseInt(searchParams.get('max-price')) || null,
-        }),
-        [searchParams],
-    );
+    const getConfigFromSearchParams = () => ({
+        page: parseInt(searchParams.get('page')) || 1,
+        perPage: parseInt(12),
+        categories: searchParams.getAll('c') || [],
+        keyword: searchParams.get('q') || '',
+        minPrice: parseInt(searchParams.get('min-price')) || null,
+        maxPrice: parseInt(searchParams.get('max-price')) || null,
+    });
 
-    const [config, setConfig] = useState(getConfigFromSearchParams());
+    const config = getConfigFromSearchParams();
 
-    useEffect(() => {
-        setConfig(getConfigFromSearchParams());
-    }, [getConfigFromSearchParams, searchParams]);
+    const fetcher = async (url) => {
+        try {
+            const response = await getCourses(
+                config.page,
+                config.perPage,
+                config.categories,
+                config.keyword,
+                config.minPrice,
+                config.maxPrice,
+            );
+            return response;
+        } catch (error) {
+            console.error('Error fetching courses:', error);
+            throw error;
+        }
+    };
 
-    useEffect(() => {
-        const fetchCoursesData = async () => {
-            setLoading(true);
-            try {
-                const response = await getCourses(
-                    config.page,
-                    config.perPage,
-                    config.categories,
-                    config.keyword,
-                    config.minPrice,
-                    config.maxPrice,
-                );
+    const key = JSON.stringify(config);
 
-                setCourses(response);
-            } catch (error) {
-                console.error('Error fetching courses:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchCoursesData();
-    }, [config]);
+    const {
+        data: courses,
+        error,
+        isValidating: loading,
+    } = useSWR(key, fetcher, {
+        revalidateOnFocus: false,
+    });
 
     return (
         <>

@@ -12,7 +12,6 @@ export default function ButtonSocialLogin() {
                 <Button
                     type="button"
                     className="h-10 w-10 rounded-full border border-gray-300 bg-white p-0"
-                    onClick={() => (window.location.href = '/')} // Replace "/" with the actual link
                 >
                     <Image
                         loading="eager"
@@ -26,7 +25,6 @@ export default function ButtonSocialLogin() {
                 <Button
                     type="button"
                     className="h-10 w-10 rounded-full border border-gray-300 bg-white p-0"
-                    onClick={() => (window.location.href = '/')} // Replace "/" with the actual link
                 >
                     <Image
                         loading="eager"
@@ -40,7 +38,6 @@ export default function ButtonSocialLogin() {
                 <Button
                     type="button"
                     className="h-10 w-10 rounded-full border border-gray-300 bg-white p-0"
-                    onClick={() => (window.location.href = '/')} // Replace "/" with the actual link
                 >
                     <Image
                         loading="eager"
@@ -54,7 +51,6 @@ export default function ButtonSocialLogin() {
                 <Button
                     type="button"
                     className="h-10 w-10 rounded-full border border-gray-300 bg-white p-0"
-                    onClick={() => (window.location.href = '/')} // Replace "/" with the actual link
                 >
                     <Image
                         loading="eager"

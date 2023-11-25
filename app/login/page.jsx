@@ -19,7 +19,7 @@ export default function page() {
             <div className="mt-4 xs:mx-0 xs:p-0 md:mx-2 ">
                 <div className="xs:mx-2 xs:mb-5 xs:mt-2 md:mx-0 md:mb-10">
                     <div className="flex h-[80vh] items-center justify-center">
-                        <div className="rounded-xl border bg-white p-8 dark:bg-slate-950/70 xs:w-full sm:w-8/12 md:w-6/12 lg:w-4/12">
+                        <div className="rounded-xl border bg-white p-8 backdrop-blur-md dark:bg-slate-950/70 xs:w-full sm:w-8/12 md:w-6/12 lg:w-4/12">
                             <h1 className="font-semibold">Welcome Back!</h1>
                             <h2 className="mb-2 text-sm dark:text-gray-400">
                                 Access your profile and start personalizing your

@@ -6,10 +6,10 @@ import formatPrice from '@/lib/moneyFormat';
 const CoursesCard = React.memo(({ course }) => {
     return (
         <div>
-            <Link href={`/explore/${course.slug}`}>
+            <Link href={`/explore/${course.slug}`} prefetch>
                 <Image
                     width={400}
-                    height={400}
+                    height={225}
                     src={course.thumbnail}
                     alt={course.title}
                     loading="lazy"

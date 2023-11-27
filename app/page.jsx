@@ -1,7 +1,10 @@
 import Hero from '@/components/hero';
+import LoadingHomeCourses from '@/components/loading/home-courses';
 import dynamic from 'next/dynamic';
 
-const HomeCourses = dynamic(() => import('@/components/home-courses'));
+const HomeCourses = dynamic(() => import('@/components/home-courses'), {
+    loading: () => <LoadingHomeCourses />,
+});
 
 export default async function Home() {
     return (

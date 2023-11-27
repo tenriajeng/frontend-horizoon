@@ -50,8 +50,8 @@ const Courses = () => {
 
     return (
         <>
-            {!loading && courses?.success ? (
-                courses?.data.map((item, index) => (
+            {!loading && courses.success ? (
+                courses.data.map((item, index) => (
                     <CoursesCard key={index} course={item} />
                 ))
             ) : !loading ? (
@@ -65,8 +65,8 @@ const Courses = () => {
                 <LoadingCoursesCard numCards={12} />
             )}
 
-            {!loading && courses?.success && (
-                <Pagination pagination={courses?.pagination} />
+            {!loading && courses.success && (
+                <Pagination pagination={courses.pagination} />
             )}
         </>
     );

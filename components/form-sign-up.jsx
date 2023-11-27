@@ -20,6 +20,7 @@ import { setAuthToken } from '@/lib/authUtils';
 import { login } from '@/redux/features/authSclice';
 import { useState } from 'react';
 import { ButtonLoading } from './button-loading';
+import ButtonSocialLogin from './button-social-login';
 
 function FormSignUp() {
     const [isLoading, setIsLoading] = useState(false);
@@ -144,6 +145,7 @@ function FormSignUp() {
                         Sign up
                     </Button>
                 )}
+                <ButtonSocialLogin />
             </form>
         </Form>
     );

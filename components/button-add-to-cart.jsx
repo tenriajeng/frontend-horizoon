@@ -7,7 +7,7 @@ import { useToast } from './ui/use-toast';
 import { setCartCount } from '@/redux/features/cartCountSlice';
 import { useDispatch } from 'react-redux';
 
-export default function ButtonAddToCart({ course }) {
+export default function ButtonAddToCart({ course, children }) {
     const { toast } = useToast();
     const dispatch = useDispatch();
 
@@ -21,14 +21,5 @@ export default function ButtonAddToCart({ course }) {
         }
     }
 
-    return (
-        <Button
-            variant="outline"
-            size="xs"
-            className="xs:hidden md:flex"
-            onClick={handleAddToCart}
-        >
-            <FaPlus className="mr-1 h-3 w-3" /> Cart
-        </Button>
-    );
+    return <div onClick={handleAddToCart}>{children}</div>;
 }

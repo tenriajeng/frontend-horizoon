@@ -7,10 +7,12 @@ import SideNavMaterials from '@/components/side-nav-materials';
 import { Separator } from '@/components/ui/separator';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
+import { getAuthToken } from '@/lib/authUtils';
 
 export default async function Page({ params }) {
     const { slug, number } = params;
     const material = await getMaterialDetail(slug, number);
+    const authToken = await getAuthToken();
 
     if (!material.success) {
         redirect('/');
@@ -64,6 +66,7 @@ export default async function Page({ params }) {
                             <div>
                                 <Suspense fallback={<h1>halo</h1>}>
                                     <Materials
+                                        authToken={authToken}
                                         active={params.number}
                                         course={material.data.course}
                                         materials={

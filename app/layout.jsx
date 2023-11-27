@@ -7,6 +7,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { Analytics } from '@vercel/analytics/react';
 import { HandleAuthentication } from '@/utils/authUtils';
 import { getAuthToken } from '@/lib/authUtils';
+import Footer from '@/components/footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,7 +21,7 @@ const RootLayout = ({ children }) => {
     return (
         <html lang="en" className="dark" suppressHydrationWarning={true}>
             <body
-                className={`${inter.className} bg-gradient-to-r from-white via-white to-white dark:bg-gradient-to-r dark:via-slate-950 dark:to-black dark:xs:from-slate-950 dark:sm:from-slate-900`}
+                className={`${inter.className} flex min-h-screen flex-col bg-gradient-to-r from-white via-white to-white dark:bg-gradient-to-r dark:via-slate-950 dark:to-black dark:xs:from-slate-950 dark:sm:from-slate-900`}
             >
                 <Providers>
                     <ThemeProvider
@@ -32,6 +33,7 @@ const RootLayout = ({ children }) => {
                         <HandleAuthentication token={token} />
                         <Navigation />
                         {children}
+                        <Footer />
                         <Analytics />
                         <Toaster />
                     </ThemeProvider>

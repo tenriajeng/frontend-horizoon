@@ -31,7 +31,15 @@ const ButtonCardCourse = ({ course }) => {
             )}
 
             {isAuthenticated && !isPurchase && (
-                <ButtonAddToCart course={course} />
+                <ButtonAddToCart course={course}>
+                    <Button
+                        variant="outline"
+                        size="xs"
+                        className="xs:hidden md:flex"
+                    >
+                        <FaPlus className="mr-1 h-3 w-3" /> Cart
+                    </Button>
+                </ButtonAddToCart>
             )}
 
             {!isAuthenticated && (

@@ -2,8 +2,10 @@ import { Sheet, SheetContent, SheetTrigger } from './ui/sheet';
 import { ActivityLogIcon } from '@radix-ui/react-icons';
 import Materials from './materials';
 import { Separator } from './ui/separator';
+import { getAuthToken } from '@/lib/authUtils';
 
 export default function SideNavMaterials({ active, course, materials }) {
+    const authToken = getAuthToken();
     return (
         <Sheet>
             <SheetTrigger>
@@ -25,6 +27,7 @@ export default function SideNavMaterials({ active, course, materials }) {
                 </span>
                 <Separator className="mb-2 bg-slate-700" />
                 <Materials
+                    authToken={authToken}
                     active={active}
                     course={course}
                     materials={materials}

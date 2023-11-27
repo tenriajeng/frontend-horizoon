@@ -1,18 +1,23 @@
 import getCourseDetail from '@/api/getCourseDetail';
+import ButtonAddToCart from '@/components/button-add-to-cart';
+import ButtonDirectCheckout from '@/components/button-direct-checkout';
 import CourseDescription from '@/components/course-description';
 import LoadingMaterials from '@/components/loading/materials';
 import Materials from '@/components/materials';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { getAuthToken } from '@/lib/authUtils';
 import { ChevronRightIcon } from '@radix-ui/react-icons';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Suspense } from 'react';
+import { IoCartOutline } from 'react-icons/io5';
 
 export default async function Page({ params }) {
     // await new Promise((resolve) => setTimeout(resolve, 2000));
     const { slug } = params;
     const course = await getCourseDetail(slug);
+    const authToken = await getAuthToken();
 
     return (
         <div>
@@ -51,10 +56,24 @@ export default async function Page({ params }) {
                                             </Button>
                                         </Link>
                                     ) : (
-                                        <Button className="me-2 rounded-full">
-                                            Learn Now
-                                            <ChevronRightIcon className="ml-2 h-4 w-4" />
-                                        </Button>
+                                        <div className="flex items-center justify-start">
+                                            <ButtonAddToCart course={course}>
+                                                <Button
+                                                    size="icon"
+                                                    className="me-2"
+                                                >
+                                                    <IoCartOutline className="h-5 w-5" />
+                                                </Button>
+                                            </ButtonAddToCart>
+
+                                            <ButtonDirectCheckout
+                                                course={course}
+                                                className="me-2"
+                                            >
+                                                Checkout
+                                                <ChevronRightIcon className="ml-2 h-4 w-4" />
+                                            </ButtonDirectCheckout>
+                                        </div>
                                     )}
                                 </div>
                             </div>
@@ -90,6 +109,7 @@ export default async function Page({ params }) {
                                 fallback={<LoadingMaterials numbers={10} />}
                             >
                                 <Materials
+                                    authToken={authToken}
                                     course={course}
                                     materials={course.materials}
                                 />

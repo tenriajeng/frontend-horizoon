@@ -37,8 +37,11 @@ export default function PriceFilter() {
     }, [searchParams, minPrice, maxPrice, pathname, router]);
 
     const handleChange = (key) => (event) => {
-        if (key === 'min') setMinPrice(event.target.value);
-        if (key === 'max') setMaxPrice(event.target.value);
+        const input = event.target.value;
+        // Use a regular expression to allow only numeric values
+        const numericInput = input.replace(/\D/g, '');
+        if (key === 'min') setMinPrice(numericInput);
+        if (key === 'max') setMaxPrice(numericInput);
     };
 
     const handleBlur = useCallback(() => updateUrlParams(), [updateUrlParams]);

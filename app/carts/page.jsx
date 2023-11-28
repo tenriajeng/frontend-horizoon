@@ -1,9 +1,9 @@
 import Checkout from '@/components/checkout';
 import CoursesCartCard from '@/components/courses-cart-card';
 
-export default function Page() {
+export default async function Page() {
     return (
-        <>
+        <div>
             <section className="md:container">
                 <div className="xs:mx-0 xs:mt-2 xs:p-0 md:mt-4">
                     <div className="grid grid-cols-1 xs:grid-cols-1 xs:gap-0 sm:grid-cols-1 md:grid-cols-1 md:gap-5 lg:grid-cols-2">
@@ -29,6 +29,6 @@ export default function Page() {
                     </div>
                 </div>
             </section>
-        </>
+        </div>
     );
 }

@@ -59,10 +59,12 @@ export default async function Page({ params }) {
                                         <div className="flex items-center justify-start">
                                             <ButtonAddToCart course={course}>
                                                 <Button
-                                                    size="icon"
+                                                    name="add-to-cart"
+                                                    aria-label="Add to Cart"
                                                     className="me-2"
                                                 >
-                                                    <IoCartOutline className="h-5 w-5" />
+                                                    <IoCartOutline className="mr-2 h-5 w-5" />{' '}
+                                                    Add to Cart
                                                 </Button>
                                             </ButtonAddToCart>
 

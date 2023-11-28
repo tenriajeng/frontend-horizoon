@@ -7,7 +7,7 @@ import dynamic from 'next/dynamic';
 const CourseSnapScroll = dynamic(() => import('./course-snap-scroll'));
 
 export default async function HomeCourses() {
-    const perPage = 4;
+    const perPage = 3;
     const categories = await getCategories(perPage);
 
     return (

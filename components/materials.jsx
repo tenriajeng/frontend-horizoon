@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { LockClosedIcon, PlayIcon } from '@radix-ui/react-icons';
-import { Popover, PopoverContent, PopoverTrigger } from './ui/popover';
 import PopoverLockedAccess from './popover-locked-access';
 
 export default async function Materials({
@@ -45,6 +44,7 @@ export default async function Materials({
                     ) : (
                         <PopoverLockedAccess>
                             <div
+                                role="button"
                                 className={`${buttonStyle} ${
                                     active == index + 1
                                         ? 'dark:bg-white dark:text-gray-950'

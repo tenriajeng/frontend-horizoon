@@ -6,12 +6,11 @@ export default function Page({ params }) {
 
     return (
         <div className="mt-4 md:container">
-            <div className="xs:mx-2 xs:mb-5 xs:mt-2 xs:p-0 md:mx-2 md:mb-10">
+            <div className="flex justify-center xs:mx-2 xs:mb-5 xs:mt-2 xs:p-0 md:mx-2 md:mb-10">
                 <iframe
-                    className="h-screen"
+                    className="h-screen w-full"
                     src={iframeUrl}
                     title="Checkout"
-                    width="100%"
                     allowFullScreen
                 ></iframe>
             </div>

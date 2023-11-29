@@ -4,6 +4,7 @@ import { Account } from './account';
 import Carts from './carts';
 import ModeToggle from './mode-toggle';
 import Search from './search';
+import Notification from './notification';
 
 function Navigation() {
     return (
@@ -19,6 +20,7 @@ function Navigation() {
                 <div className="flex items-center space-x-2 md:mx-2">
                     <Search />
                     <Carts />
+                    <Notification />
                     <ModeToggle />
                     <Account />
                 </div>

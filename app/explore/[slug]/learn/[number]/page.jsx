@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import getMaterialDetail from '@/api/material/getMaterial';
+import getMaterialDetail from '@/service/material/getMaterial';
 import CourseDescription from '@/components/course-description';
 import HorizoonVideo from '@/components/horizoon-video';
 import Materials from '@/components/materials';

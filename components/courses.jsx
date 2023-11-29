@@ -2,7 +2,7 @@
 import React from 'react';
 import { useSearchParams } from 'next/navigation';
 import useSWR from 'swr';
-import getCourses from '@/api/getCourses';
+import getCourses from '@/service/getCourses';
 import CoursesCard from './courses-card';
 import Pagination from './pagination';
 import LoadingCoursesCard from './loading/courses-card';

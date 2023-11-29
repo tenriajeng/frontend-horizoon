@@ -1,4 +1,4 @@
-import getCategories from '@/api/category/getCategory';
+import getCategories from '@/service/category/getCategory';
 import React from 'react';
 import Link from 'next/link';
 import { ChevronRightIcon } from '@radix-ui/react-icons';

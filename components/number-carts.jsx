@@ -1,6 +1,6 @@
 'use client';
 
-import getCarts from '@/api/cart/getCarts';
+import getCarts from '@/service/cart/getCarts';
 import { setCartCount } from '@/redux/features/cartCountSlice';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';

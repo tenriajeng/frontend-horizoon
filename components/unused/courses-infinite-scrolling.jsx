@@ -1,6 +1,6 @@
 'use client';
 
-import getCourses from '@/api/getCourses';
+import getCourses from '@/service/getCourses';
 import React, { useState, useEffect } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import CoursesCard from './courses-card';

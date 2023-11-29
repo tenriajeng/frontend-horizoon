@@ -15,7 +15,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import RegisterValidation from '@/validation/register';
 import { useForm } from 'react-hook-form';
 import { Input } from './ui/input';
-import Register from '@/api/auth/register';
+import Register from '@/service/auth/register';
 import { setAuthToken } from '@/lib/authUtils';
 import { login } from '@/redux/features/authSclice';
 import { useState } from 'react';

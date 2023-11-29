@@ -1,6 +1,6 @@
 'use client';
 
-import addToCart from '@/api/cart/addToCart';
+import addToCart from '@/service/cart/addToCart';
 import { Button } from './ui/button';
 import { FaPlus } from 'react-icons/fa';
 import { useToast } from './ui/use-toast';

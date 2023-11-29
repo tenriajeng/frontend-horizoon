@@ -9,7 +9,7 @@ import {
     DialogTitle,
     DialogTrigger,
 } from './ui/dialog';
-import getCategories from '@/api/category/getCategory';
+import getCategories from '@/service/category/getCategory';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';

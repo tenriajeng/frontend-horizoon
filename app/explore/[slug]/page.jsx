@@ -1,4 +1,4 @@
-import getCourseDetail from '@/api/getCourseDetail';
+import getCourseDetail from '@/service/getCourseDetail';
 import ButtonAddToCart from '@/components/button-add-to-cart';
 import ButtonDirectCheckout from '@/components/button-direct-checkout';
 import CourseDescription from '@/components/course-description';

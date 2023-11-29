@@ -12,7 +12,6 @@ import Link from 'next/link';
 import formatPrice from '@/lib/moneyFormat';
 
 export default function CartItem({ cart }) {
-    console.log(cart);
     return (
         <div key={cart.id}>
             <div className="relative flex rounded-lg">

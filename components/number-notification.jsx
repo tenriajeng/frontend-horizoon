@@ -14,6 +14,7 @@ export default function NumberNotification() {
 
     useEffect(() => {
         const handlePushNotification = (payload) => {
+            console.log(payload);
             setCount((prev) => prev + 1);
             toast({
                 title: payload.notification.title,

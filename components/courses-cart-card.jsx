@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useCallback, useEffect, useState } from 'react';
-import getCarts from '@/api/cart/getCarts';
+import getCarts from '@/service/cart/getCarts';
 import { useDispatch } from 'react-redux';
 import { addToTotal } from '@/redux/features/totalPriceSlice';
 import { setCartCount } from '@/redux/features/cartCountSlice';

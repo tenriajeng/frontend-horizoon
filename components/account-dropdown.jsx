@@ -14,7 +14,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { generateInitials } from '@/lib/initialsUtils';
-import { fetchUser } from '@/api/auth/user';
+import { fetchUser } from '@/service/auth/user';
 import Logout from './logout';
 
 export async function AccountDropdown() {

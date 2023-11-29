@@ -13,7 +13,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from './ui/input';
 import { useDispatch } from 'react-redux';
 import { Button } from './ui/button';
-import Login from '@/api/auth/login';
+import Login from '@/service/auth/login';
 import { login } from '@/redux/features/authSclice';
 import { setAuthToken } from '@/lib/authUtils';
 import LoginValidation from '@/validation/login';

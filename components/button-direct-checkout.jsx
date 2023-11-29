@@ -2,7 +2,7 @@
 
 import { Button } from './ui/button';
 import { ChevronRightIcon } from '@radix-ui/react-icons';
-import directCheckout from '@/api/checkout';
+import directCheckout from '@/service/checkout';
 import { useState } from 'react';
 import { ButtonLoading } from './button-loading';
 import { useRouter } from 'next/navigation';

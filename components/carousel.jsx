@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
-import getCourses from '@/api/getCourses';
+import getCourses from '@/service/getCourses';
 import { Badge } from './ui/badge';
 import Link from 'next/link';
 import { Button } from './ui/button';

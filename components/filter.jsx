@@ -5,7 +5,7 @@ import { Separator } from './ui/separator';
 import { Button } from './ui/button';
 import DialogSearchCategories from './dialog-search-categories';
 import CategoryCheckbox from './category-checkbox';
-import getCategories from '@/api/category/getCategory';
+import getCategories from '@/service/category/getCategory';
 import LoadingCategoryCheckbox from './loading/category-checkbox';
 import PriceFilter from './price-filter';
 

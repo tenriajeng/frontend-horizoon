@@ -21,8 +21,10 @@ export default function ButtonDirectCheckout({ course }) {
             redirect: getURL(`${pathname}`),
         });
 
-        if (response.success) {
+        if (response.success && response.data.id) {
             router.push(`/invoice/${response.data.id}`);
+        } else {
+            router.refresh();
         }
     };
 

@@ -8,6 +8,7 @@ import { Separator } from '@/components/ui/separator';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { getAuthToken } from '@/lib/authUtils';
+import LoadingMaterials from '@/components/loading/materials';
 
 export default async function Page({ params }) {
     const { slug, number } = params;
@@ -64,7 +65,9 @@ export default async function Page({ params }) {
                             </div>
 
                             <div>
-                                <Suspense fallback={<h1>halo</h1>}>
+                                <Suspense
+                                    fallback={<LoadingMaterials numbers={10} />}
+                                >
                                     <Materials
                                         authToken={authToken}
                                         active={params.number}

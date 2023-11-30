@@ -1,5 +1,5 @@
 'use client';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { Dialog, DialogContent, DialogTrigger } from './ui/dialog';
 import { Input } from './ui/input';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -7,22 +7,22 @@ import { useRouter, useSearchParams } from 'next/navigation';
 export default function DialogSearch({ children }) {
     const router = useRouter();
     const searchParams = useSearchParams();
-    const searchQueryRef = useRef('');
+    const [searchQuery, setSearchQuery] = useState(searchParams.get('q') || '');
     const [isOpen, setIsOpen] = useState(false);
 
     const handleKeyPress = (event) => {
-        if (event.key === 'Enter' && searchQueryRef.current !== '') {
+        if (event.key === 'Enter' && searchQuery !== '') {
             const params = new URLSearchParams(searchParams);
             params.delete('page');
             params.delete('q');
-            params.append('q', searchQueryRef.current);
+            params.append('q', searchQuery);
             router.push(`/explore?${params.toString()}`);
             setIsOpen(false);
         }
     };
 
     const handleChange = (event) => {
-        searchQueryRef.current = event.target.value;
+        setSearchQuery(event.target.value);
     };
 
     return (
@@ -32,6 +32,7 @@ export default function DialogSearch({ children }) {
                 <div className="mx-2 flex w-full justify-center space-x-2">
                     <div className="w-full xs:w-full lg:w-6/12">
                         <Input
+                            value={searchQuery}
                             onChange={handleChange}
                             onKeyDown={handleKeyPress}
                             className="rounded-md dark:bg-transparent/60 xs:h-12 xs:text-lg md:h-14 md:text-xl "

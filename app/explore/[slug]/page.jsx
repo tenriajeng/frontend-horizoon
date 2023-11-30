@@ -95,8 +95,8 @@ export default async function Page({ params }) {
                             <Image
                                 priority
                                 loading="eager"
-                                width={1200}
-                                height={1200}
+                                width={400}
+                                height={225}
                                 src={course.thumbnail}
                                 alt={course.title}
                                 className="aspect-video border object-cover md:rounded-2xl "

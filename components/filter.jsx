@@ -1,27 +1,12 @@
-'use client';
-
-import React, { useEffect, useState } from 'react';
 import { Separator } from './ui/separator';
 import { Button } from './ui/button';
 import DialogSearchCategories from './dialog-search-categories';
 import CategoryCheckbox from './category-checkbox';
 import getCategories from '@/service/category/getCategory';
-import LoadingCategoryCheckbox from './loading/category-checkbox';
 import PriceFilter from './price-filter';
 
-export default function Filter() {
-    const [categories, setCategories] = useState();
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        setLoading(true);
-        async function fetchData() {
-            const response = await getCategories();
-            setCategories(response);
-            setLoading(false);
-        }
-        fetchData();
-    }, []);
+export default async function Filter() {
+    const categories = await getCategories();
 
     return (
         <>
@@ -31,13 +16,9 @@ export default function Filter() {
             <div>
                 <div className="w-full">
                     <h3 className="font-medium">Categories</h3>
-                    {!loading ? (
-                        categories.data.map((category, index) => (
-                            <CategoryCheckbox key={index} category={category} />
-                        ))
-                    ) : (
-                        <LoadingCategoryCheckbox />
-                    )}
+                    {categories.data.map((category, index) => (
+                        <CategoryCheckbox key={index} category={category} />
+                    ))}
 
                     <DialogSearchCategories>
                         <Button variant="link" className="px-0 py-0">

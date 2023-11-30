@@ -1,20 +1,30 @@
-import getCourseDetail from '@/service/getCourseDetail';
-import ButtonAddToCart from '@/components/button-add-to-cart';
-import ButtonDirectCheckout from '@/components/button-direct-checkout';
-import CourseDescription from '@/components/course-description';
-import LoadingMaterials from '@/components/loading/materials';
-import Materials from '@/components/materials';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { getAuthToken } from '@/lib/authUtils';
+import getCourseDetail from '@/service/getCourseDetail';
 import { ChevronRightIcon } from '@radix-ui/react-icons';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Suspense } from 'react';
 import { IoCartOutline } from 'react-icons/io5';
 
+// Dynamic imports for components
+const ButtonAddToCart = dynamic(() =>
+    import('@/components/button-add-to-cart'),
+);
+const ButtonDirectCheckout = dynamic(() =>
+    import('@/components/button-direct-checkout'),
+);
+const CourseDescription = dynamic(() =>
+    import('@/components/course-description'),
+);
+const LoadingMaterials = dynamic(() =>
+    import('@/components/loading/materials'),
+);
+const Materials = dynamic(() => import('@/components/materials'));
+
 export default async function Page({ params }) {
-    // await new Promise((resolve) => setTimeout(resolve, 2000));
     const { slug } = params;
     const course = await getCourseDetail(slug);
     const authToken = await getAuthToken();

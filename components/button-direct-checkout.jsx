@@ -15,9 +15,7 @@ export default function ButtonDirectCheckout({ course }) {
         setLoading(true);
         const response = await directCheckout({ slug: course.slug });
         if (response.success) {
-            // console.log(response);
             router.push(`/invoice/${response.data.id}`);
-            // setLoading(false);
         }
     };
 

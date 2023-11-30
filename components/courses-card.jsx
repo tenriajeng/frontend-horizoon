@@ -12,8 +12,8 @@ const CoursesCard = React.memo(({ course }) => {
                     height={225}
                     src={course.thumbnail}
                     alt={course.title}
-                    loading="lazy"
-                    // priority
+                    loading="eager"
+                    priority
                     className="aspect-video rounded-lg border object-cover"
                 />
             </Link>

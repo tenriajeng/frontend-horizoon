@@ -3,6 +3,7 @@
 import Plyr from 'plyr-react';
 import 'plyr-react/plyr.css';
 import { useEffect, useState } from 'react';
+import { Skeleton } from './ui/skeleton';
 
 export default function HorizoonVideo({ url }) {
     const [isClient, setIsClient] = useState(false);
@@ -73,7 +74,11 @@ export default function HorizoonVideo({ url }) {
 
     return (
         <div className="w-full overflow-hidden rounded-lg border">
-            {isClient && <Plyr source={videoSrc} options={options} />}
+            {isClient ? (
+                <Plyr source={videoSrc} options={options} />
+            ) : (
+                <Skeleton className="aspect-video" />
+            )}
         </div>
     );
 }

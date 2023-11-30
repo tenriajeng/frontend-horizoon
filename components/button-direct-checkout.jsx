@@ -5,15 +5,22 @@ import { ChevronRightIcon } from '@radix-ui/react-icons';
 import directCheckout from '@/service/checkout';
 import { useState } from 'react';
 import { ButtonLoading } from './button-loading';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import getURL from '@/utils/getUrl';
 
 export default function ButtonDirectCheckout({ course }) {
     const [loading, setLoading] = useState(false);
+    const pathname = usePathname();
     const router = useRouter();
 
     const hadleDirectCheckout = async () => {
         setLoading(true);
-        const response = await directCheckout({ slug: course.slug });
+
+        const response = await directCheckout({
+            slug: course.slug,
+            redirect: getURL(`${pathname}`),
+        });
+
         if (response.success) {
             router.push(`/invoice/${response.data.id}`);
         }

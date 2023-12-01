@@ -1,72 +1,59 @@
-import Link from 'next/link';
-import { LockClosedIcon, PlayIcon } from '@radix-ui/react-icons';
+'use client';
+import { CheckIcon, LockClosedIcon, PlayIcon } from '@radix-ui/react-icons';
 import PopoverLockedAccess from './popover-locked-access';
+import { LinkMaterial } from './link-material';
+import useSWR from 'swr'; // Import useSWR hook
+import getCourseDetail from '@/service/getCourseDetail';
+import LoadingMaterials from './loading/materials';
 
-export default async function Materials({
-    authToken,
-    course,
-    materials,
-    active,
-}) {
-    // await new Promise((resolve) => setTimeout(resolve, 10000));
+export default function Materials({ authToken, course, active }) {
+    const { data: courseDetail, error } = useSWR(
+        `/api/getCourseDetail/${course.slug}`,
+        () => getCourseDetail(course.slug),
+    );
 
-    const buttonStyle =
-        'mb-2 flex cursor-pointer items-center justify-between rounded-md border p-2 text-sm hover:bg-slate-900 hover:text-white dark:text-gray-300 dark:hover:bg-white dark:hover:text-gray-950';
-    const isPurchase = course.is_purchased;
+    if (error) {
+        console.error('Failed to fetch course detail:', error);
+        return <div>Error loading data</div>;
+    }
+
+    if (!courseDetail) {
+        return <LoadingMaterials numbers={10} />;
+    }
 
     return (
         <>
-            {materials.map((material, index) => (
-                <div key={material.id}>
-                    {authToken && (material.is_free || isPurchase) ? (
-                        <Link
-                            href={`/explore/${course.slug}/learn/${index + 1}`}
-                            className={`${buttonStyle} ${
-                                active == index + 1
-                                    ? 'dark:bg-white dark:text-gray-950'
-                                    : 'text-gray-600'
-                            }`}
-                        >
-                            <div className="flex items-center gap-2 ">
-                                <span className="font-bold">{index + 1}.</span>
-                                <h3 className="line-clamp-1 text-left">
-                                    {material.title}
-                                </h3>
-                            </div>
-                            <span>
-                                {material.is_free || isPurchase ? (
-                                    <PlayIcon />
-                                ) : (
-                                    <LockClosedIcon />
-                                )}
-                            </span>
-                        </Link>
+            {courseDetail.materials.map((material, index) => {
+                const isAuthenticated = authToken !== null;
+                const isPurchase = course.is_purchased;
+                const isFreeAccess = material.is_free;
+                const isComplete = material.is_complete;
+
+                const renderLabel = () => {
+                    if (isComplete) return <CheckIcon />;
+                    if (isFreeAccess) return 'Free';
+                    if (isPurchase) return <PlayIcon />;
+                    return <LockClosedIcon />;
+                };
+
+                const renderContent = () =>
+                    isAuthenticated && (isPurchase || isFreeAccess) ? (
+                        <LinkMaterial
+                            course={course}
+                            material={material}
+                            index={index}
+                            isActive={active}
+                            label={renderLabel()}
+                        />
                     ) : (
-                        <PopoverLockedAccess>
-                            <div
-                                role="button"
-                                className={`${buttonStyle} ${
-                                    active == index + 1
-                                        ? 'dark:bg-white dark:text-gray-950'
-                                        : 'text-gray-600'
-                                }`}
-                            >
-                                <div className="flex w-full items-center gap-2 ">
-                                    <span className="font-bold">
-                                        {index + 1}.
-                                    </span>
-                                    <h3 className="line-clamp-1 text-left">
-                                        {material.title}
-                                    </h3>
-                                </div>
-                                <span>
-                                    <LockClosedIcon />
-                                </span>
-                            </div>
-                        </PopoverLockedAccess>
-                    )}
-                </div>
-            ))}
+                        <PopoverLockedAccess
+                            material={material}
+                            index={index}
+                        />
+                    );
+
+                return <div key={material.id}>{renderContent()}</div>;
+            })}
         </>
     );
 }

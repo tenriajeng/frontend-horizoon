@@ -3,7 +3,7 @@ export async function fetchAPI(endpoint, options = {}) {
     const url = apiUrl + endpoint;
 
     try {
-        options = options = {
+        options = {
             ...options,
             headers: {
                 ...options?.headers,

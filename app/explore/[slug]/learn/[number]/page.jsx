@@ -65,18 +65,12 @@ export default async function Page({ params }) {
                             </div>
 
                             <div>
-                                <Suspense
-                                    fallback={<LoadingMaterials numbers={10} />}
-                                >
-                                    <Materials
-                                        authToken={authToken}
-                                        active={params.number}
-                                        course={material.data.course}
-                                        materials={
-                                            material.data.course.materials
-                                        }
-                                    />
-                                </Suspense>
+                                <Materials
+                                    authToken={authToken}
+                                    active={params.number}
+                                    course={material.data.course}
+                                    materials={material.data.course.materials}
+                                />
                             </div>
                         </div>
                     </div>

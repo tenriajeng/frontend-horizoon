@@ -1,3 +1,5 @@
+import LoadingMaterials from '@/components/loading/materials';
+import Materials from '@/components/materials';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { getAuthToken } from '@/lib/authUtils';
@@ -19,10 +21,6 @@ const ButtonDirectCheckout = dynamic(() =>
 const CourseDescription = dynamic(() =>
     import('@/components/course-description'),
 );
-const LoadingMaterials = dynamic(() =>
-    import('@/components/loading/materials'),
-);
-const Materials = dynamic(() => import('@/components/materials'));
 
 export default async function Page({ params }) {
     const { slug } = params;

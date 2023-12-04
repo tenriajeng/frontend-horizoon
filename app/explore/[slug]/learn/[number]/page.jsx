@@ -8,7 +8,6 @@ import { Separator } from '@/components/ui/separator';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { getAuthToken } from '@/lib/authUtils';
-import LoadingMaterials from '@/components/loading/materials';
 
 export default async function Page({ params }) {
     const { slug, number } = params;
@@ -69,7 +68,6 @@ export default async function Page({ params }) {
                                     authToken={authToken}
                                     active={params.number}
                                     course={material.data.course}
-                                    materials={material.data.course.materials}
                                 />
                             </div>
                         </div>

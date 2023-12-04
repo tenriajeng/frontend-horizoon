@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { Badge } from './ui/badge';
 import {
     Tooltip,
     TooltipContent,
@@ -10,6 +9,7 @@ import { Cross2Icon } from '@radix-ui/react-icons';
 import { Separator } from './ui/separator';
 import Link from 'next/link';
 import formatPrice from '@/lib/moneyFormat';
+import { BadgeCategory } from './badge-category';
 
 export default function CartItem({ cart }) {
     return (
@@ -36,13 +36,10 @@ export default function CartItem({ cart }) {
 
                         <div className="line-clamp-1 xs:mt-1 sm:mt-2">
                             {cart.course.categories.map((category, index) => (
-                                <Badge
+                                <BadgeCategory
                                     key={index}
-                                    variant="secondary"
-                                    className="me-2 px-2 text-xs font-normal xs:mb-1 sm:mb-2"
-                                >
-                                    {category.name}
-                                </Badge>
+                                    category={category}
+                                />
                             ))}
                         </div>
                         <div className="font-semibold xs:text-sm sm:text-lg">

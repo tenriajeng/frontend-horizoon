@@ -2,9 +2,10 @@ import { ReloadIcon } from '@radix-ui/react-icons';
 
 import { Button } from '@/components/ui/button';
 
-export function ButtonLoading({ customClass }) {
+export function ButtonLoading({ size, customClass }) {
     return (
         <Button
+            size={size}
             disabled={true}
             className={`${customClass ? customClass : 'w-full'}`}
         >

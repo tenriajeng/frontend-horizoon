@@ -1,6 +1,6 @@
+import { BadgeCategory } from '@/components/badge-category';
 import LoadingMaterials from '@/components/loading/materials';
 import Materials from '@/components/materials';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { getAuthToken } from '@/lib/authUtils';
 import getCourseDetail from '@/service/getCourseDetail';
@@ -40,20 +40,19 @@ export default async function Page({ params }) {
                                 <p className="line-clamp-4 leading-7 dark:text-gray-200 xs:text-sm md:text-base md:leading-8">
                                     {course.meta_description}
                                 </p>
+
                                 <div className="mt-4">
                                     {course.categories.map(
                                         (category, index) => (
-                                            <Badge
+                                            <BadgeCategory
                                                 key={index}
-                                                variant="secondary"
-                                                className="mb-2 me-2 px-2 py-1 text-xs font-normal"
-                                            >
-                                                {category.name}
-                                            </Badge>
+                                                category={category}
+                                            />
                                         ),
                                     )}
                                 </div>
-                                <div className="mb-0 xs:mb-6 xs:mt-4 md:mt-4">
+
+                                <div className="mb-0 xs:mb-6 xs:mt-4 md:mt-2">
                                     {course.is_purchased ? (
                                         <Link
                                             href={`/explore/${course.slug}/learn/1`}
@@ -83,6 +82,11 @@ export default async function Page({ params }) {
                                                 Checkout
                                                 <ChevronRightIcon className="ml-2 h-4 w-4" />
                                             </ButtonDirectCheckout>
+                                            {/* <div>
+                                                <span className="text-2xl font-semibold">
+                                                    {formatPrice(course.price)}
+                                                </span>
+                                            </div> */}
                                         </div>
                                     )}
                                 </div>
@@ -121,7 +125,6 @@ export default async function Page({ params }) {
                                 <Materials
                                     authToken={authToken}
                                     course={course}
-                                    materials={course.materials}
                                 />
                             </Suspense>
                         </div>

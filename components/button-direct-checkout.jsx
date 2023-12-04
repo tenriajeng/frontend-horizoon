@@ -8,7 +8,7 @@ import { ButtonLoading } from './button-loading';
 import { usePathname, useRouter } from 'next/navigation';
 import getURL from '@/utils/getUrl';
 
-export default function ButtonDirectCheckout({ course }) {
+export default function ButtonDirectCheckout({ course, size }) {
     const [loading, setLoading] = useState(false);
     const pathname = usePathname();
     const router = useRouter();
@@ -31,11 +31,15 @@ export default function ButtonDirectCheckout({ course }) {
     return (
         <>
             {loading ? (
-                <ButtonLoading customClass={'w-auto'} />
+                <ButtonLoading size={size} customClass={'w-auto'} />
             ) : (
-                <Button className="me-2" onClick={hadleDirectCheckout}>
+                <Button
+                    size={size}
+                    className="me-2"
+                    onClick={hadleDirectCheckout}
+                >
                     Checkout
-                    <ChevronRightIcon className="ml-2 h-4 w-4" />
+                    <ChevronRightIcon className="h-4 w-4" />
                 </Button>
             )}
         </>
